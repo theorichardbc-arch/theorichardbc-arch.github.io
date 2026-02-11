@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photographie — Théo Richard</title>
+<title>Écriture — Théo Richard</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
+    font-family: 'Libre Baskerville', serif;
     background: #fff;
     color: #111;
-    font-family: 'Libre Baskerville', serif;
     opacity: 0;
     animation: fadeIn 1s ease forwards;
 }
@@ -20,79 +20,6 @@ body {
 @keyframes fadeIn {
     to { opacity: 1; }
 }
-
-.top-bar {
-    padding: 2rem 3rem;
-}
-
-.home-link {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #111;
-}
-
-.container {
-    display: flex;
-    max-width: 1400px;
-    margin: auto;
-    padding: 0 3rem 4rem 3rem;
-}
-
-.content {
-    flex: 1;
-    padding-right: 4rem;
-}
-
-.section {
-    margin-bottom: 5rem;
-}
-
-.section h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.grid img {
-    width: 100%;
-    display: block;
-    filter: grayscale(100%);
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.grid img:hover {
-    transform: scale(1.02);
-    filter: grayscale(0%);
-}
-
-.sidebar {
-    width: 220px;
-    position: sticky;
-    top: 3rem;
-}
-
-.sidebar a {
-    display: block;
-    text-decoration: none;
-    color: #111;
-    margin-bottom: 1rem;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.sidebar a:hover {
-    opacity: 1;
-}
-</style>
-</head>
-
-<body>
 
 <div class="top-bar">
     <div class="nav-left">
@@ -106,42 +33,77 @@ body {
     </div>
 </div>
 
-<div class="container">
+.content {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    margin-bottom: 3rem;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+}
+
+.entry {
+    margin-bottom: 3rem;
+}
+
+.entry a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #111;
+}
+
+.entry p {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR ICI -->
 
 <div class="content">
+<h1>Écriture</h1>
 
-<div class="section" id="serie1">
-<h2>Série I — Noir urbain</h2>
-<div class="grid">
-<img src="https://picsum.photos/600/800?1">
-<img src="https://picsum.photos/600/800?2">
-<img src="https://picsum.photos/600/800?3">
-<img src="https://picsum.photos/600/800?4">
-<img src="https://picsum.photos/600/800?5">
-<img src="https://picsum.photos/600/800?6">
-</div>
+<div class="search-bar">
+<input type="text" placeholder="Rechercher un texte...">
 </div>
 
-<div class="section" id="serie2">
-<h2>Série II — Silences</h2>
-<div class="grid">
-<img src="https://picsum.photos/600/800?7">
-<img src="https://picsum.photos/600/800?8">
-<img src="https://picsum.photos/600/800?9">
-<img src="https://picsum.photos/600/800?10">
-<img src="https://picsum.photos/600/800?11">
-<img src="https://picsum.photos/600/800?12">
-</div>
+<div class="entry">
+<a href="#">La lumière comme tension</a>
+<p>Réflexion sur le contraste en photographie noir et blanc et son équivalent en écriture.</p>
 </div>
 
+<div class="entry">
+<a href="#">Silence et densité</a>
+<p>Sur le minimalisme, la lenteur, et la construction du regard.</p>
 </div>
 
-<aside class="sidebar">
-<a href="#serie1">Série I — Noir urbain</a>
-<a href="#serie2">Série II — Silences</a>
-</aside>
+<div class="entry">
+<a href="#">Notes sur l'archive</a>
+<p>Pourquoi conserver, classer, et donner forme au passé.</p>
+</div>
 
 </div>
 
 </body>
 </html>
+
