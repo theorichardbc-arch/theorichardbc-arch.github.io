@@ -7,64 +7,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    background: #fff;
-    color: #111;
-    font-family: 'Libre Baskerville', serif;
-    opacity: 0;
-    animation: fadeIn 1.2s ease forwards;
-}
+<link rel="stylesheet" href="style.css">
 
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    letter-spacing: -1px;
-}
-
-.main-nav {
-    display: flex;
-    gap: 4rem;
-    font-size: 1.7rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: #111;
-    position: relative;
-}
-
-.main-nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 1px;
-    background: #111;
-    transition: width 0.4s ease;
-}
-
-.main-nav a:hover::after {
-    width: 100%;
-}
-</style>
 </head>
 
 <body>
