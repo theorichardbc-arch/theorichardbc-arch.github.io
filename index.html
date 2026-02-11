@@ -5,18 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Théo Richard</title>
 
-<!-- Google Fonts élégantes et sobres -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    background: #ffffff;
+    background: #fff;
     color: #111;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Libre Baskerville', serif;
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
 }
 
-/* PAGE D'ACCUEIL */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
 
 .hero {
     height: 100vh;
@@ -27,172 +30,53 @@ body {
     text-align: center;
 }
 
-.hero h1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 5rem;
-    font-weight: 800;
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
     letter-spacing: -1px;
-    margin: 0 0 3rem 0;
 }
 
 .main-nav {
     display: flex;
     gap: 4rem;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 }
 
 .main-nav a {
     text-decoration: none;
     color: #111;
-    transition: opacity 0.2s ease;
+    position: relative;
 }
 
-.main-nav a:hover {
-    opacity: 0.6;
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: #111;
+    transition: width 0.4s ease;
 }
 
-/* SECTION PHOTOGRAPHIE */
-
-.photographie-container {
-    display: flex;
-    max-width: 1400px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-/* MENU CHAPITRES DROITE */
-
-.chapter-nav {
-    width: 220px;
-    position: sticky;
-    top: 2rem;
-    align-self: flex-start;
-    font-size: 1rem;
-}
-
-.chapter-nav a {
-    display: block;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    color: #111;
-    opacity: 0.6;
-}
-
-.chapter-nav a:hover {
-    opacity: 1;
-}
-
-/* CONTENU PHOTOS */
-
-.photo-content {
-    flex: 1;
-    padding-right: 4rem;
-}
-
-.photo-section {
-    margin-bottom: 6rem;
-}
-
-.photo-section h2 {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.photo-grid img {
+.main-nav a:hover::after {
     width: 100%;
-    display: block;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.photo-grid img:hover {
-    filter: grayscale(0%);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-    .photographie-container {
-        flex-direction: column;
-    }
-
-    .chapter-nav {
-        width: 100%;
-        margin-bottom: 3rem;
-        position: relative;
-    }
-
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .photo-grid {
-        grid-template-columns: 1fr;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE D'ACCUEIL -->
-
 <section class="hero">
     <h1>Théo Richard</h1>
     <nav class="main-nav">
-        <a href="#photographie">Photographie</a>
-        <a href="#">Écriture</a>
-        <a href="#">Archive</a>
-        <a href="#">Contact</a>
+        <a href="photographie.html">Photographie</a>
+        <a href="ecriture.html">Écriture</a>
+        <a href="archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
     </nav>
-</section>
-
-<!-- PAGE PHOTOGRAPHIE -->
-
-<section id="photographie" class="photographie-container">
-
-    <div class="photo-content">
-
-        <div class="photo-section" id="serie1">
-            <h2>Série I — Noir urbain</h2>
-            <div class="photo-grid">
-                <img src="https://picsum.photos/600/800?random=1">
-                <img src="https://picsum.photos/600/800?random=2">
-                <img src="https://picsum.photos/600/800?random=3">
-                <img src="https://picsum.photos/600/800?random=4">
-                <img src="https://picsum.photos/600/800?random=5">
-                <img src="https://picsum.photos/600/800?random=6">
-            </div>
-        </div>
-
-        <div class="photo-section" id="serie2">
-            <h2>Série II — Silences</h2>
-            <div class="photo-grid">
-                <img src="https://picsum.photos/600/800?random=7">
-                <img src="https://picsum.photos/600/800?random=8">
-                <img src="https://picsum.photos/600/800?random=9">
-                <img src="https://picsum.photos/600/800?random=10">
-                <img src="https://picsum.photos/600/800?random=11">
-                <img src="https://picsum.photos/600/800?random=12">
-            </div>
-        </div>
-
-    </div>
-
-    <aside class="chapter-nav">
-        <a href="#serie1">Série I — Noir urbain</a>
-        <a href="#serie2">Série II — Silences</a>
-    </aside>
-
 </section>
 
 </body>
