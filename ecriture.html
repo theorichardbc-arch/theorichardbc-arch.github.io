@@ -4,83 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Écriture — Théo Richard</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-    margin: 0;
-    font-family: 'Libre Baskerville', serif;
-    background: #fff;
-    color: #111;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-<div class="top-bar">
-    <div class="nav-left">
-        <a class="home-link" href="index.html">⌂</a>
-    </div>
-    <div class="nav-right">
-        <a href="photographie.html">Photographie</a>
-        <a href="ecriture.html">Écriture</a>
-        <a href="archive.html">Archive</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</div>
-
-.content {
-    max-width: 800px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.search-bar {
-    margin-bottom: 3rem;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 0.8rem;
-    font-family: inherit;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-}
-
-.entry {
-    margin-bottom: 3rem;
-}
-
-.entry a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    text-decoration: none;
-    color: #111;
-}
-
-.entry p {
-    margin-top: 0.6rem;
-    font-size: 1rem;
-    opacity: 0.8;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP BAR ICI -->
+<div class="top-bar">
+    <a class="nav-item" href="index.html">⌂<span>Accueil</span></a>
+    <a class="nav-item" href="photographie.html">📷<span>Photographie</span></a>
+    <a class="nav-item" href="ecriture.html">✒<span>Écriture</span></a>
+    <a class="nav-item" href="archive.html">🗂<span>Archive</span></a>
+    <a class="nav-item" href="contact.html">@<span>Contact</span></a>
+</div>
 
 <div class="content">
+
 <h1>Écriture</h1>
 
 <div class="search-bar">
@@ -94,16 +33,15 @@ h1 {
 
 <div class="entry">
 <a href="#">Silence et densité</a>
-<p>Sur le minimalisme, la lenteur, et la construction du regard.</p>
+<p>Sur le minimalisme et la construction du regard.</p>
 </div>
 
 <div class="entry">
 <a href="#">Notes sur l'archive</a>
-<p>Pourquoi conserver, classer, et donner forme au passé.</p>
+<p>Pourquoi conserver et donner forme au passé.</p>
 </div>
 
 </div>
 
 </body>
 </html>
-
