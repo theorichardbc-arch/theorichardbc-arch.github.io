@@ -3,136 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photographie — Théo Richard</title>
-
+<title>Contact — Théo Richard</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-    margin: 0;
-    background: #fff;
-    color: #111;
-    font-family: 'Libre Baskerville', serif;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.top-bar {
-    padding: 2rem 3rem;
-}
-
-.home-link {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #111;
-}
-
-.container {
-    display: flex;
-    max-width: 1400px;
-    margin: auto;
-    padding: 0 3rem 4rem 3rem;
-}
-
-.content {
-    flex: 1;
-    padding-right: 4rem;
-}
-
-.section {
-    margin-bottom: 5rem;
-}
-
-.section h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.grid img {
-    width: 100%;
-    display: block;
-    filter: grayscale(100%);
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.grid img:hover {
-    transform: scale(1.02);
-    filter: grayscale(0%);
-}
-
-.sidebar {
-    width: 220px;
-    position: sticky;
-    top: 3rem;
-}
-
-.sidebar a {
-    display: block;
-    text-decoration: none;
-    color: #111;
-    margin-bottom: 1rem;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-}
-
-.sidebar a:hover {
-    opacity: 1;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="top-bar">
-    <a class="home-link" href="index.html">⌂</a>
+    <a class="nav-item" href="index.html">⌂<span>Accueil</span></a>
+    <a class="nav-item" href="photographie.html">📷<span>Photographie</span></a>
+    <a class="nav-item" href="ecriture.html">✒<span>Écriture</span></a>
+    <a class="nav-item" href="archive.html">🗂<span>Archive</span></a>
+    <a class="nav-item" href="contact.html">@<span>Contact</span></a>
 </div>
 
-<div class="container">
-
-<div class="content">
-
-<div class="section" id="serie1">
-<h2>Série I — Noir urbain</h2>
-<div class="grid">
-<img src="https://picsum.photos/600/800?1">
-<img src="https://picsum.photos/600/800?2">
-<img src="https://picsum.photos/600/800?3">
-<img src="https://picsum.photos/600/800?4">
-<img src="https://picsum.photos/600/800?5">
-<img src="https://picsum.photos/600/800?6">
-</div>
-</div>
-
-<div class="section" id="serie2">
-<h2>Série II — Silences</h2>
-<div class="grid">
-<img src="https://picsum.photos/600/800?7">
-<img src="https://picsum.photos/600/800?8">
-<img src="https://picsum.photos/600/800?9">
-<img src="https://picsum.photos/600/800?10">
-<img src="https://picsum.photos/600/800?11">
-<img src="https://picsum.photos/600/800?12">
-</div>
-</div>
-
-</div>
-
-<aside class="sidebar">
-<a href="#serie1">Série I — Noir urbain</a>
-<a href="#serie2">Série II — Silences</a>
-</aside>
-
+<div class="contact-container">
+<h1>Contact</h1>
+<p>Instagram : @the0_richard</p>
+<p>Email : contact@theo-richard.fr</p>
 </div>
 
 </body>
