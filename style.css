@@ -1,0 +1,25 @@
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+}
+
+.home-link {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #111;
+}
+
+.nav-right a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: #111;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.nav-right a:hover {
+    opacity: 1;
+}
