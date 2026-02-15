@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Styles spécifiques pour page en construction */
+        /* Styles spécifiques page construction */
         body, html {
             height: 100%;
             margin: 0;
@@ -25,9 +25,9 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            height: 100%;
             font-family: 'IBM Plex Mono', monospace;
-            padding: 0 2rem;
+            padding: 2rem;
+            min-height: calc(100vh - 120px); /* ajusté pour laisser place au header */
         }
 
         .construction-container h1 {
@@ -61,11 +61,28 @@
 </head>
 
 <body>
-    <div class="construction-container">
-        <h1>Page en construction</h1>
-        <p>Cette page n'est pas encore disponible</p>
-        <p>Pour plus d’informations : <a href="mailto:contact@theo-richard.fr">contact@theo-richard.fr</a></p>
-        <a href="index.html" class="construction-home-button">Retour à l'accueil</a>
+    <div class="page-wrapper">
+
+        <!-- HEADER / NAV -->
+        <header class="site-header">
+            <a href="index.html" class="home-button">⌂</a>
+
+            <nav class="top-bar">
+                <a class="nav-item" href="photographie.html">PHOTOGRAPHIE</a>
+                <a class="nav-item" href="ecriture.html">ÉCRITURE</a>
+                <a class="nav-item" href="archive.html">ARCHIVE</a>
+                <a class="nav-item" href="contact.html">CONTACT</a>
+            </nav>
+        </header>
+
+        <!-- CONTENU PAGE EN CONSTRUCTION -->
+        <div class="construction-container">
+            <h1>Page en construction</h1>
+            <p>Cette page n'est pas encore disponible, mais promis, j'y bosse !</p>
+            <p>Pour plus d’informations : <a href="mailto:contact@theo-richard.fr">contact@theo-richard.fr</a></p>
+            <a href="index.html" class="construction-home-button">Retour à l'accueil</a>
+        </div>
+
     </div>
 </body>
 
