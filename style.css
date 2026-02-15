@@ -120,6 +120,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
+   overflow: hidden;
 }
 
 .photo-grid h2 {
