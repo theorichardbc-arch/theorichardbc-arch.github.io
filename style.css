@@ -30,10 +30,10 @@ body {
 }
 
 .home-button {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400; /* Arquivo Black n’a pas de variations, 400 suffit */
     font-size: 1.2rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: black;
     text-decoration: none;
@@ -49,10 +49,9 @@ body {
     gap: 3rem;
 }
 
-/* Liens nav : toujours noirs, pas de soulignement par défaut */
 .top-bar a {
-    color: black;
-    text-decoration: none;
+    color: black;          /* toujours noir */
+    text-decoration: none; /* pas de soulignement par défaut */
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -61,7 +60,7 @@ body {
 }
 
 .top-bar a:visited {
-    color: black; /* visited reste noir */
+    color: black;          /* visited reste noir */
 }
 
 /* underline uniquement au hover */
@@ -89,8 +88,8 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
     font-size: 5rem;
     line-height: 1;
     text-transform: uppercase;
@@ -111,11 +110,10 @@ body {
     gap: 3rem;
 }
 
-/* Titres de sections sur toute la largeur */
 .photo-grid h2 {
     grid-column: span 3;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     margin-top: 3rem;
@@ -132,4 +130,46 @@ body {
     transform: scale(1.02);
 }
 
-/* Menu photo à droite (si tu le gardes) *
+/* Menu photo à droite */
+.photo-menu {
+    margin-top: 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.photo-menu a {
+    display: block;
+    margin-bottom: 1rem;
+    color: black;
+    text-decoration: none;
+}
+
+.photo-menu a:hover {
+    opacity: 0.6;
+}
+
+/* =========================
+   ECRITURE
+========================= */
+
+.content {
+    max-width: 800px;
+    margin: 8rem 0;
+}
+
+.content h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.entry {
+    margin-bottom: 4rem;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-container {
+    margin: 10rem 0;
+}
