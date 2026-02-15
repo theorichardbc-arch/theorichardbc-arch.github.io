@@ -88,9 +88,9 @@ body {
 
 .hero-index {
     display: flex;
-    align-items: center;
-    height: 60vh;
-    padding-left: 0;
+    align-items: center;    /* centre verticalement */
+    height: 60vh;           /* ajuste la hauteur pour centrer le H1 */
+    padding-left: 0;        /* aligne à gauche dans le wrapper */
 }
 
 .hero-index h1 {
@@ -216,8 +216,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center; /* centre verticalement */
-    align-items: center;     /* centre horizontalement */
-    text-align: center;
+    align-items: flex-start;  /* aligné à gauche */
+    text-align: left;
     font-family: 'IBM Plex Mono', monospace;
     padding: 2rem;
 }
