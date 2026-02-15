@@ -18,7 +18,6 @@ body {
     padding: 0 6rem;
 }
 
-
 /* =========================
    HEADER / NAVIGATION
 ========================= */
@@ -32,7 +31,7 @@ body {
 
 .home-button {
     font-family: 'Archivo Black', sans-serif;
-    font-weight: 400; /* Arquivo Black n’a pas de variations, 400 suffit */
+    font-weight: 400;
     font-size: 1.2rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -40,30 +39,18 @@ body {
     text-decoration: none;
 }
 
-.home-button a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0%;
-    height: 2px;
-    background: black;
-    transition: width 0.3s ease;
+.home-button:hover {
+    opacity: 0.6;
 }
 
-.home-button a:hover::after {
-    width: 100%;
-}
-
-/* NAV PRINCIPALE */
 .top-bar {
     display: flex;
     gap: 3rem;
 }
 
 .top-bar a {
-    color: black;          /* toujours noir */
-    text-decoration: none; /* pas de soulignement par défaut */
+    color: black;
+    text-decoration: none;
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -72,10 +59,9 @@ body {
 }
 
 .top-bar a:visited {
-    color: black;          /* visited reste noir */
+    color: black;
 }
 
-/* underline uniquement au hover */
 .top-bar a::after {
     content: "";
     position: absolute;
@@ -184,4 +170,27 @@ body {
 
 .contact-container {
     margin: 10rem 0;
+}
+
+/* =========================
+   BOUTON PAGE EN CONSTRUCTION
+========================= */
+
+.construction-home-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ffffff;             /* texte blanc */
+    background-color: #111111;  /* fond noir */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.construction-home-button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
 }
