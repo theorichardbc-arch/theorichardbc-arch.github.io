@@ -106,10 +106,13 @@ body {
 ========================= */
 
 .photo-container {
+    display: flex;           /* pour placer la grille et le menu côte à côte */
     margin-top: 6rem;
+    gap: 3rem;
 }
 
 .photo-grid {
+    flex: 3;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
@@ -117,8 +120,8 @@ body {
 
 .photo-grid h2 {
     grid-column: span 3;
-    font-family: 'Archivo Black', sans-serif;
-    font-weight: 400;
+    font-family: 'IBM Plex Mono', monospace;  /* <- cohérence avec le reste du site */
+    font-weight: 500;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     margin-top: 3rem;
@@ -135,9 +138,16 @@ body {
     transform: scale(1.02);
 }
 
+/* Menu des sections à droite */
 .photo-menu {
-    margin-top: 2rem;
+    flex: 1; /* prend la largeur restante à droite */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* commence en haut */
     font-family: 'IBM Plex Mono', monospace;
+    position: sticky; /* reste visible si scroll */
+    top: 6rem; /* décale un peu depuis le header */
+    padding-left: 2rem;
 }
 
 .photo-menu a {
