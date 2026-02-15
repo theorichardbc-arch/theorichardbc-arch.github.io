@@ -19,9 +19,55 @@ a {
     border-bottom: 3px solid black;
 }
 
-.nav-item {
-    font-size: 0.9rem;
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-bottom: 3px solid black;
+}
+
+.home-button {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+.home-button:hover {
+    opacity: 0.6;
+}
+
+.top-bar {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
 }
 
 .hero {
