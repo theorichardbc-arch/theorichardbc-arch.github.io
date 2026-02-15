@@ -152,28 +152,19 @@ a:active {
 
 /* TITRES SECTION */
 
+/* TITRES SECTION STICKY */
 .photo-grid h2 {
     grid-column: span 3;
-
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 3rem;
-    text-transform: uppercase;
-
-    /* IMPORTANT : plus de margin-top */
-    margin: 0 0 2rem 0;
-
-    /* espace visuel au-dessus sans créer de trou */
-    padding-top: 4rem;
-
+    margin: 0;                 /* supprime toutes les marges par défaut */
+    padding-top: 1rem;         /* ajoute un petit espace si tu veux */
+    padding-bottom: 1rem;    /* espace sous le titre */
     position: sticky;
-    top: 7rem; /* collé EXACT sous navbar */
-
-    background: #ffffff;
+    top: 7rem;                 /* exactement sous la navbar */
+    background: white;         /* pour cacher le contenu scrollé derrière */
     z-index: 4000;
-
-    /* évite toute micro apparition d'image */
-    box-shadow: 0 -1px 0 #ffffff;
 }
 
 /* IMAGES */
