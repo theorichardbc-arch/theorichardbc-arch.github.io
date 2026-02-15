@@ -159,8 +159,8 @@ a:active {
     font-weight: 900;
     font-size: 3rem;
     margin: 0;                 /* supprime toutes les marges par défaut */
-    padding-top: 1rem;         /* ajoute un petit espace si tu veux */
-    padding-bottom: 1rem;    /* espace sous le titre */
+    padding-top: 0rem;         /* ajoute un petit espace si tu veux */
+    padding-bottom: 0rem;    /* espace sous le titre */
     position: sticky;
     top: 7rem;                 /* exactement sous la navbar */
     background: white;         /* pour cacher le contenu scrollé derrière */
