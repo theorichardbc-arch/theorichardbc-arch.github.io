@@ -32,6 +32,10 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 4rem 0 3rem 0;
+    position: sticky;    /* <- reste visible en scroll */
+    top: 0;              /* fixe en haut */
+    background: #ffffff; /* sinon le contenu défile dessous */
+    z-index: 1000;       /* pour passer au-dessus des images */
 }
 
 .home-button {
