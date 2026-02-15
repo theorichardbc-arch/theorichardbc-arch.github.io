@@ -162,7 +162,7 @@ a:active {
     padding: 1rem 0;           /* pour garder un peu d'espace visuel */
     background: none;          /* plus besoin de cacher les images derrière */
     z-index: auto;             /* inutile sans sticky */
-    scroll-margin-top: 0;      /* optionnel, plus utilisé ici */
+    scroll-margin-top: 7rem;      /* optionnel, plus utilisé ici */
 }
 
 
