@@ -97,12 +97,17 @@ body {
     text-transform: uppercase;
 }
 
-.photo-menu a {
-    display: block;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    color: black;
+.photo-menu {
+    flex: 1;
+    position: sticky;
+    top: 10rem; /* aligné avec les titres */
+    align-self: flex-start;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
+
 
 .photo-menu a:hover {
     opacity: 0.6;
@@ -115,7 +120,9 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
+    padding-bottom: 10rem; /* respiration en bas */
 }
+
 
 /* TITRES DE SECTION STICKY */
 
@@ -127,11 +134,11 @@ body {
     margin-top: 4rem;
     margin-bottom: 2rem;
     position: sticky;
-    top: 7rem;
+    top: 10rem; /* EXACTEMENT la même valeur que le menu */
     background: white;
-    padding-top: 1rem;
     z-index: 100;
 }
+
 
 /* IMAGES */
 
