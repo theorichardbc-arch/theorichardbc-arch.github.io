@@ -39,8 +39,19 @@ body {
     text-decoration: none;
 }
 
-.home-button:hover {
-    opacity: 0.6;
+.home-button a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease;
+}
+
+.home-button a:hover::after {
+    width: 100%;
 }
 
 /* NAV PRINCIPALE */
