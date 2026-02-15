@@ -158,14 +158,13 @@ a:active {
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 3rem;
-    margin: 0;                 /* supprime toutes les marges par défaut */
-    padding-top: 0rem;         /* ajoute un petit espace si tu veux */
-    padding-bottom: 0rem;    /* espace sous le titre */
-    position: sticky;
-    top: 7rem;                 /* exactement sous la navbar */
-    background: white;         /* pour cacher le contenu scrollé derrière */
-    z-index: 4000;
+    margin: 0;                 /* pas de marge qui pourrait créer un trou */
+    padding: 1rem 0;           /* pour garder un peu d'espace visuel */
+    background: none;          /* plus besoin de cacher les images derrière */
+    z-index: auto;             /* inutile sans sticky */
+    scroll-margin-top: 0;      /* optionnel, plus utilisé ici */
 }
+
 
 /* IMAGES */
 
