@@ -4,68 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Écriture — Théo Richard</title>
+    <title>Contact — Théo Richard</title>
 
     <!-- Polices -->
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Archivo+Black&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Styles spécifiques pour page en construction */
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
-
-        .construction-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            height: 100%;
-            font-family: 'IBM Plex Mono', monospace;
-            padding: 0 2rem;
-        }
-
-        .construction-container h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .construction-container p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .construction-home-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-weight: 500;
-            font-size: 1rem;
-            color: #ffffff;
-            background-color: #111111;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-        }
-
-        .construction-home-button:hover {
-            opacity: 0.8;
-            transform: translateY(-2px);
-        }
-    </style>
 </head>
 
 <body>
-    <div class="construction-container">
-        <h1>Page en construction</h1>
-        <p>Cette page n'est pas encore disponible</p>
-        <p>Pour plus d’informations : <a href="mailto:contact@theo-richard.fr">contact@theo-richard.fr</a></p>
-        <a href="index.html" class="construction-home-button">Retour à l'accueil</a>
+    <div class="page-wrapper construction-page">
+
+        <!-- HEADER / NAV -->
+        <header class="site-header">
+            <a href="index.html" class="home-button">⌂</a>
+
+            <nav class="top-bar">
+                <a class="nav-item" href="photographie.html">PHOTOGRAPHIE</a>
+                <a class="nav-item" href="ecriture.html">ÉCRITURE</a>
+                <a class="nav-item" href="archive.html">ARCHIVE</a>
+                <a class="nav-item" href="contact.html">CONTACT</a>
+            </nav>
+        </header>
+
+        <!-- CONTENU PAGE EN CONSTRUCTION -->
+        <div class="construction-container">
+            <h1>Page en construction</h1>
+            <p>Je ferai ça proprement plus tard.</p>
+            <p>Pour plus d’informations : <a href="mailto:contact@theo-richard.fr">contact@theo-richard.fr</a></p>
+            <a href="index.html" class="construction-home-button">Retour à l'accueil</a>
+        </div>
+
     </div>
 </body>
 
