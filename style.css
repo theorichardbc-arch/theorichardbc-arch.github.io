@@ -1,13 +1,8 @@
 /* =========================
    GLOBAL
 ========================= */
-
-html, body {
-    margin: 0;
-    height: 100%;
-}
-
 body {
+    margin: 0;
     background: #ffffff;
     color: #000;
     font-family: 'IBM Plex Mono', monospace;
@@ -19,23 +14,24 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 6rem;
-    display: flex;
-    flex-direction: column;
+    padding-top: 7rem; /* laisse de la place pour header fixe */
 }
 
 /* =========================
-   HEADER / NAVIGATION
+   HEADER / NAVIGATION FIXE
 ========================= */
-
 .site-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4rem 0 3rem 0;
-    position: sticky;    /* <- reste visible en scroll */
-    top: 0;              /* fixe en haut */
-    background: #ffffff; /* sinon le contenu défile dessous */
-    z-index: 1000;       /* pour passer au-dessus des images */
+    padding: 1.5rem 6rem;
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .home-button {
@@ -63,8 +59,8 @@ body {
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    position: relative;
     font-family: 'IBM Plex Mono', monospace;
+    position: relative;
 }
 
 .top-bar a:visited {
@@ -87,14 +83,13 @@ body {
 }
 
 /* =========================
-   HERO INDEX (spécifique à l'accueil)
+   HERO INDEX (pour page d'accueil)
 ========================= */
-
 .hero-index {
     display: flex;
-    align-items: center;    /* centre verticalement */
-    height: 60vh;           /* ajuste la hauteur pour centrer le H1 */
-    padding-left: 0;        /* aligne à gauche dans le wrapper */
+    align-items: center;
+    height: 60vh;
+    padding-left: 0;
 }
 
 .hero-index h1 {
@@ -108,10 +103,8 @@ body {
 /* =========================
    PHOTOGRAPHIE
 ========================= */
-
 .photo-container {
-    display: flex;           /* pour placer la grille et le menu côte à côte */
-    margin-top: 6rem;
+    display: flex;           
     gap: 3rem;
 }
 
@@ -120,13 +113,13 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-   overflow: hidden;
+    overflow: hidden; /* empêche le zoom de déborder */
 }
 
 .photo-grid h2 {
     grid-column: span 3;
-    font-family: 'IBM Plex Mono', monospace;  /* <- cohérence avec le reste du site */
-    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     margin-top: 3rem;
@@ -145,32 +138,30 @@ body {
 
 /* Menu des sections à droite */
 .photo-menu {
-    flex: 1;
+    flex: 1; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    font-family: 'IBM Plex Mono', monospace;
-    position: sticky;      /* sticky au lieu de fixed */
-    top: 7rem;             /* commence juste sous le header */
-    align-self: start;     /* nécessaire pour sticky dans flex container */
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    position: sticky;
+    top: 7rem;  
+    align-self: start; 
     padding-left: 2rem;
 }
-
 .photo-menu a {
     display: block;
     margin-bottom: 1rem;
     color: black;
     text-decoration: none;
 }
-
 .photo-menu a:hover {
     opacity: 0.6;
 }
 
 /* =========================
-   ECRITURE
+   ECRITURE / CONTACT
 ========================= */
-
 .content {
     max-width: 800px;
     margin: 8rem 0;
@@ -186,10 +177,6 @@ body {
     margin-bottom: 4rem;
 }
 
-/* =========================
-   CONTACT
-========================= */
-
 .contact-container {
     margin: 10rem 0;
 }
@@ -197,7 +184,6 @@ body {
 /* =========================
    BOUTON PAGE EN CONSTRUCTION
 ========================= */
-
 .construction-home-button {
     display: inline-block;
     margin-top: 2rem;
@@ -205,8 +191,8 @@ body {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     font-size: 1rem;
-    color: #ffffff;
-    background-color: #111111;
+    color: #ffffff;             
+    background-color: #111111;  
     text-decoration: none;
     border-radius: 4px;
     transition: opacity 0.3s ease, transform 0.2s ease;
@@ -215,25 +201,4 @@ body {
 .construction-home-button:hover {
     opacity: 0.8;
     transform: translateY(-2px);
-}
-
-/* =========================
-   PAGE EN CONSTRUCTION FULLSCREEN
-========================= */
-
-.construction-page {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.construction-container {
-    flex: 1; /* prend tout l'espace restant après le header */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* centre verticalement */
-    align-items: flex-start;  /* aligné à gauche */
-    text-align: left;
-    font-family: 'IBM Plex Mono', monospace;
-    padding: 2rem;
 }
