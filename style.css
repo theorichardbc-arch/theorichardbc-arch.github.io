@@ -15,11 +15,11 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 6rem;
-    padding-top: 7rem;
+    padding-top: 7rem; /* espace header fixe */
 }
 
 /* =========================
-   HEADER FIXE (SANS OMBRE)
+   HEADER FIXE
 ========================= */
 
 .site-header {
@@ -32,15 +32,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 2000;
+    z-index: 3000;
 }
 
 .home-button {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: black;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 1.2rem;
     text-decoration: none;
+    color: black;
+}
+
+.home-button:hover {
+    opacity: 0.6;
 }
 
 .top-bar {
@@ -49,8 +53,8 @@ body {
 }
 
 .top-bar a {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -75,7 +79,7 @@ body {
 }
 
 /* =========================
-   PHOTO PAGE LAYOUT
+   PHOTO PAGE
 ========================= */
 
 .photo-container {
@@ -84,97 +88,10 @@ body {
     align-items: flex-start;
 }
 
-/* MENU À GAUCHE */
+/* MENU GAUCHE */
 
 .photo-menu {
     flex: 1;
     position: sticky;
-    top: calc(7rem + 3rem);
-    align-self: flex-start;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.photo-menu {
-    flex: 1;
-    position: sticky;
-    top: 10rem; /* aligné avec les titres */
-    align-self: flex-start;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-
-.photo-menu a:hover {
-    opacity: 0.6;
-}
-
-/* GRID */
-
-.photo-grid {
-    flex: 3;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    padding-bottom: 10rem; /* respiration en bas */
-}
-
-
-/* TITRES DE SECTION STICKY */
-
-.photo-grid h2 {
-    grid-column: span 3;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 3rem;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    position: sticky;
-    top: 10rem; /* EXACTEMENT la même valeur que le menu */
-    background: white;
-    z-index: 100;
-}
-
-
-/* IMAGES */
-
-.photo-grid img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.4s ease;
-}
-
-.photo-grid img:hover {
-    transform: scale(1.02);
-}
-
-/* =========================
-   PAGES EN CONSTRUCTION
-========================= */
-
-.construction-container {
-    margin: 10rem 0;
-}
-
-.construction-container h1 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 4rem;
-    margin-bottom: 2rem;
-}
-
-.construction-home-button {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.8rem 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #111111;
-    text-decoration: none;
-}
+    top: 7rem; /* aligné au header */
+    align-self
