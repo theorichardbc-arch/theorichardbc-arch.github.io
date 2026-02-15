@@ -144,13 +144,14 @@ body {
 
 /* Menu des sections à droite */
 .photo-menu {
-    flex: 1; /* prend la largeur restante à droite */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* commence en haut */
+    justify-content: flex-start;
     font-family: 'IBM Plex Mono', monospace;
-    position: sticky; /* reste visible si scroll */
-    top: 6rem; /* décale un peu depuis le header */
+    position: sticky;      /* sticky au lieu de fixed */
+    top: 7rem;             /* commence juste sous le header */
+    align-self: start;     /* nécessaire pour sticky dans flex container */
     padding-left: 2rem;
 }
 
