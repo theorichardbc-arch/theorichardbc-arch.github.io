@@ -173,13 +173,13 @@ a:active {
 .photo-menu a {
     display: block;
     margin-bottom: 0rem;
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .photo-menu a:hover {
     opacity: 1;
-    transform: translateX(4px);
+    transform: translateX(2px);
 }
 
 /* GRID */
