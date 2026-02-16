@@ -52,11 +52,36 @@ a:active {
 
 .home-button {
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;   /* un peu plus gras que normal */
-    font-size: 1.2rem;  /* taille correcte pour la navbar */
+    font-weight: 500;
+    font-size: 0.9rem;  /* même taille que les liens du navbar */
     color: black;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    align-items: center; /* aligne texte et icône */
+    gap: 0.4rem;        /* espace entre la maison et le texte */
+}
+
+.home-button:hover {
+    opacity: 0.6;
+   
+.home-button a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease;
+}
+
+.home-button a:hover::after {
+    width: 100%;
+}
+
+.home-icon {
+    font-size: 1.8rem;  /* maison plus grande que le texte */
+    line-height: 1;     /* évite un décalage vertical */
 
 }
 
