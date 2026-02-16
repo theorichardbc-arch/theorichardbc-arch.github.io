@@ -59,27 +59,40 @@ a:active {
 }
 
 .home-icon {
+    background: white;
+    padding-right: 0.3rem;
     font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     z-index: 2;
+    transition: transform 0.3s ease;
 }
 
 .home-label {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     font-size: 0.9rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     margin-left: 0.8rem;
 
-    transform: translateX(-100%);
+    position: absolute;
+    left: 0;
+    white-space: nowrap;
+
+    transform: translateX(-120%);
     opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+
+    transition: transform 0.35s cubic-bezier(.77,0,.18,1),
+                opacity 0.25s ease;
 }
 
 .home-button:hover .home-label {
-    transform: translateX(0);
+    transform: translateX(1.8rem); /* distance = largeur icône */
     opacity: 1;
+}
+
+   .home-button:hover .home-icon {
+    transform: translateX(-2px);
 }
 
 .top-bar {
