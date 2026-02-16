@@ -140,7 +140,7 @@ a:active {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem;
     margin-top: 1rem;
-    max-width: 600px; /* pour garder la lecture agréable */
+    max-width: 800px; /* pour garder la lecture agréable */
 }
 
 /* =========================
