@@ -27,9 +27,9 @@ a:active {
 ========================= */
 
 .page-wrapper {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 6rem;
+    padding: 0 4vw;
     padding-top: 7rem; /* espace pour header fixe */
 }
 
@@ -41,7 +41,7 @@ a:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 6rem;
+    padding: 1.5rem 4vw;
     background: #ffffff;
     position: fixed;
     top: 0;
