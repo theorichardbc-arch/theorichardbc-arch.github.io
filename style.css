@@ -129,7 +129,7 @@ a:active {
 }
 
 .hero-index h1 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', sans-serif !important;
     font-weight: 900;
     font-size: clamp(3rem, 8vw, 6rem);
     margin: 0;
