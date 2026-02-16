@@ -51,13 +51,35 @@ a:active {
 }
 
 .home-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.home-icon {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     font-size: 1.2rem;
+    z-index: 2;
 }
 
-.home-button:hover {
-    opacity: 0.6;
+.home-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-left: 0.8rem;
+
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.home-button:hover .home-label {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .top-bar {
@@ -138,10 +160,13 @@ a:active {
 .photo-menu a {
     display: block;
     margin-bottom: 0rem;
+    opacity: 0.5;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .photo-menu a:hover {
-    opacity: 0.6;
+    opacity: 1;
+    transform: translateX(4px);
 }
 
 /* GRID */
