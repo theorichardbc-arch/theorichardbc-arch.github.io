@@ -50,21 +50,25 @@ a:active {
     z-index: 5000;
 }
 
+/* ===== BOUTON ACCUEIL ===== */
+
 .home-button {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
-    font-size: 0.9rem;  /* même taille que les liens du navbar */
-    color: black;
-    text-decoration: none;
+    font-size: 0.9rem;
     display: flex;
-    align-items: center; /* aligne texte et icône */
-    gap: 0.4rem;        /* espace entre la maison et le texte */
+    align-items: center;
+    gap: 0.4rem;
+    position: relative;
 }
 
-.home-button:hover {
-    opacity: 0.6;
-   
-.home-button a::after {
+.home-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+/* Soulignement progressif */
+.home-button::after {
     content: "";
     position: absolute;
     left: 0;
@@ -75,15 +79,11 @@ a:active {
     transition: width 0.3s ease;
 }
 
-.home-button a:hover::after {
+.home-button:hover::after {
     width: 100%;
 }
 
-.home-icon {
-    font-size: 1.8rem;  /* maison plus grande que le texte */
-    line-height: 1;     /* évite un décalage vertical */
-
-}
+/* ===== NAVBAR DROITE ===== */
 
 .top-bar {
     display: flex;
@@ -99,6 +99,7 @@ a:active {
     position: relative;
 }
 
+/* Soulignement progressif */
 .top-bar a::after {
     content: "";
     position: absolute;
@@ -147,12 +148,12 @@ a:active {
 .photo-menu {
     flex: 1;
     position: sticky;
-    top: 7rem; /* parfaitement aligné sous navbar */
+    top: 7rem;
     align-self: flex-start;
 
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;   /* espacement maîtrisé ici */
+    gap: 0.6rem;
 
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
@@ -162,13 +163,11 @@ a:active {
 
 .photo-menu a {
     display: block;
-    margin-bottom: 0rem;
     opacity: 1;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .photo-menu a:hover {
-    opacity: 1;
     transform: translateX(2px);
 }
 
@@ -179,24 +178,20 @@ a:active {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-    padding-bottom: 12rem; /* respiration bas de page */
+    padding-bottom: 12rem;
 }
 
 /* TITRES SECTION */
 
-/* TITRES SECTION STICKY */
 .photo-grid h2 {
     grid-column: span 3;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 3rem;
-    margin: 0;                 /* pas de marge qui pourrait créer un trou */
-    padding: 1rem 0;           /* pour garder un peu d'espace visuel */
-    background: none;          /* plus besoin de cacher les images derrière */
-    z-index: auto;             /* inutile sans sticky */
-    scroll-margin-top: 7rem;      /* optionnel, plus utilisé ici */
+    margin: 0;
+    padding: 1rem 0;
+    scroll-margin-top: 7rem;
 }
-
 
 /* IMAGES */
 
@@ -205,7 +200,6 @@ a:active {
     height: auto;
     display: block;
 }
-
 
 /* =========================
    PAGE EN CONSTRUCTION
@@ -237,10 +231,9 @@ a:active {
     font-weight: 500;
     font-size: 1rem;
 
-    /* Nouveau style */
-    background-color: #ffffff;  /* fond blanc */
-    color: #000000;             /* texte noir */
-    border: 3px solid #000000;  /* bord noir épais */
+    background-color: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
     border-radius: 4px;
 
     text-decoration: none;
