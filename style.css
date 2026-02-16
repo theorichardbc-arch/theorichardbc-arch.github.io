@@ -120,18 +120,38 @@ a:active {
 ========================= */
 
 .hero-index {
-    display: flex;
-    align-items: center;
-    height: 70vh;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.hero-index h1 {
+.hero-index img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 4rem;
+    left: 4vw;
+    color: white;
+}
+
+.hero-text h1 {
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
-    font-size: 6rem;
+    font-size: clamp(3rem, 8vw, 6rem);
     margin: 0;
-    text-transform: uppercase;
 }
+
+.hero-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
 
 /* =========================
    PHOTO PAGE
