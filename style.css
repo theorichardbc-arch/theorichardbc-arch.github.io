@@ -289,6 +289,18 @@ a:active {
 }
 
 /* =========================
+   CHARGEMENT PHOTOS
+========================= */
+
+img {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+/* =========================
    PAGE PHOTO — LAYOUT
 ========================= */
 
