@@ -8,17 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-  
-<script>
-  document.querySelectorAll('img').forEach(img => {
-    if (img.complete) {
-      img.classList.add('loaded');
-    } else {
-      img.addEventListener('load', () => img.classList.add('loaded'));
-    }
-  });
-</script>
-  
+
 <body>
 <div class="page-wrapper">
 
@@ -177,6 +167,16 @@
 
   sections.forEach(s => observer.observe(s));
 </script>
-
+  
+<script>
+  document.querySelectorAll('img').forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+</script>
+  
 </body>
 </html>
