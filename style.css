@@ -142,13 +142,29 @@ img {
     animation: fadeUp 0.8s 0.2s ease forwards;
 }
 
+.hero-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.8s 0.5s ease forwards;
+}
+
+.hero-bio {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #000;
+    margin: 0;
+    max-width: 440px;
+}
+
 .hero-links {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    opacity: 0;
-    transform: translateY(16px);
-    animation: fadeUp 0.8s 0.5s ease forwards;
 }
 
 .hero-links a {
@@ -278,6 +294,9 @@ img {
     opacity: 0.7;
 }
 
+.preview-grid img.loaded {
+    opacity: 1;
+}
 /* =========================
    PAGE PHOTO — LAYOUT
 ========================= */
