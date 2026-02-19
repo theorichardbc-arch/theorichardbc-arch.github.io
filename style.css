@@ -22,6 +22,10 @@ a:active {
     text-decoration: none;
 }
 
+img {
+    display: block;
+}
+
 /* =========================
    WRAPPER
 ========================= */
@@ -116,6 +120,7 @@ a:active {
 /* =========================
    PAGE D'ACCUEIL — HERO
 ========================= */
+
 .hero-index {
     position: relative;
     display: flex;
@@ -127,7 +132,7 @@ a:active {
 
 .hero-index h1 {
     font-family: 'Josefin Sans', sans-serif;
-font-weight: 500;
+    font-weight: 500;
     font-size: clamp(3rem, 8vw, 6rem);
     margin: 0 0 2.5rem;
     line-height: 1;
@@ -137,30 +142,13 @@ font-weight: 500;
     animation: fadeUp 0.8s 0.2s ease forwards;
 }
 
-.hero-meta {
-    display: flex;
-    align-items: flex-start;
-    gap: 4rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    transform: translateY(16px);
-    animation: fadeUp 0.8s 0.5s ease forwards;
-}
-
-.hero-bio {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: #000;
-    margin: 0;
-    max-width: 440px;
-}
-
 .hero-links {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    padding-top: 0.15rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.8s 0.5s ease forwards;
 }
 
 .hero-links a {
@@ -173,6 +161,10 @@ font-weight: 500;
     align-items: center;
     gap: 0.5rem;
     width: fit-content;
+}
+
+.hero-links a:hover {
+    opacity: 0.5;
 }
 
 .hero-scroll {
@@ -252,7 +244,7 @@ font-weight: 500;
 
 .preview-header h2 {
     font-family: 'Josefin Sans', sans-serif;
-font-weight: 500;
+    font-weight: 500;
     font-size: 2.5rem;
     margin: 0;
 }
@@ -279,45 +271,11 @@ font-weight: 500;
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    display: block;
     transition: opacity 0.3s ease;
 }
 
 .preview-grid img:hover {
     opacity: 0.7;
-}
-
-/* =========================
-   CHARGEMENT PHOTOS
-========================= */
-
-img {
-    display: block;
-}
-
-.photo-item {
-    break-inside: avoid;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-    cursor: zoom-in;
-}
-
-.photo-item img {
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-.photo-item img.loaded {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.photo-item:hover img {
-    transform: scale(1.02);
-    opacity: 0.85;
 }
 
 /* =========================
@@ -341,7 +299,7 @@ img {
     flex-direction: column;
     gap: 0.5rem;
     font-family: 'Josefin Sans', sans-serif;
-font-weight: 500;
+    font-weight: 500;
     font-size: 0.95rem;
 }
 
@@ -394,7 +352,7 @@ font-weight: 500;
 
 .photo-section h2 {
     font-family: 'Josefin Sans', sans-serif;
-font-weight: 500;
+    font-weight: 500;
     font-size: clamp(2.2rem, 4vw, 3.2rem);
     margin: 0 0 2.5rem;
 }
@@ -414,13 +372,18 @@ font-weight: 500;
 .photo-item img {
     width: 100%;
     height: auto;
-    display: block;
-    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.photo-item img.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .photo-item:hover img {
     transform: scale(1.02);
-    opacity: 0.85;
 }
 
 /* =========================
@@ -446,7 +409,8 @@ font-weight: 500;
     max-width: 90vw;
     max-height: 88vh;
     object-fit: contain;
-    display: block;
+    opacity: 1;
+    transform: none;
 }
 
 .lightbox-close {
@@ -514,7 +478,7 @@ font-weight: 500;
 
 .construction-container h1 {
     font-family: 'Josefin Sans', sans-serif;
-font-weight: 500;
+    font-weight: 500;
     font-size: 4rem;
     margin-bottom: 2rem;
 }
@@ -575,7 +539,7 @@ font-weight: 500;
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero-meta {
+    .hero-links {
         flex-direction: column;
         gap: 2rem;
     }
