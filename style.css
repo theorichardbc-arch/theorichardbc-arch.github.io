@@ -369,7 +369,7 @@ img.loaded {
 .photo-section {
     padding-top: 2rem;
     padding-bottom: 6rem;
-    border-top: 2px solid #000;
+    border-top: 10px solid #000;
     scroll-margin-top: 9rem;
 }
 
