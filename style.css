@@ -401,12 +401,12 @@ font-weight: 500;
 
 .masonry-grid {
     columns: 2;
-    column-gap: 1.5rem;
+    column-gap: 3.5rem;
 }
 
 .photo-item {
     break-inside: avoid;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
     overflow: hidden;
     cursor: zoom-in;
 }
