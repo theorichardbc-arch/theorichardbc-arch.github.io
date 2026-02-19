@@ -7,217 +7,6 @@
 <title>Photographie — Théo Richard</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-
-/* ── LAYOUT ── */
-.photo-container {
-  display: flex;
-  gap: 4rem;
-  align-items: flex-start;
-}
-
-/* ── MENU GAUCHE ── */
-.photo-menu {
-  flex: 0 0 180px;
-  position: sticky;
-  top: 7rem;
-  align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-}
-
-.photo-menu a {
-  display: block;
-  padding: 0.25rem 0;
-  position: relative;
-  color: #aaa;
-  transition: color 0.2s ease;
-  letter-spacing: 0.04em;
-}
-
-.photo-menu a::before {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #000;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.photo-menu a.active {
-  color: #000;
-}
-
-.photo-menu a.active::before {
-  opacity: 1;
-}
-
-.photo-menu a:hover {
-  color: #000;
-}
-
-/* ── GRILLE ── */
-.photo-grid {
-  flex: 1;
-  padding-bottom: 12rem;
-}
-
-.photo-section {
-  margin-bottom: 5rem;
-}
-
-.photo-section h2 {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0 0 2rem;
-  padding-top: 1rem;
-  scroll-margin-top: 8rem;
-  border-top: 2px solid #000;
-}
-
-.masonry-grid {
-  columns: 3;
-  column-gap: 1.2rem;
-}
-
-.masonry-grid .photo-item {
-  break-inside: avoid;
-  margin-bottom: 1.2rem;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-.masonry-grid .photo-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-.masonry-grid .photo-item:hover img {
-  transform: scale(1.03);
-  opacity: 0.88;
-}
-
-/* ── LIGHTBOX ── */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-  z-index: 9000;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.lightbox.open {
-  display: flex;
-  animation: lbFadeIn 0.25s ease;
-}
-
-@keyframes lbFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.lightbox-img-wrap {
-  position: relative;
-  max-width: 90vw;
-  max-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox img {
-  max-width: 90vw;
-  max-height: 85vh;
-  object-fit: contain;
-  display: block;
-  border: none;
-}
-
-.lightbox-close {
-  position: fixed;
-  top: 1.5rem;
-  right: 2rem;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.2rem;
-  color: #fff;
-  cursor: pointer;
-  background: none;
-  border: none;
-  letter-spacing: 0.1em;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-  z-index: 9001;
-}
-
-.lightbox-close:hover { opacity: 1; }
-
-.lightbox-nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #fff;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 1.5rem;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-  padding: 1rem 1.5rem;
-  z-index: 9001;
-}
-
-.lightbox-nav:hover { opacity: 1; }
-.lightbox-prev { left: 0; }
-.lightbox-next { right: 0; }
-
-.lightbox-counter {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0.15em;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .photo-container { flex-direction: column; }
-  .photo-menu {
-    position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex: none;
-  }
-  .photo-menu a::before { display: none; }
-  .masonry-grid { columns: 2; }
-}
-
-@media (max-width: 600px) {
-  .masonry-grid { columns: 1; }
-}
-
-</style>
 </head>
 
 <body>
@@ -239,59 +28,59 @@
 
   <!-- MENU GAUCHE -->
   <nav class="photo-menu" id="photoMenu">
-    <a href="#urbain" class="menu-link">Urbain</a>
+    <a href="#urbain"    class="menu-link">Urbain</a>
     <a href="#portraits" class="menu-link">Portraits</a>
-    <a href="#nature" class="menu-link">Nature</a>
-    <a href="#voyage" class="menu-link">Voyage</a>
+    <a href="#nature"    class="menu-link">Nature</a>
+    <a href="#voyage"    class="menu-link">Voyage</a>
   </nav>
 
-  <!-- GRILLE PHOTOS -->
+  <!-- GRILLE -->
   <div class="photo-grid">
 
     <section class="photo-section" id="urbain">
       <h2>Urbain</h2>
-      <div class="masonry-grid" data-category="urbain">
-        <div class="photo-item"><img src="https://picsum.photos/500/650?10" alt="Urbain 1"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/380?11" alt="Urbain 2"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/500?12" alt="Urbain 3"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/700?13" alt="Urbain 4"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/420?14" alt="Urbain 5"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/560?15" alt="Urbain 6"></div>
+      <div class="masonry-grid">
+        <div class="photo-item"><img src="https://picsum.photos/800/1040?10" alt="Urbain 1"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/620?11"  alt="Urbain 2"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/960?12"  alt="Urbain 3"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/700?13"  alt="Urbain 4"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/840?14"  alt="Urbain 5"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/560?15"  alt="Urbain 6"></div>
       </div>
     </section>
 
     <section class="photo-section" id="portraits">
       <h2>Portraits</h2>
-      <div class="masonry-grid" data-category="portraits">
-        <div class="photo-item"><img src="https://picsum.photos/500/620?20" alt="Portrait 1"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/480?21" alt="Portrait 2"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/550?22" alt="Portrait 3"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/400?23" alt="Portrait 4"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/670?24" alt="Portrait 5"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/430?25" alt="Portrait 6"></div>
+      <div class="masonry-grid">
+        <div class="photo-item"><img src="https://picsum.photos/800/1000?20" alt="Portrait 1"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/780?21"  alt="Portrait 2"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/880?22"  alt="Portrait 3"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/640?23"  alt="Portrait 4"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/1070?24" alt="Portrait 5"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/700?25"  alt="Portrait 6"></div>
       </div>
     </section>
 
     <section class="photo-section" id="nature">
       <h2>Nature</h2>
-      <div class="masonry-grid" data-category="nature">
-        <div class="photo-item"><img src="https://picsum.photos/500/600?30" alt="Nature 1"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/450?31" alt="Nature 2"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/530?32" alt="Nature 3"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/370?33" alt="Nature 4"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/690?34" alt="Nature 5"></div>
+      <div class="masonry-grid">
+        <div class="photo-item"><img src="https://picsum.photos/800/960?30"  alt="Nature 1"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/740?31"  alt="Nature 2"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/850?32"  alt="Nature 3"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/600?33"  alt="Nature 4"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/1100?34" alt="Nature 5"></div>
       </div>
     </section>
 
     <section class="photo-section" id="voyage">
       <h2>Voyage</h2>
-      <div class="masonry-grid" data-category="voyage">
-        <div class="photo-item"><img src="https://picsum.photos/500/520?40" alt="Voyage 1"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/680?41" alt="Voyage 2"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/400?42" alt="Voyage 3"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/580?43" alt="Voyage 4"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/460?44" alt="Voyage 5"></div>
-        <div class="photo-item"><img src="https://picsum.photos/500/640?45" alt="Voyage 6"></div>
+      <div class="masonry-grid">
+        <div class="photo-item"><img src="https://picsum.photos/800/830?40"  alt="Voyage 1"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/1080?41" alt="Voyage 2"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/640?42"  alt="Voyage 3"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/920?43"  alt="Voyage 4"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/750?44"  alt="Voyage 5"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/1020?45" alt="Voyage 6"></div>
       </div>
     </section>
 
@@ -302,9 +91,7 @@
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lbClose">✕ FERMER</button>
   <button class="lightbox-nav lightbox-prev" id="lbPrev">←</button>
-  <div class="lightbox-img-wrap">
-    <img src="" alt="" id="lbImg">
-  </div>
+  <img src="" alt="" id="lbImg">
   <button class="lightbox-nav lightbox-next" id="lbNext">→</button>
   <div class="lightbox-counter" id="lbCounter"></div>
 </div>
@@ -313,19 +100,18 @@
 
 <script>
   // ── LIGHTBOX ──
-  const allItems = Array.from(document.querySelectorAll('.photo-item img'));
-  const lightbox = document.getElementById('lightbox');
-  const lbImg    = document.getElementById('lbImg');
-  const lbClose  = document.getElementById('lbClose');
-  const lbPrev   = document.getElementById('lbPrev');
-  const lbNext   = document.getElementById('lbNext');
+  const allItems  = Array.from(document.querySelectorAll('.photo-item img'));
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
   const lbCounter = document.getElementById('lbCounter');
   let current = 0;
 
   function openLightbox(index) {
     current = index;
     lbImg.src = allItems[current].src;
-    lbImg.alt = allItems[current].alt;
     lbCounter.textContent = `${current + 1} / ${allItems.length}`;
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -341,38 +127,34 @@
     lbImg.style.opacity = 0;
     setTimeout(() => {
       lbImg.src = allItems[current].src;
-      lbImg.alt = allItems[current].alt;
       lbCounter.textContent = `${current + 1} / ${allItems.length}`;
       lbImg.style.opacity = 1;
-    }, 150);
+    }, 140);
   }
 
-  lbImg.style.transition = 'opacity 0.15s ease';
+  lbImg.style.transition = 'opacity 0.14s ease';
 
   allItems.forEach((img, i) => {
     img.closest('.photo-item').addEventListener('click', () => openLightbox(i));
   });
 
   lbClose.addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click', () => navigate(-1));
-  lbNext.addEventListener('click', () => navigate(1));
+  lbPrev.addEventListener('click',  () => navigate(-1));
+  lbNext.addEventListener('click',  () => navigate(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape')      closeLightbox();
-    if (e.key === 'ArrowLeft')   navigate(-1);
-    if (e.key === 'ArrowRight')  navigate(1);
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
   });
 
   // ── MENU ACTIF AU SCROLL ──
-  const sections   = document.querySelectorAll('.photo-section');
-  const menuLinks  = document.querySelectorAll('.menu-link');
+  const sections  = document.querySelectorAll('.photo-section');
+  const menuLinks = document.querySelectorAll('.menu-link');
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
@@ -381,7 +163,7 @@
         });
       }
     });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  }, { rootMargin: '-10% 0px -80% 0px' });
 
   sections.forEach(s => observer.observe(s));
 </script>
