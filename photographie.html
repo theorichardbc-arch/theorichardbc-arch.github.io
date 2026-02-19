@@ -169,7 +169,8 @@
 </script>
   
 <script>
-  document.querySelectorAll('img').forEach(img => {
+  document.querySelectorAll('.photo-item img').forEach((img, i) => {
+    img.style.transitionDelay = `${(i % 6) * 80}ms`;
     if (img.complete) {
       img.classList.add('loaded');
     } else {
