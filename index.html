@@ -9,16 +9,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-  <script>
-  document.querySelectorAll('img').forEach(img => {
-    if (img.complete) {
-      img.classList.add('loaded');
-    } else {
-      img.addEventListener('load', () => img.classList.add('loaded'));
-    }
-  });
-</script>
-  
 <body>
 <div class="page-wrapper">
 
@@ -88,5 +78,16 @@
 </section>
 
 </div>
+  
+  <script>
+  document.querySelectorAll('img').forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+</script>
+  
 </body>
 </html>
