@@ -116,8 +116,8 @@ a:active {
 /* =========================
    PAGE D'ACCUEIL — HERO
 ========================= */
-
 .hero-index {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -166,33 +166,19 @@ a:active {
 .hero-links a {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.9rem;
+    font-weight: 500;
     color: #000;
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    position: relative;
     width: fit-content;
 }
 
-.hero-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0%;
-    height: 1px;
-    background: #000;
-    transition: width 0.3s ease;
-}
-
-.hero-links a:hover::after {
-    width: 100%;
-}
-
 .hero-scroll {
-    display: block;
-    margin-top: 4rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 4vw;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     color: rgba(0,0,0,0.4);
