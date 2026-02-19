@@ -190,6 +190,19 @@ a:active {
     width: 100%;
 }
 
+.hero-scroll {
+    display: block;
+    margin-top: 4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    opacity: 0;
+    animation: fadeUp 1s 1s ease forwards;
+}
+
 /* =========================
    PAGE D'ACCUEIL — INTRO
 ========================= */
@@ -293,13 +306,27 @@ a:active {
 ========================= */
 
 img {
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    display: block;
 }
 
-img.loaded {
-    opacity: 1;
+.photo-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    cursor: zoom-in;
 }
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.02);
+    opacity: 0.85;
+}
+
 /* =========================
    PAGE PHOTO — LAYOUT
 ========================= */
