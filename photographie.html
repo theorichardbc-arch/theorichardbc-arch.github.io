@@ -169,13 +169,18 @@
 </script>
   
 <script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('loaded');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
   document.querySelectorAll('.photo-item img').forEach((img, i) => {
-    img.style.transitionDelay = `${(i % 6) * 80}ms`;
-    if (img.complete) {
-      img.classList.add('loaded');
-    } else {
-      img.addEventListener('load', () => img.classList.add('loaded'));
-    }
+    img.style.transitionDelay = `${(i % 3) * 80}ms`;
+    observer.observe(img);
   });
 </script>
   
