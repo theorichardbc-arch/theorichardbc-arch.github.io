@@ -7,172 +7,6 @@
 <title>Titre de l'article — Théo Richard</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&family=Lora:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-
-/* ── CORPS DU TEXTE ── */
-
-.texte-page-corps {
-    font-family: 'Lora', serif;
-    font-weight: 400;
-    font-size: 1.05rem;
-    line-height: 2;
-    color: #000;
-}
-
-.texte-page-corps p {
-    margin: 0 0 1.8em;
-}
-
-.texte-page-corps p:last-child {
-    margin-bottom: 0;
-}
-
-/* ── RETOUR EN HAUT ── */
-
-.texte-retour-haut {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.4);
-    text-decoration: none;
-    margin-bottom: 2.5rem;
-    transition: color 0.2s ease;
-}
-
-.texte-retour-haut:hover {
-    color: #000;
-}
-
-/* ── MÉTA (date + temps de lecture) ── */
-
-.texte-page-meta {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 0;
-}
-
-.texte-page-date {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    opacity: 0.4;
-    letter-spacing: 0.05em;
-}
-
-.texte-lecture {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    opacity: 0.4;
-    letter-spacing: 0.05em;
-}
-
-/* ── PARTAGE ── */
-
-.partage {
-    margin-top: 5rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(0,0,0,0.12);
-}
-
-.partage-label,
-.commentaires-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.4;
-    margin-bottom: 1.2rem;
-}
-
-.partage-boutons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-}
-
-.partage-btn {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(0,0,0,0.2);
-    background: none;
-    color: #000;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: border-color 0.2s ease, opacity 0.2s ease;
-}
-
-.partage-btn:hover { border-color: #000; }
-.partage-btn.copied { opacity: 0.4; }
-
-/* ── COMMENTAIRES ── */
-
-.commentaires {
-    margin-top: 5rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(0,0,0,0.12);
-    padding-bottom: 10rem;
-}
-
-.commentaires-label { margin-bottom: 2rem; }
-
-.commentaire-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 560px;
-}
-
-.commentaire-form input,
-.commentaire-form textarea {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    padding: 0.8rem 1rem;
-    border: 1px solid rgba(0,0,0,0.2);
-    background: none;
-    color: #000;
-    outline: none;
-    transition: border-color 0.2s ease;
-    resize: vertical;
-}
-
-.commentaire-form input:focus,
-.commentaire-form textarea:focus { border-color: #000; }
-
-.commentaire-form input::placeholder,
-.commentaire-form textarea::placeholder { opacity: 0.35; }
-
-.commentaire-form textarea { min-height: 120px; }
-
-.commentaire-submit {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    padding: 0.8rem 2rem;
-    border: 1px solid #000;
-    background: none;
-    color: #000;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.commentaire-submit:hover { background: #000; color: #fff; }
-
-.commentaire-merci {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    opacity: 0.5;
-    display: none;
-}
-
-</style>
 </head>
 
 <body>
@@ -244,6 +78,7 @@
     <form class="commentaire-form" id="commentaireForm"
           action="https://formspree.io/f/VOTRE-ID"
           method="POST">
+      <!-- REMPLACEZ la valeur de "article" par le vrai titre -->
       <input type="hidden" name="article" value="Titre de l'article">
       <input type="text"   name="nom"     placeholder="Votre nom" required>
       <input type="email"  name="email"   placeholder="Votre email (ne sera pas publié)" required>
@@ -262,34 +97,34 @@
 <script>
   // ── TEMPS DE LECTURE ──
   const corps = document.getElementById('corpsTexte');
-  const mots  = corps.innerText.trim().split(/\s+/).length;
-  const mins  = Math.ceil(mots / 200); // ~200 mots/min en français
-  document.getElementById('tempsLecture').textContent = `${mins} min de lecture`;
+  const nbMots = corps.innerText.trim().split(/\s+/).length;
+  const mins = Math.ceil(nbMots / 200);
+  document.getElementById('tempsLecture').textContent = mins + ' min de lecture';
 
   // ── PARTAGE ──
   const url   = encodeURIComponent(window.location.href);
   const titre = encodeURIComponent(document.title);
-  const texte = encodeURIComponent("Je viens de lire cet article de Théo Richard : " + document.title + " — " + window.location.href);
+  const texte = encodeURIComponent('Je viens de lire cet article de Théo Richard : ' + document.title + ' — ' + window.location.href);
 
-  document.getElementById('btnTwitter').href  = `https://twitter.com/intent/tweet?text=${titre}&url=${url}`;
-  document.getElementById('btnFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  document.getElementById('btnWhatsapp').href = `https://wa.me/?text=${texte}`;
-  document.getElementById('btnMail').href     = `mailto:?subject=${titre}&body=${texte}`;
+  document.getElementById('btnTwitter').href  = 'https://twitter.com/intent/tweet?text=' + titre + '&url=' + url;
+  document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+  document.getElementById('btnWhatsapp').href = 'https://wa.me/?text=' + texte;
+  document.getElementById('btnMail').href     = 'mailto:?subject=' + titre + '&body=' + texte;
 
-  document.getElementById('btnCopier').addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn = document.getElementById('btnCopier');
+  document.getElementById('btnCopier').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      var btn = document.getElementById('btnCopier');
       btn.textContent = '⊞ Lien copié !';
       btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = '⊞ Copier le lien'; btn.classList.remove('copied'); }, 2000);
+      setTimeout(function() { btn.textContent = '⊞ Copier le lien'; btn.classList.remove('copied'); }, 2000);
     });
   });
 
   // ── FORMSPREE ──
-  document.getElementById('commentaireForm').addEventListener('submit', async (e) => {
+  document.getElementById('commentaireForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const form = e.target;
-    const res  = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    var form = e.target;
+    var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       form.style.display = 'none';
       document.getElementById('commentaireMerci').style.display = 'block';
@@ -297,10 +132,10 @@
   });
 
   // ── STORY INSTAGRAM ──
-  document.getElementById('btnInstagram').addEventListener('click', () => {
-    const canvas = document.getElementById('storyCanvas');
-    const ctx    = canvas.getContext('2d');
-    const W = 1080, H = 1920;
+  document.getElementById('btnInstagram').addEventListener('click', function() {
+    var canvas = document.getElementById('storyCanvas');
+    var ctx = canvas.getContext('2d');
+    var W = 1080, H = 1920;
 
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
@@ -314,22 +149,22 @@
     ctx.font = '400 34px monospace';
     ctx.fillText('RÉFLEXIONS', 80, 190);
 
-    const titreTexte = document.querySelector('.texte-page-titre').textContent.trim();
+    var titreTexte = document.querySelector('.texte-page-titre').textContent.trim();
     ctx.fillStyle = '#000';
     ctx.font = '400 90px sans-serif';
 
-    const mots2 = titreTexte.split(' ');
-    let lignes = [], ligne = '';
-    mots2.forEach(mot => {
-      const test = ligne ? ligne + ' ' + mot : mot;
+    var mots = titreTexte.split(' ');
+    var lignes = [], ligne = '';
+    mots.forEach(function(mot) {
+      var test = ligne ? ligne + ' ' + mot : mot;
       if (ctx.measureText(test).width > W - 160 && ligne) { lignes.push(ligne); ligne = mot; }
       else { ligne = test; }
     });
     lignes.push(ligne);
 
-    const lh = 110;
-    const startY = Math.round((H - lignes.length * lh) / 2) - 40;
-    lignes.forEach((l, i) => ctx.fillText(l, 80, startY + i * lh));
+    var lh = 110;
+    var startY = Math.round((H - lignes.length * lh) / 2) - 40;
+    lignes.forEach(function(l, i) { ctx.fillText(l, 80, startY + i * lh); });
 
     ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.font = '400 34px monospace';
@@ -342,7 +177,7 @@
     ctx.font = '400 30px monospace';
     ctx.fillText(window.location.hostname + window.location.pathname, 80, H - 210);
 
-    const a = document.createElement('a');
+    var a = document.createElement('a');
     a.download = 'story-' + titreTexte.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
