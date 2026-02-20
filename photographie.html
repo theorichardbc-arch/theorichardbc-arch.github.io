@@ -178,7 +178,7 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.photo-item img').forEach((img, i) => {
-    img.style.transitionDelay = `${(i % 3) * 80}ms`;
+    img.style.transitionDelay = `${(i % 3) * 250}ms`;
     photoObserver.observe(img);
   });
 </script>
