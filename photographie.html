@@ -94,6 +94,14 @@
   <img src="" alt="" id="lbImg">
   <button class="lightbox-nav lightbox-next" id="lbNext">→</button>
   <div class="lightbox-counter" id="lbCounter"></div>
+
+  <!-- ACTIONS LIGHTBOX -->
+  <div class="lightbox-actions">
+    <button class="lb-action-btn" id="lbCopier">Copier le lien</button>
+    <a      class="lb-action-btn" id="lbMail"   href="#">Envoyer par mail</a>
+    <a      class="lb-action-btn" id="lbDl"     href="#" download>Télécharger</a>
+    <a      class="lb-action-btn" id="lbComment" href="https://formspree.io/f/mreaavvy" target="_blank">Laisser un commentaire</a>
+  </div>
 </div>
 
 </div>
@@ -107,12 +115,34 @@
   const lbPrev    = document.getElementById('lbPrev');
   const lbNext    = document.getElementById('lbNext');
   const lbCounter = document.getElementById('lbCounter');
+  const lbCopier  = document.getElementById('lbCopier');
+  const lbMail    = document.getElementById('lbMail');
+  const lbDl      = document.getElementById('lbDl');
+  const lbComment = document.getElementById('lbComment');
   let current = 0;
+
+  function updateActions() {
+    const img    = allItems[current];
+    const src    = img.src;
+    const alt    = img.alt || 'Photo';
+    const pageUrl = window.location.href.split('#')[0];
+    const sujet  = encodeURIComponent('Une photo de Théo Richard');
+    const corps  = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
+
+    lbMail.href = 'mailto:?subject=' + sujet + '&body=' + corps;
+    lbDl.href   = src;
+    lbDl.setAttribute('download', alt.toLowerCase().replace(/\s+/g, '-') + '.jpg');
+
+    // Formspree commentaire : on pré-remplit le sujet avec alt + url
+    const commentUrl = 'https://formspree.io/f/mreaavvy?photo=' + encodeURIComponent(alt) + '&url=' + encodeURIComponent(pageUrl);
+    lbComment.href = commentUrl;
+  }
 
   function openLightbox(index) {
     current = index;
     lbImg.src = allItems[current].src;
-    lbCounter.textContent = `${current + 1} / ${allItems.length}`;
+    lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
+    updateActions();
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -125,51 +155,63 @@
   function navigate(dir) {
     current = (current + dir + allItems.length) % allItems.length;
     lbImg.style.opacity = 0;
-    setTimeout(() => {
+    setTimeout(function() {
       lbImg.src = allItems[current].src;
-      lbCounter.textContent = `${current + 1} / ${allItems.length}`;
+      lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
+      updateActions();
       lbImg.style.opacity = 1;
     }, 140);
   }
 
   lbImg.style.transition = 'opacity 0.14s ease';
 
-  allItems.forEach((img, i) => {
-    img.closest('.photo-item').addEventListener('click', () => openLightbox(i));
+  allItems.forEach(function(img, i) {
+    img.closest('.photo-item').addEventListener('click', function() { openLightbox(i); });
   });
 
   lbClose.addEventListener('click', closeLightbox);
-  lbPrev.addEventListener('click',  () => navigate(-1));
-  lbNext.addEventListener('click',  () => navigate(1));
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  lbPrev.addEventListener('click',  function() { navigate(-1); });
+  lbNext.addEventListener('click',  function() { navigate(1); });
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
 
-  document.addEventListener('keydown', e => {
+  document.addEventListener('keydown', function(e) {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape')     closeLightbox();
     if (e.key === 'ArrowLeft')  navigate(-1);
     if (e.key === 'ArrowRight') navigate(1);
   });
 
+  lbCopier.addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href.split('#')[0]).then(function() {
+      lbCopier.textContent = 'Lien copié !';
+      lbCopier.classList.add('copied');
+      setTimeout(function() {
+        lbCopier.textContent = 'Copier le lien';
+        lbCopier.classList.remove('copied');
+      }, 2000);
+    });
+  });
+
   // ── MENU ACTIF AU SCROLL ──
   const sections  = document.querySelectorAll('.photo-section');
   const menuLinks = document.querySelectorAll('.menu-link');
 
-  const menuObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+  const menuObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         const id = entry.target.id;
-        menuLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        menuLinks.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
         });
       }
     });
   }, { rootMargin: '-10% 0px -80% 0px' });
 
-  sections.forEach(s => menuObserver.observe(s));
+  sections.forEach(function(s) { menuObserver.observe(s); });
 
   // ── ANIMATION PHOTOS AU SCROLL ──
-  const photoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  const photoObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('loaded');
         photoObserver.unobserve(entry.target);
@@ -177,8 +219,8 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.photo-item img').forEach((img, i) => {
-    img.style.transitionDelay = `${(i % 3) * 250}ms`;
+  document.querySelectorAll('.photo-item img').forEach(function(img, i) {
+    img.style.transitionDelay = ((i % 3) * 250) + 'ms';
     photoObserver.observe(img);
   });
 </script>
