@@ -99,8 +99,21 @@
   <div class="lightbox-actions">
     <button class="lb-action-btn" id="lbCopier">Copier le lien</button>
     <a      class="lb-action-btn" id="lbMail"   href="#">Envoyer par mail</a>
-    <a      class="lb-action-btn" id="lbDl"     href="#" download>Télécharger</a>
-    <a      class="lb-action-btn" id="lbComment" href="https://formspree.io/f/mreaavvy" target="_blank">Laisser un commentaire</a>
+    <a      class="lb-action-btn" id="lbDl"     href="#">Télécharger</a>
+    <button class="lb-action-btn" id="lbCommentToggle">Laisser un commentaire</button>
+  </div>
+
+  <!-- Formulaire commentaire inline dans la lightbox -->
+  <div class="lightbox-comment-form" id="lbCommentForm">
+    <form id="lbForm" action="https://formspree.io/f/mreaavvy" method="POST">
+      <input type="hidden" name="photo"    id="lbFormPhoto" value="">
+      <input type="hidden" name="url_page" id="lbFormUrl"   value="">
+      <input type="text"   name="nom"      placeholder="Votre nom"  required>
+      <input type="email"  name="email"    placeholder="Votre email" required>
+      <textarea            name="message"  placeholder="Votre commentaire..." required></textarea>
+      <button type="submit">Envoyer →</button>
+    </form>
+    <p class="lb-comment-merci" id="lbFormMerci">Merci, votre commentaire a bien été envoyé.</p>
   </div>
 </div>
 
@@ -118,7 +131,8 @@
   const lbCopier  = document.getElementById('lbCopier');
   const lbMail    = document.getElementById('lbMail');
   const lbDl      = document.getElementById('lbDl');
-  const lbComment = document.getElementById('lbComment');
+  const lbCommentToggle = document.getElementById('lbCommentToggle');
+  const lbCommentForm  = document.getElementById('lbCommentForm');
   let current = 0;
 
   function updateActions() {
@@ -130,12 +144,27 @@
     const corps  = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
 
     lbMail.href = 'mailto:?subject=' + sujet + '&body=' + corps;
-    lbDl.href   = src;
-    lbDl.setAttribute('download', alt.toLowerCase().replace(/\s+/g, '-') + '.jpg');
+    // Téléchargement : fetch + blob pour cross-origin
+    lbDl.onclick = function(e) {
+      e.preventDefault();
+      fetch(src)
+        .then(function(r) { return r.blob(); })
+        .then(function(blob) {
+          var bUrl = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = bUrl;
+          a.download = (alt || 'photo').toLowerCase().replace(/\s+/g, '-') + '.jpg';
+          a.click();
+          URL.revokeObjectURL(bUrl);
+        })
+        .catch(function() {
+          window.open(src, '_blank');
+        });
+    };
 
-    // Formspree commentaire : on pré-remplit le sujet avec alt + url
-    const commentUrl = 'https://formspree.io/f/mreaavvy?photo=' + encodeURIComponent(alt) + '&url=' + encodeURIComponent(pageUrl);
-    lbComment.href = commentUrl;
+    // Formulaire commentaire : mise à jour des champs cachés
+    document.getElementById('lbFormPhoto').value = alt;
+    document.getElementById('lbFormUrl').value   = pageUrl;
   }
 
   function openLightbox(index) {
@@ -150,6 +179,7 @@
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    lbCommentForm.classList.remove('open');
   }
 
   function navigate(dir) {
@@ -190,6 +220,20 @@
         lbCopier.classList.remove('copied');
       }, 2000);
     });
+  });
+
+  lbCommentToggle.addEventListener('click', function() {
+    lbCommentForm.classList.toggle('open');
+  });
+
+  document.getElementById('lbForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('lbFormMerci').style.display = 'block';
+    }
   });
 
   // ── MENU ACTIF AU SCROLL ──
