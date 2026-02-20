@@ -9,28 +9,14 @@
 <link rel="stylesheet" href="style.css">
 <style>
 
-body {
-    background: #000;
-    color: #fff;
-}
-
-a, a:visited, a:active {
-    color: #fff;
-}
-
-.site-header {
-    background: #000;
-}
-
-.home-button,
-.top-bar a {
-    color: #fff;
-}
-
-.home-button::after,
-.top-bar a::after {
-    background: #fff;
-}
+body { background: #000; color: #fff; }
+a, a:visited, a:active { color: #fff; }
+.site-header { background: #000; }
+.home-button, .top-bar a { color: #fff; }
+.home-button::after, .top-bar a::after { background: #fff; }
+.texte-page-corps { color: #fff; }
+.texte-retour { color: #fff; border-bottom-color: rgba(255,255,255,0.4); }
+.texte-retour:hover { opacity: 0.45; }
 
 /* ── BANDEAU PARTAGE ── */
 
@@ -70,13 +56,8 @@ a, a:visited, a:active {
     transition: border-color 0.2s ease, opacity 0.2s ease;
 }
 
-.partage-btn:hover {
-    border-color: #fff;
-}
-
-.partage-btn.copied {
-    opacity: 0.4;
-}
+.partage-btn:hover { border-color: #fff; }
+.partage-btn.copied { opacity: 0.4; }
 
 /* ── COMMENTAIRES ── */
 
@@ -116,7 +97,7 @@ a, a:visited, a:active {
 
 <div class="texte-page">
 
-  <div class="texte-page-header">
+  <div class="texte-page-header" style="border-bottom-color: rgba(255,255,255,0.15);">
     <p class="texte-page-cat">Carnet de labo</p>
     <h1 class="texte-page-titre">Premier développement</h1>
     <p class="texte-page-date">Octobre 2024</p>
@@ -143,58 +124,40 @@ a, a:visited, a:active {
   <div class="partage">
     <p class="partage-label">Partager</p>
     <div class="partage-boutons">
-
-      <a class="partage-btn" id="btnTwitter" href="#" target="_blank">
-        ✕ Twitter / X
-      </a>
-
-      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">
-        f Facebook
-      </a>
-
-      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">
-        ◎ WhatsApp
-      </a>
-
-      <a class="partage-btn" id="btnMail" href="#">
-        ✉ Par mail
-      </a>
-
-      <button class="partage-btn" id="btnInstagram">
-        ◈ Instagram (copier le lien)
-      </button>
-
-      <button class="partage-btn" id="btnCopier">
-        ⊞ Copier le lien
-      </button>
-
+      <a class="partage-btn" id="btnTwitter" href="#" target="_blank">✕ Twitter / X</a>
+      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">f Facebook</a>
+      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">◎ WhatsApp</a>
+      <a class="partage-btn" id="btnMail" href="#">✉ Par mail</a>
+      <button class="partage-btn" id="btnInstagram">◈ Story Instagram</button>
+      <button class="partage-btn" id="btnCopier">⊞ Copier le lien</button>
     </div>
   </div>
 
   <!-- COMMENTAIRES GISCUS -->
   <div class="commentaires">
     <p class="commentaires-label">Commentaires</p>
-
-    <!-- REMPLACEZ CE BLOC PAR VOTRE SCRIPT GISCUS -->
-    <!-- <script src="https://giscus.app/client.js"
-      data-repo="VOTRE-NOM/VOTRE-DEPOT"
-      data-repo-id="VOTRE-REPO-ID"
-      data-category="Announcements"
-      data-category-id="VOTRE-CATEGORY-ID"
+    <script src="https://giscus.app/client.js"
+      data-repo="theorichardbc-arch/theorichardbc-arch.github.io"
+      data-repo-id="R_kgDORNEA5w"
+      data-category="Commentaires"
+      data-category-id="DIC_kwDORNEA584C22sa"
       data-mapping="pathname"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="top"
-      data-theme="transparent_dark"
+      data-theme="dark"
       data-lang="fr"
+      data-loading="lazy"
       crossorigin="anonymous"
       async>
-    </script> -->
-
+    </script>
   </div>
 
 </div>
+
+<!-- CANVAS STORY (caché) -->
+<canvas id="storyCanvas" width="1080" height="1920" style="display:none;"></canvas>
 
 <script>
   const url   = encodeURIComponent(window.location.href);
@@ -203,38 +166,82 @@ a, a:visited, a:active {
 
   document.getElementById('btnTwitter').href =
     `https://twitter.com/intent/tweet?text=${titre}&url=${url}`;
-
   document.getElementById('btnFacebook').href =
     `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-
   document.getElementById('btnWhatsapp').href =
     `https://wa.me/?text=${texte}`;
-
   document.getElementById('btnMail').href =
     `mailto:?subject=${titre}&body=${texte}`;
-
-  document.getElementById('btnInstagram').addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn = document.getElementById('btnInstagram');
-      btn.textContent = '◈ Lien copié !';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = '◈ Instagram (copier le lien)';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
-  });
 
   document.getElementById('btnCopier').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
       const btn = document.getElementById('btnCopier');
       btn.textContent = '⊞ Lien copié !';
       btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = '⊞ Copier le lien';
-        btn.classList.remove('copied');
-      }, 2000);
+      setTimeout(() => { btn.textContent = '⊞ Copier le lien'; btn.classList.remove('copied'); }, 2000);
     });
+  });
+
+  // ── STORY INSTAGRAM — fond noir ──
+  document.getElementById('btnInstagram').addEventListener('click', () => {
+    const canvas = document.getElementById('storyCanvas');
+    const ctx    = canvas.getContext('2d');
+    const W = 1080, H = 1920;
+
+    // Fond noir
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, W, H);
+
+    // Lignes décoratives
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(80, 230); ctx.lineTo(W - 80, 230); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(80, H - 230); ctx.lineTo(W - 80, H - 230); ctx.stroke();
+
+    // Catégorie
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '400 34px monospace';
+    ctx.fillText('CARNET DE LABO', 80, 190);
+
+    // Titre
+    const titreTexte = document.querySelector('.texte-page-titre').textContent.trim();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '400 90px sans-serif';
+
+    const mots = titreTexte.split(' ');
+    let lignes = [], ligne = '';
+    mots.forEach(mot => {
+      const test = ligne ? ligne + ' ' + mot : mot;
+      if (ctx.measureText(test).width > W - 160 && ligne) {
+        lignes.push(ligne); ligne = mot;
+      } else { ligne = test; }
+    });
+    lignes.push(ligne);
+
+    const lh = 110;
+    const startY = Math.round((H - lignes.length * lh) / 2) - 40;
+    lignes.forEach((l, i) => ctx.fillText(l, 80, startY + i * lh));
+
+    // Date
+    const dateTexte = document.querySelector('.texte-page-date').textContent.trim();
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '400 34px monospace';
+    ctx.fillText(dateTexte, 80, startY + lignes.length * lh + 56);
+
+    // Signature bas
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '400 52px sans-serif';
+    ctx.fillText('THÉO RICHARD', 80, H - 270);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = '400 30px monospace';
+    ctx.fillText(window.location.hostname + window.location.pathname, 80, H - 210);
+
+    // Téléchargement
+    const a = document.createElement('a');
+    a.download = 'story-' + titreTexte.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
   });
 </script>
 
