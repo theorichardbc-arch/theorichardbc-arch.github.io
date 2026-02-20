@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Théo Richard</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,18 +26,29 @@
 
 <!-- HERO -->
 <section class="hero-index">
-  <h1>THÉO RICHARD</h1>
-  <div class="hero-meta">
-    <p class="hero-bio">
-      Photographie argentique.<br>
-      Studio & Labo.
-    </p>
-    <div class="hero-links">
-      <a href="mailto:contact@theo-richard.fr">✉ contact@theo-richard.fr</a>
-      <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
-      <a href="photographie.html">→ Voir les photos</a>
+
+  <div class="hero-content">
+    <h1>THÉO RICHARD</h1>
+    <!-- Sous-titre h1-bis : police h1, plus petite, plus grasse -->
+    <p class="hero-subtitle">Photographie argentique</p>
+    <div class="hero-meta">
+      <p class="hero-bio">Studio & Labo.</p>
+      <div class="hero-links">
+        <a href="mailto:contact@theo-richard.fr">✉ contact@theo-richard.fr</a>
+        <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
+        <a href="photographie.html">→ Voir les photos</a>
+      </div>
     </div>
   </div>
+
+  <!-- Photo carrée à droite — remplacez src par votre vraie photo -->
+  <img
+    src="image/portrait.jpg"
+    alt="Théo Richard"
+    class="hero-photo"
+    onerror="this.style.display='none'"
+  >
+
   <span class="hero-scroll">Scroll</span>
 </section>
 
@@ -62,19 +73,29 @@
 <section class="preview-section">
   <div class="preview-header">
     <h2>Photographie</h2>
-    <a href="photographie.html">Voir tout →</a>
   </div>
-  <div class="preview-grid">
-    <img src="https://picsum.photos/400/530?1" alt="">
-    <img src="https://picsum.photos/400/530?2" alt="">
-    <img src="https://picsum.photos/400/530?3" alt="">
-    <img src="https://picsum.photos/400/530?4" alt="">
+  <div class="preview-grid" id="previewGrid">
+    <!-- 3 photos + rectangle CTA — générés ci-dessous -->
+    <div class="preview-item">
+      <img src="https://picsum.photos/400/530?1" alt="">
+    </div>
+    <div class="preview-item">
+      <img src="https://picsum.photos/400/530?2" alt="">
+    </div>
+    <div class="preview-item">
+      <img src="https://picsum.photos/400/530?3" alt="">
+    </div>
+    <!-- Rectangle CTA "Voir tout" -->
+    <a href="photographie.html" class="preview-voir-tout">
+      <span>Voir tout →</span>
+    </a>
   </div>
 </section>
 
 </div>
 
 <script>
+  // Chargement des images
   document.querySelectorAll('img').forEach(img => {
     if (img.complete) {
       img.classList.add('loaded');
