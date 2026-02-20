@@ -26,11 +26,9 @@
 
 <div class="texte-page">
 
-  <!-- RETOUR EN HAUT -->
-  <a href="reflexions.html" class="texte-retour-haut">← Réflexions</a>
-
   <div class="texte-page-header">
-    <p class="texte-page-cat">Réflexions</p>
+    <!-- ← lien de retour intégré dans la catégorie, discret, sans effet hover -->
+    <a href="reflexions.html" class="texte-page-cat">← Réflexions</a>
     <!-- REMPLACEZ PAR LE VRAI TITRE -->
     <h1 class="texte-page-titre">Titre de l'article</h1>
     <div class="texte-page-meta">
@@ -96,15 +94,15 @@
 
 <script>
   // ── TEMPS DE LECTURE ──
-  const corps = document.getElementById('corpsTexte');
-  const nbMots = corps.innerText.trim().split(/\s+/).length;
-  const mins = Math.ceil(nbMots / 200);
+  var corps = document.getElementById('corpsTexte');
+  var nbMots = corps.innerText.trim().split(/\s+/).length;
+  var mins = Math.ceil(nbMots / 200);
   document.getElementById('tempsLecture').textContent = mins + ' min de lecture';
 
   // ── PARTAGE ──
-  const url   = encodeURIComponent(window.location.href);
-  const titre = encodeURIComponent(document.title);
-  const texte = encodeURIComponent('Je viens de lire cet article de Théo Richard : ' + document.title + ' — ' + window.location.href);
+  var url   = encodeURIComponent(window.location.href);
+  var titre = encodeURIComponent(document.title);
+  var texte = encodeURIComponent('Je viens de lire cet article de Théo Richard : ' + document.title + ' — ' + window.location.href);
 
   document.getElementById('btnTwitter').href  = 'https://twitter.com/intent/tweet?text=' + titre + '&url=' + url;
   document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
