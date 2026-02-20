@@ -27,7 +27,7 @@
 <div class="texte-page">
 
   <div class="texte-page-header">
-    <!-- ← lien de retour intégré dans la catégorie, discret, sans effet hover -->
+    <!-- Retour à la liste intégré dans la catégorie -->
     <a href="reflexions.html" class="texte-page-cat">← Réflexions</a>
     <!-- REMPLACEZ PAR LE VRAI TITRE -->
     <h1 class="texte-page-titre">Titre de l'article</h1>
@@ -60,10 +60,10 @@
   <div class="partage">
     <p class="partage-label">Partager</p>
     <div class="partage-boutons">
-      <a class="partage-btn" id="btnTwitter" href="#" target="_blank">✕ Twitter / X</a>
-      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">f Facebook</a>
-      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">◎ WhatsApp</a>
-      <a class="partage-btn" id="btnMail" href="#">✉ Par mail</a>
+      <a class="partage-btn" id="btnX"         href="#" target="_blank">✕ X</a>
+      <a class="partage-btn" id="btnFacebook"  href="#" target="_blank">f Facebook</a>
+      <a class="partage-btn" id="btnWhatsapp"  href="#" target="_blank">◎ WhatsApp</a>
+      <a class="partage-btn" id="btnMail"      href="#">✉ Par mail</a>
       <button class="partage-btn" id="btnInstagram">◈ Story Instagram</button>
       <button class="partage-btn" id="btnCopier">⊞ Copier le lien</button>
     </div>
@@ -100,17 +100,21 @@
   document.getElementById('tempsLecture').textContent = mins + ' min de lecture';
 
   // ── PARTAGE ──
-  var url   = encodeURIComponent(window.location.href);
-  var titre = encodeURIComponent(document.title);
-  var texte = encodeURIComponent('Je viens de lire cet article de Théo Richard : ' + document.title + ' — ' + window.location.href);
+  var pageUrl  = window.location.href;
+  var titreDoc = document.querySelector('.texte-page-titre').textContent.trim();
+  var urlEnc   = encodeURIComponent(pageUrl);
+  var titreEnc = encodeURIComponent(titreDoc + ' — Théo Richard');
 
-  document.getElementById('btnTwitter').href  = 'https://twitter.com/intent/tweet?text=' + titre + '&url=' + url;
-  document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
-  document.getElementById('btnWhatsapp').href = 'https://wa.me/?text=' + texte;
-  document.getElementById('btnMail').href     = 'mailto:?subject=' + titre + '&body=' + texte;
+  var msgWa   = encodeURIComponent('Cet article peut t\'intéresser : "' + titreDoc + '" par Théo Richard\n' + pageUrl);
+  var msgMail = encodeURIComponent('Sujet : ' + titreDoc + ' — Théo Richard\n\nCet article peut t\'intéresser :\n' + pageUrl);
+
+  document.getElementById('btnX').href        = 'https://twitter.com/intent/tweet?text=' + titreEnc + '&url=' + urlEnc;
+  document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + urlEnc;
+  document.getElementById('btnWhatsapp').href = 'https://wa.me/?text=' + msgWa;
+  document.getElementById('btnMail').href     = 'mailto:?subject=' + titreEnc + '&body=' + msgMail;
 
   document.getElementById('btnCopier').addEventListener('click', function() {
-    navigator.clipboard.writeText(window.location.href).then(function() {
+    navigator.clipboard.writeText(pageUrl).then(function() {
       var btn = document.getElementById('btnCopier');
       btn.textContent = '⊞ Lien copié !';
       btn.classList.add('copied');
@@ -137,9 +141,7 @@
 
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
-
-    ctx.strokeStyle = '#000';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(80, 230); ctx.lineTo(W - 80, 230); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(80, H - 230); ctx.lineTo(W - 80, H - 230); ctx.stroke();
 
@@ -147,11 +149,9 @@
     ctx.font = '400 34px monospace';
     ctx.fillText('RÉFLEXIONS', 80, 190);
 
-    var titreTexte = document.querySelector('.texte-page-titre').textContent.trim();
     ctx.fillStyle = '#000';
     ctx.font = '400 90px sans-serif';
-
-    var mots = titreTexte.split(' ');
+    var mots = titreDoc.split(' ');
     var lignes = [], ligne = '';
     mots.forEach(function(mot) {
       var test = ligne ? ligne + ' ' + mot : mot;
@@ -159,24 +159,18 @@
       else { ligne = test; }
     });
     lignes.push(ligne);
-
-    var lh = 110;
-    var startY = Math.round((H - lignes.length * lh) / 2) - 40;
+    var lh = 110, startY = Math.round((H - lignes.length * lh) / 2) - 40;
     lignes.forEach(function(l, i) { ctx.fillText(l, 80, startY + i * lh); });
 
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
-    ctx.font = '400 34px monospace';
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 34px monospace';
     ctx.fillText(document.querySelector('.texte-page-date').textContent.trim(), 80, startY + lignes.length * lh + 56);
-
-    ctx.fillStyle = '#000';
-    ctx.font = '400 52px sans-serif';
+    ctx.fillStyle = '#000'; ctx.font = '400 52px sans-serif';
     ctx.fillText('THÉO RICHARD', 80, H - 270);
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
-    ctx.font = '400 30px monospace';
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 30px monospace';
     ctx.fillText(window.location.hostname + window.location.pathname, 80, H - 210);
 
     var a = document.createElement('a');
-    a.download = 'story-' + titreTexte.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
+    a.download = 'story-' + titreDoc.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
   });
