@@ -13,9 +13,9 @@ a, a:visited, a:active { color: #fff; }
 .site-header { background: #000; }
 .home-button, .top-bar a { color: #fff; }
 .home-button::after, .top-bar a::after { background: #fff; }
-.texte-retour-haut { color: rgba(255,255,255,0.4); }
-.texte-retour-haut:hover { color: #fff; }
+.texte-page-cat { color: rgba(255,255,255,0.4); }
 .texte-page-header { border-bottom-color: rgba(255,255,255,0.15); }
+.texte-page-date, .texte-lecture { color: rgba(255,255,255,0.4); opacity: 1; }
 .texte-page-corps { color: #fff; }
 .texte-retour { color: #fff; border-bottom-color: rgba(255,255,255,0.4); }
 .partage { border-top-color: rgba(255,255,255,0.12); }
@@ -27,7 +27,7 @@ a, a:visited, a:active { color: #fff; }
 .commentaire-form input:focus,
 .commentaire-form textarea:focus { border-color: #fff; }
 .commentaire-form input::placeholder,
-.commentaire-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+.commentaire-form textarea::placeholder { color: rgba(255,255,255,0.3); opacity: 1; }
 .commentaire-submit { border-color: #fff; color: #fff; }
 .commentaire-submit:hover { background: #fff; color: #000; }
 </style>
@@ -50,11 +50,9 @@ a, a:visited, a:active { color: #fff; }
 
 <div class="texte-page">
 
-  <!-- RETOUR EN HAUT -->
-  <a href="carnet.html" class="texte-retour-haut">← Carnet de labo</a>
-
   <div class="texte-page-header">
-    <p class="texte-page-cat">Carnet de labo</p>
+    <!-- ← lien de retour intégré dans la catégorie, discret, sans effet hover -->
+    <a href="carnet.html" class="texte-page-cat">← Carnet de labo</a>
     <!-- REMPLACEZ PAR LE VRAI TITRE -->
     <h1 class="texte-page-titre">Titre de l'article</h1>
     <div class="texte-page-meta">
