@@ -9,220 +9,71 @@
 <link rel="stylesheet" href="style.css">
 <style>
 
-/* ── HEADER ADAPTATIF ── */
-
-.site-header {
-    transition: background 0.3s ease;
-}
-
-.site-header.dark {
-    background: #000;
-}
-
-.site-header.dark .home-button,
-.site-header.dark .top-bar a {
-    color: #fff;
-}
-
-.site-header.dark .home-button::after,
-.site-header.dark .top-bar a::after {
-    background: #fff;
-}
-
-/* ── LAYOUT ÉCRITURE ── */
-
-.ecriture-wrapper {
-    position: fixed;
-    top: 7rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    cursor: col-resize;
-    user-select: none;
-}
-
-/* ── LES DEUX PANNEAUX ── */
-
-.panneau {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    overflow-y: auto;
-    padding: 4rem 5vw 8rem;
-    width: 100%;
-}
-
-.panneau-reflexions {
-    left: 0;
-    background: #ffffff;
-    color: #000000;
-    clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0);
-}
-
-.panneau-carnet {
-    right: 0;
-    background: #000000;
-    color: #ffffff;
-    clip-path: inset(0 0 0 var(--split, 50%));
-}
-
-/* ── SÉPARATEUR ── */
-
-.separateur {
-    position: absolute;
-    top: 0;
-    left: var(--split, 50%);
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: #888;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.separateur-handle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #000;
-    display: flex;
+.ecriture-index {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    min-height: calc(100vh - 7rem);
     align-items: center;
-    justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    color: #000;
-    pointer-events: none;
 }
 
-/* ── LABELS FLOTTANTS ── */
-
-.label-panneau {
-    position: absolute;
-    top: 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.4;
-    pointer-events: none;
-    z-index: 50;
-    transition: opacity 0.3s ease;
-}
-
-.label-reflexions {
-    left: 2vw;
-    color: #000;
-}
-
-.label-carnet {
-    right: 2vw;
-    color: #fff;
-}
-
-/* ── TITRES DE SECTION ── */
-
-.panneau h2 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 500;
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin: 0 0 0.5rem;
-    line-height: 1;
-}
-
-.panneau-subtitle {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    opacity: 0.4;
-    margin: 0 0 4rem;
-    letter-spacing: 0.05em;
-}
-
-/* ── LISTE DES TEXTES ── */
-
-.texte-liste {
+.ecriture-col {
     display: flex;
     flex-direction: column;
-}
-
-.texte-item {
-    padding: 2rem 0;
-    border-top: 1px solid currentColor;
-    opacity: 0.9;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 6vw;
     text-decoration: none;
-    display: block;
+    color: #000;
     transition: opacity 0.2s ease;
 }
 
-.panneau-reflexions .texte-item { color: #000; border-color: rgba(0,0,0,0.15); }
-.panneau-carnet .texte-item     { color: #fff; border-color: rgba(255,255,255,0.15); }
-
-.texte-item:last-child { border-bottom: 1px solid currentColor; }
-.texte-item:hover { opacity: 0.5; }
-
-.texte-meta {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 0.5rem;
+.ecriture-col:hover {
+    opacity: 0.5;
 }
 
-.texte-titre {
+.ecriture-divider {
+    width: 1px;
+    height: 40vh;
+    background: #000;
+    align-self: center;
+}
+
+.ecriture-col h2 {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin: 0 0 1.5rem;
+    line-height: 1;
 }
 
-.texte-date {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    opacity: 0.4;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-}
-
-.texte-intro {
+.ecriture-col p {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
-    line-height: 1.7;
-    opacity: 0.6;
-    max-width: 600px;
+    line-height: 1.8;
+    opacity: 0.5;
     margin: 0;
+    max-width: 280px;
 }
 
-/* ── RESPONSIVE ── */
-
 @media (max-width: 700px) {
-    .ecriture-wrapper {
-        position: relative;
-        top: 0;
-        flex-direction: column;
-        cursor: default;
-        height: auto;
+    .ecriture-index {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1px 1fr;
     }
-    .panneau {
-        clip-path: none !important;
-        position: relative;
-        width: 100%;
-        height: auto;
-        min-height: 50vh;
+    .ecriture-divider {
+        width: 40vw;
+        height: 1px;
     }
-    .separateur { display: none; }
-    .label-panneau { display: none; }
 }
 
 </style>
 </head>
 
 <body>
-<div class="page-wrapper" style="padding-top: 0;">
+<div class="page-wrapper">
 
-<header class="site-header" id="mainHeader">
+<header class="site-header">
   <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
@@ -234,144 +85,22 @@
   </nav>
 </header>
 
-</div>
+<div class="ecriture-index">
 
-<!-- LABELS -->
-<div class="label-panneau label-reflexions" id="labelReflex">Réflexions</div>
-<div class="label-panneau label-carnet"     id="labelCarnet">Carnet de labo</div>
-
-<!-- ZONE SLIDER -->
-<div class="ecriture-wrapper" id="ecritureWrapper">
-
-  <!-- PANNEAU GAUCHE : RÉFLEXIONS -->
-  <div class="panneau panneau-reflexions" id="panneauReflex">
+  <a href="reflexions.html" class="ecriture-col">
     <h2>Réflexions</h2>
-    <p class="panneau-subtitle">Entre l'article et l'essai — quelques minutes de lecture</p>
+    <p>Sur l'art, la création, le monde et moi-même. Entre l'article et l'essai — quelques minutes de lecture pour faire réfléchir.</p>
+  </a>
 
-    <div class="texte-liste">
+  <div class="ecriture-divider"></div>
 
-      <a href="reflexions-pourquoi.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Pourquoi je photographie</span>
-          <span class="texte-date">Janvier 2025</span>
-        </div>
-        <p class="texte-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.</p>
-      </a>
-
-      <a href="reflexions-grain.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Le grain comme langage</span>
-          <span class="texte-date">Février 2025</span>
-        </div>
-        <p class="texte-intro">Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
-      </a>
-
-      <a href="reflexions-temps.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Le temps de l'argentique</span>
-          <span class="texte-date">Mars 2025</span>
-        </div>
-        <p class="texte-intro">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.</p>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- PANNEAU DROIT : CARNET DE LABO -->
-  <div class="panneau panneau-carnet" id="panneauCarnet">
+  <a href="carnet.html" class="ecriture-col">
     <h2>Carnet de labo</h2>
-    <p class="panneau-subtitle">Apprentissage exploratoire — de zéro à la photo développée</p>
-
-    <div class="texte-liste">
-
-      <a href="carnet-premier-developpement.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Premier développement</span>
-          <span class="texte-date">Octobre 2024</span>
-        </div>
-        <p class="texte-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.</p>
-      </a>
-
-      <a href="carnet-fixer-bain.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Le bain de fixateur</span>
-          <span class="texte-date">Novembre 2024</span>
-        </div>
-        <p class="texte-intro">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-      </a>
-
-      <a href="carnet-premier-tirage.html" class="texte-item">
-        <div class="texte-meta">
-          <span class="texte-titre">Premier tirage papier</span>
-          <span class="texte-date">Janvier 2025</span>
-        </div>
-        <p class="texte-intro">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- SÉPARATEUR -->
-  <div class="separateur" id="separateur">
-    <div class="separateur-handle">◂▸</div>
-  </div>
+    <p>L'apprentissage de l'argentique de zéro — développement, tirages, erreurs. Pour ceux qui veulent suivre le même chemin.</p>
+  </a>
 
 </div>
 
-<script>
-  const wrapper = document.getElementById('ecritureWrapper');
-  const header  = document.getElementById('mainHeader');
-  const labelR  = document.getElementById('labelReflex');
-  const labelC  = document.getElementById('labelCarnet');
-
-  let dragging = false;
-  let split = 50;
-
-  function setSplit(pct) {
-    split = Math.max(10, Math.min(90, pct));
-    wrapper.style.setProperty('--split', split + '%');
-
-    // Header devient noir quand le panneau noir domine
-    if (split < 30) {
-      header.classList.add('dark');
-    } else {
-      header.classList.remove('dark');
-    }
-
-    // Labels : masquer si panneau trop étroit
-    labelR.style.opacity = split < 15 ? '0' : '0.4';
-    labelC.style.opacity = split > 85 ? '0' : '0.4';
-  }
-
-  setSplit(50);
-
-  wrapper.addEventListener('mousedown', () => {
-    dragging = true;
-    document.body.style.cursor = 'col-resize';
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    const rect = wrapper.getBoundingClientRect();
-    setSplit(((e.clientX - rect.left) / rect.width) * 100);
-  });
-
-  document.addEventListener('mouseup', () => {
-    dragging = false;
-    document.body.style.cursor = '';
-  });
-
-  wrapper.addEventListener('touchstart', () => { dragging = true; });
-
-  document.addEventListener('touchmove', e => {
-    if (!dragging) return;
-    const rect  = wrapper.getBoundingClientRect();
-    const touch = e.touches[0];
-    setSplit(((touch.clientX - rect.left) / rect.width) * 100);
-  });
-
-  document.addEventListener('touchend', () => { dragging = false; });
-</script>
-
+</div>
 </body>
 </html>
