@@ -455,24 +455,6 @@ img {
     padding-bottom: 10rem;
 }
 
-.texte-retour-haut {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.4);
-    text-decoration: none;
-    margin-bottom: 2.5rem;
-    transition: color 0.2s ease;
-}
-
-.texte-retour-haut:hover {
-    color: #000;
-}
-
 .texte-page-header {
     padding: 3rem 0 4rem;
     border-bottom: 1px solid #000;
@@ -486,6 +468,9 @@ img {
     text-transform: uppercase;
     opacity: 0.4;
     margin: 0 0 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .texte-page-titre {
@@ -514,8 +499,8 @@ img {
 .texte-page-corps {
     font-family: 'Lora', serif;
     font-weight: 400;
-    font-size: 1.05rem;
-    line-height: 2;
+    font-size: 1.15rem;
+    line-height: 2.1;
     color: #000;
 }
 
@@ -578,6 +563,10 @@ img {
     align-items: center;
     gap: 0.4rem;
     transition: border-color 0.2s ease, opacity 0.2s ease;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    line-height: 1;
 }
 
 .partage-btn:hover { border-color: #000; }
