@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
 
-/* ── BANDEAU PARTAGE ── */
+/* ── PARTAGE ── */
 
 .partage {
     margin-top: 5rem;
@@ -17,7 +17,8 @@
     border-top: 1px solid rgba(0,0,0,0.12);
 }
 
-.partage-label {
+.partage-label,
+.commentaires-label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -47,13 +48,8 @@
     transition: border-color 0.2s ease, opacity 0.2s ease;
 }
 
-.partage-btn:hover {
-    border-color: #000;
-}
-
-.partage-btn.copied {
-    opacity: 0.4;
-}
+.partage-btn:hover { border-color: #000; }
+.partage-btn.copied { opacity: 0.4; }
 
 /* ── COMMENTAIRES ── */
 
@@ -65,12 +61,65 @@
 }
 
 .commentaires-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.4;
     margin-bottom: 2rem;
+}
+
+.commentaire-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 560px;
+}
+
+.commentaire-form input,
+.commentaire-form textarea {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: none;
+    color: #000;
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+.commentaire-form input:focus,
+.commentaire-form textarea:focus {
+    border-color: #000;
+}
+
+.commentaire-form input::placeholder,
+.commentaire-form textarea::placeholder {
+    opacity: 0.35;
+}
+
+.commentaire-form textarea {
+    min-height: 120px;
+}
+
+.commentaire-submit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem 2rem;
+    border: 1px solid #000;
+    background: none;
+    color: #000;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.commentaire-submit:hover {
+    background: #000;
+    color: #fff;
+}
+
+.commentaire-merci {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    display: none;
 }
 
 </style>
@@ -129,25 +178,25 @@
     </div>
   </div>
 
-  <!-- COMMENTAIRES GISCUS -->
+  <!-- COMMENTAIRES -->
   <div class="commentaires">
-    <p class="commentaires-label">Commentaires</p>
-    <script src="https://giscus.app/client.js"
-      data-repo="theorichardbc-arch/theorichardbc-arch.github.io"
-      data-repo-id="R_kgDORNEA5w"
-      data-category="Commentaires"
-      data-category-id="DIC_kwDORNEA584C22sa"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="top"
-      data-theme="light"
-      data-lang="fr"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async>
-    </script>
+    <p class="commentaires-label">Laisser un commentaire</p>
+
+    <!-- REMPLACEZ l'action par votre URL Formspree : https://formspree.io/f/xxxxxxxx -->
+    <form class="commentaire-form" id="commentaireForm"
+          action="https://formspree.io/f/mgollrlz"
+          method="POST">
+
+      <input type="hidden" name="article" value="Pourquoi je photographie">
+      <input type="text"   name="nom"     placeholder="Votre nom" required>
+      <input type="email"  name="email"   placeholder="Votre email (ne sera pas publié)" required>
+      <textarea            name="message" placeholder="Votre commentaire..." required></textarea>
+      <button type="submit" class="commentaire-submit">Envoyer →</button>
+
+    </form>
+    <p class="commentaire-merci" id="commentaireMerci">
+      Merci pour votre message, je vous lirai avec attention.
+    </p>
   </div>
 
 </div>
@@ -160,14 +209,10 @@
   const titre = encodeURIComponent(document.title);
   const texte = encodeURIComponent("Je viens de lire cet article de Théo Richard : " + document.title + " — " + window.location.href);
 
-  document.getElementById('btnTwitter').href =
-    `https://twitter.com/intent/tweet?text=${titre}&url=${url}`;
-  document.getElementById('btnFacebook').href =
-    `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  document.getElementById('btnWhatsapp').href =
-    `https://wa.me/?text=${texte}`;
-  document.getElementById('btnMail').href =
-    `mailto:?subject=${titre}&body=${texte}`;
+  document.getElementById('btnTwitter').href  = `https://twitter.com/intent/tweet?text=${titre}&url=${url}`;
+  document.getElementById('btnFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('btnWhatsapp').href = `https://wa.me/?text=${texte}`;
+  document.getElementById('btnMail').href     = `mailto:?subject=${titre}&body=${texte}`;
 
   document.getElementById('btnCopier').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -178,39 +223,46 @@
     });
   });
 
+  // Formspree : soumission AJAX pour rester sur la page
+  document.getElementById('commentaireForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    const res  = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('commentaireMerci').style.display = 'block';
+    }
+  });
+
   // ── STORY INSTAGRAM ──
   document.getElementById('btnInstagram').addEventListener('click', () => {
     const canvas = document.getElementById('storyCanvas');
     const ctx    = canvas.getContext('2d');
     const W = 1080, H = 1920;
 
-    // Fond blanc
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, W, H);
 
-    // Lignes décoratives horizontales
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = '#000';
     ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(80, 230); ctx.lineTo(W - 80, 230); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(80, H - 230); ctx.lineTo(W - 80, H - 230); ctx.stroke();
 
-    // Catégorie
     ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.font = '400 34px monospace';
     ctx.fillText('RÉFLEXIONS', 80, 190);
 
-    // Titre — retour à la ligne auto
     const titreTexte = document.querySelector('.texte-page-titre').textContent.trim();
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#000';
     ctx.font = '400 90px sans-serif';
 
     const mots = titreTexte.split(' ');
     let lignes = [], ligne = '';
     mots.forEach(mot => {
       const test = ligne ? ligne + ' ' + mot : mot;
-      if (ctx.measureText(test).width > W - 160 && ligne) {
-        lignes.push(ligne); ligne = mot;
-      } else { ligne = test; }
+      if (ctx.measureText(test).width > W - 160 && ligne) { lignes.push(ligne); ligne = mot; }
+      else { ligne = test; }
     });
     lignes.push(ligne);
 
@@ -218,22 +270,17 @@
     const startY = Math.round((H - lignes.length * lh) / 2) - 40;
     lignes.forEach((l, i) => ctx.fillText(l, 80, startY + i * lh));
 
-    // Date
-    const dateTexte = document.querySelector('.texte-page-date').textContent.trim();
     ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.font = '400 34px monospace';
-    ctx.fillText(dateTexte, 80, startY + lignes.length * lh + 56);
+    ctx.fillText(document.querySelector('.texte-page-date').textContent.trim(), 80, startY + lignes.length * lh + 56);
 
-    // Signature bas
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#000';
     ctx.font = '400 52px sans-serif';
     ctx.fillText('THÉO RICHARD', 80, H - 270);
-
     ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.font = '400 30px monospace';
     ctx.fillText(window.location.hostname + window.location.pathname, 80, H - 210);
 
-    // Téléchargement
     const a = document.createElement('a');
     a.download = 'story-' + titreTexte.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
     a.href = canvas.toDataURL('image/png');
