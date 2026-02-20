@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Premier développement — Théo Richard</title>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
 
@@ -32,70 +32,68 @@ a, a:visited, a:active {
     background: #fff;
 }
 
-.texte-page {
-    max-width: 680px;
-    margin: 0 auto;
-    padding-bottom: 10rem;
+/* ── BANDEAU PARTAGE ── */
+
+.partage {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
 }
 
-.texte-page-header {
-    padding: 3rem 0 4rem;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    margin-bottom: 4rem;
-}
-
-.texte-page-cat {
+.partage-label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     opacity: 0.4;
-    margin: 0 0 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
-.texte-page-titre {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 500;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    line-height: 1.1;
-    margin: 0 0 1rem;
+.partage-boutons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
 }
 
-.texte-page-date {
+.partage-btn {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.partage-btn:hover {
+    border-color: #fff;
+}
+
+.partage-btn.copied {
     opacity: 0.4;
-    letter-spacing: 0.05em;
-    margin: 0;
 }
 
-.texte-page-corps {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem;
-    line-height: 2;
-    color: #fff;
-}
+/* ── COMMENTAIRES ── */
 
-.texte-page-corps p {
-    margin: 0 0 2em;
-}
-
-.texte-page-corps p:last-child {
-    margin-bottom: 0;
-}
-
-.texte-retour {
-    display: inline-block;
+.commentaires {
     margin-top: 5rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
-    padding-bottom: 1px;
-    color: #fff;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-bottom: 10rem;
 }
 
-.texte-retour:hover {
-    opacity: 0.45;
+.commentaires-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 2rem;
 }
 
 </style>
@@ -141,6 +139,104 @@ a, a:visited, a:active {
 
   <a href="ecriture.html" class="texte-retour">← Retour à l'écriture</a>
 
+  <!-- BANDEAU PARTAGE -->
+  <div class="partage">
+    <p class="partage-label">Partager</p>
+    <div class="partage-boutons">
+
+      <a class="partage-btn" id="btnTwitter" href="#" target="_blank">
+        ✕ Twitter / X
+      </a>
+
+      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">
+        f Facebook
+      </a>
+
+      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">
+        ◎ WhatsApp
+      </a>
+
+      <a class="partage-btn" id="btnMail" href="#">
+        ✉ Par mail
+      </a>
+
+      <button class="partage-btn" id="btnInstagram">
+        ◈ Instagram (copier le lien)
+      </button>
+
+      <button class="partage-btn" id="btnCopier">
+        ⊞ Copier le lien
+      </button>
+
+    </div>
+  </div>
+
+  <!-- COMMENTAIRES GISCUS -->
+  <div class="commentaires">
+    <p class="commentaires-label">Commentaires</p>
+
+    <!-- REMPLACEZ CE BLOC PAR VOTRE SCRIPT GISCUS -->
+    <!-- <script src="https://giscus.app/client.js"
+      data-repo="VOTRE-NOM/VOTRE-DEPOT"
+      data-repo-id="VOTRE-REPO-ID"
+      data-category="Announcements"
+      data-category-id="VOTRE-CATEGORY-ID"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="transparent_dark"
+      data-lang="fr"
+      crossorigin="anonymous"
+      async>
+    </script> -->
+
+  </div>
+
 </div>
+
+<script>
+  const url   = encodeURIComponent(window.location.href);
+  const titre = encodeURIComponent(document.title);
+  const texte = encodeURIComponent("Je viens de lire cet article de Théo Richard : " + document.title + " — " + window.location.href);
+
+  document.getElementById('btnTwitter').href =
+    `https://twitter.com/intent/tweet?text=${titre}&url=${url}`;
+
+  document.getElementById('btnFacebook').href =
+    `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+  document.getElementById('btnWhatsapp').href =
+    `https://wa.me/?text=${texte}`;
+
+  document.getElementById('btnMail').href =
+    `mailto:?subject=${titre}&body=${texte}`;
+
+  document.getElementById('btnInstagram').addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById('btnInstagram');
+      btn.textContent = '◈ Lien copié !';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '◈ Instagram (copier le lien)';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+
+  document.getElementById('btnCopier').addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById('btnCopier');
+      btn.textContent = '⊞ Lien copié !';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '⊞ Copier le lien';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+</script>
+
 </body>
 </html>
