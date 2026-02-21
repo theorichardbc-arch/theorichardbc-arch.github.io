@@ -34,7 +34,9 @@
     <a href="#voyage"    class="menu-link">Voyage</a>
   </nav>
 
-  <!-- GRILLE -->
+  <!-- GRILLE DE PHOTOS -->
+  <!-- Pour ajouter une photo : copiez un bloc <div class="photo-item"> -->
+  <!-- dans la bonne section, changez le src et le alt               -->
   <div class="photo-grid">
 
     <section class="photo-section" id="urbain">
@@ -95,56 +97,41 @@
   <button class="lightbox-nav lightbox-next" id="lbNext">→</button>
   <div class="lightbox-counter" id="lbCounter"></div>
 
-  <!-- ACTIONS LIGHTBOX -->
+  <!-- Actions : copier lien, mail, télécharger, répondre -->
   <div class="lightbox-actions">
     <button class="lb-action-btn" id="lbCopier">Copier le lien</button>
     <a      class="lb-action-btn" id="lbMail"   href="#">Envoyer par mail</a>
     <a      class="lb-action-btn" id="lbDl"     href="#">Télécharger</a>
-    <button class="lb-action-btn" id="lbCommentToggle">Laisser un commentaire</button>
-  </div>
-
-  <!-- Formulaire commentaire inline dans la lightbox -->
-  <div class="lightbox-comment-form" id="lbCommentForm">
-    <form id="lbForm" action="https://formspree.io/f/mreaavvy" method="POST">
-      <input type="hidden" name="photo"    id="lbFormPhoto" value="">
-      <input type="hidden" name="url_page" id="lbFormUrl"   value="">
-      <input type="text"   name="nom"      placeholder="Votre nom"  required>
-      <input type="email"  name="email"    placeholder="Votre email" required>
-      <textarea            name="message"  placeholder="Votre commentaire..." required></textarea>
-      <button type="submit">Envoyer →</button>
-    </form>
-    <p class="lb-comment-merci" id="lbFormMerci">Merci, votre commentaire a bien été envoyé.</p>
+    <a      class="lb-action-btn" href="contact.html">Répondre à cette photo</a>
   </div>
 </div>
 
 </div>
 
 <script>
-  // ── LIGHTBOX ──
-  const allItems  = Array.from(document.querySelectorAll('.photo-item img'));
-  const lightbox  = document.getElementById('lightbox');
-  const lbImg     = document.getElementById('lbImg');
-  const lbClose   = document.getElementById('lbClose');
-  const lbPrev    = document.getElementById('lbPrev');
-  const lbNext    = document.getElementById('lbNext');
-  const lbCounter = document.getElementById('lbCounter');
-  const lbCopier  = document.getElementById('lbCopier');
-  const lbMail    = document.getElementById('lbMail');
-  const lbDl      = document.getElementById('lbDl');
-  const lbCommentToggle = document.getElementById('lbCommentToggle');
-  const lbCommentForm  = document.getElementById('lbCommentForm');
-  let current = 0;
+  var allItems  = Array.from(document.querySelectorAll('.photo-item img'));
+  var lightbox  = document.getElementById('lightbox');
+  var lbImg     = document.getElementById('lbImg');
+  var lbClose   = document.getElementById('lbClose');
+  var lbPrev    = document.getElementById('lbPrev');
+  var lbNext    = document.getElementById('lbNext');
+  var lbCounter = document.getElementById('lbCounter');
+  var lbCopier  = document.getElementById('lbCopier');
+  var lbMail    = document.getElementById('lbMail');
+  var lbDl      = document.getElementById('lbDl');
+  var current   = 0;
 
   function updateActions() {
-    const img    = allItems[current];
-    const src    = img.src;
-    const alt    = img.alt || 'Photo';
-    const pageUrl = window.location.href.split('#')[0];
-    const sujet  = encodeURIComponent('Une photo de Théo Richard');
-    const corps  = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
+    var img     = allItems[current];
+    var src     = img.src;
+    var alt     = img.alt || 'Photo';
+    var pageUrl = window.location.href.split('#')[0];
+    var sujet   = encodeURIComponent('Une photo de Théo Richard');
+    var corps   = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
 
     lbMail.href = 'mailto:?subject=' + sujet + '&body=' + corps;
-    // Téléchargement : fetch + blob pour cross-origin
+
+    // Téléchargement via fetch/blob pour contourner la restriction cross-origin
     lbDl.onclick = function(e) {
       e.preventDefault();
       fetch(src)
@@ -153,7 +140,7 @@
           var bUrl = URL.createObjectURL(blob);
           var a = document.createElement('a');
           a.href = bUrl;
-          a.download = (alt || 'photo').toLowerCase().replace(/\s+/g, '-') + '.jpg';
+          a.download = alt.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.jpg';
           a.click();
           URL.revokeObjectURL(bUrl);
         })
@@ -161,10 +148,6 @@
           window.open(src, '_blank');
         });
     };
-
-    // Formulaire commentaire : mise à jour des champs cachés
-    document.getElementById('lbFormPhoto').value = alt;
-    document.getElementById('lbFormUrl').value   = pageUrl;
   }
 
   function openLightbox(index) {
@@ -179,7 +162,6 @@
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
-    lbCommentForm.classList.remove('open');
   }
 
   function navigate(dir) {
@@ -222,28 +204,14 @@
     });
   });
 
-  lbCommentToggle.addEventListener('click', function() {
-    lbCommentForm.classList.toggle('open');
-  });
-
-  document.getElementById('lbForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var form = e.target;
-    var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-    if (res.ok) {
-      form.style.display = 'none';
-      document.getElementById('lbFormMerci').style.display = 'block';
-    }
-  });
-
   // ── MENU ACTIF AU SCROLL ──
-  const sections  = document.querySelectorAll('.photo-section');
-  const menuLinks = document.querySelectorAll('.menu-link');
+  var sections  = document.querySelectorAll('.photo-section');
+  var menuLinks = document.querySelectorAll('.menu-link');
 
-  const menuObserver = new IntersectionObserver(function(entries) {
+  var menuObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        const id = entry.target.id;
+        var id = entry.target.id;
         menuLinks.forEach(function(link) {
           link.classList.toggle('active', link.getAttribute('href') === '#' + id);
         });
@@ -253,8 +221,8 @@
 
   sections.forEach(function(s) { menuObserver.observe(s); });
 
-  // ── ANIMATION PHOTOS AU SCROLL ──
-  const photoObserver = new IntersectionObserver(function(entries) {
+  // ── CHARGEMENT PROGRESSIF DES PHOTOS ──
+  var photoObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('loaded');
@@ -264,7 +232,7 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.photo-item img').forEach(function(img, i) {
-    img.style.transitionDelay = ((i % 3) * 250) + 'ms';
+    img.style.transitionDelay = ((i % 3) * 80) + 'ms';
     photoObserver.observe(img);
   });
 </script>
