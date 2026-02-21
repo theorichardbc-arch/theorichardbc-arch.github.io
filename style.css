@@ -986,24 +986,33 @@ img {
     color: rgba(255,255,255,0.3);
 }
 
-/* Texte info à gauche de la photo dans la lightbox */
+/* Wrapper photo + texte dans la lightbox */
+.lb-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 90vh;
+}
+
+.lb-photo-wrapper #lbImg {
+    max-width: 88vw;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+/* Texte sous la photo */
 .lb-info {
-    position: fixed;
-    right: calc(50% + min(44vh, 43vw) + 2.5rem);
-    top: 50%; /* valeur initiale, recalculée en JS après chargement image */
-    max-width: 220px;
-    text-align: right;
-    transition: opacity 0.2s ease;
-    z-index: 9002;
-    pointer-events: none;
+    margin-top: 0.8rem;
+    max-width: 88vw;
+    width: 100%;
 }
 
 .lb-info-titre {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #ffffff;
-    margin: 0 0 0.6rem;
+    margin: 0 0 0.35rem;
     line-height: 1.4;
     letter-spacing: 0.02em;
 }
@@ -1011,8 +1020,8 @@ img {
 .lb-info-corps {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
     margin: 0;
     line-height: 1.7;
     letter-spacing: 0.03em;
