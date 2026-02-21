@@ -148,6 +148,14 @@ Poussé à 1600 ISO, développé Ilfosol 3."></div>
     document.getElementById('lbCorps').innerHTML = info.replace(/\n/g, '<br>');
     // Masquer le bloc si aucune info renseignée
     lbInfo.style.opacity = (titre || info) ? '1' : '0';
+  }
+
+  function alignInfo() {
+    var rect = lbImg.getBoundingClientRect();
+    if (rect.height > 0) {
+      document.getElementById('lbInfo').style.top    = rect.top + 'px';
+      document.getElementById('lbInfo').style.transform = 'none';
+    }
     var pageUrl = window.location.href.split('#')[0];
     var sujet   = encodeURIComponent('Une photo de Théo Richard');
     var corps   = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
@@ -176,6 +184,7 @@ Poussé à 1600 ISO, développé Ilfosol 3."></div>
   function openLightbox(index) {
     current = index;
     lbImg.src = allItems[current].src;
+    lbImg.onload = function() { alignInfo(); };
     lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
     updateActions();
     lightbox.classList.add('open');
@@ -192,6 +201,7 @@ Poussé à 1600 ISO, développé Ilfosol 3."></div>
     lbImg.style.opacity = 0;
     setTimeout(function() {
       lbImg.src = allItems[current].src;
+      lbImg.onload = function() { alignInfo(); };
       lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
       updateActions();
       lbImg.style.opacity = 1;
