@@ -294,7 +294,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .preview-header h2 {
@@ -304,15 +304,20 @@ img {
     margin: 0;
 }
 
-.preview-header a {
+.preview-voir-lien {
+    text-align: right;
+}
+
+.preview-voir-lien a {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
     letter-spacing: 0.05em;
     border-bottom: 1px solid #000;
     padding-bottom: 1px;
+    white-space: nowrap;
 }
 
-.preview-header a:hover {
+.preview-voir-lien a:hover {
     opacity: 0.45;
 }
 
