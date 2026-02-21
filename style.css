@@ -966,6 +966,39 @@ img {
     color: rgba(255,255,255,0.3);
 }
 
+/* Texte info à gauche de la photo dans la lightbox */
+.lb-info {
+    position: fixed;
+    right: calc(50% + min(45vh, 44vw) + 2.5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 220px;
+    text-align: right;
+    transition: opacity 0.2s ease;
+    z-index: 9002;
+    pointer-events: none;
+}
+
+.lb-info-titre {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.9);
+    margin: 0 0 0.6rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+.lb-info-corps {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+}
+
 /* =========================
    PAGE EN CONSTRUCTION
 ========================= */
@@ -1024,6 +1057,18 @@ img {
 ========================= */
 
 @media (max-width: 900px) {
+
+    /* Texte lightbox : passe sous la photo sur mobile */
+    .lb-info {
+        position: fixed;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+        bottom: 7rem;
+        max-width: 80vw;
+        text-align: center;
+    }
 
     .intro-section {
         grid-template-columns: 1fr;
@@ -1090,12 +1135,18 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
     padding: 2rem 4vw;
     border-top: 1px solid rgba(0,0,0,0.12);
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     color: rgba(0,0,0,0.35);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+    }
 }
