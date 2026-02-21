@@ -27,10 +27,13 @@
 <div class="texte-page">
 
   <div class="texte-page-header">
-    <!-- Retour à la liste intégré dans la catégorie -->
+    <!-- ← Ce lien sert à la fois de nom de section et de retour à la liste -->
+    <!-- GARDEZ "← Réflexions" tel quel pour chaque article Réflexions      -->
     <a href="reflexions.html" class="texte-page-cat">← Réflexions</a>
+
     <!-- REMPLACEZ PAR LE VRAI TITRE -->
     <h1 class="texte-page-titre">Titre de l'article</h1>
+
     <div class="texte-page-meta">
       <!-- REMPLACEZ PAR LA VRAIE DATE -->
       <span class="texte-page-date">Mois Année</span>
@@ -38,7 +41,7 @@
     </div>
   </div>
 
-  <!-- REMPLACEZ PAR LE VRAI CONTENU -->
+  <!-- REMPLACEZ PAR LE VRAI CONTENU — chaque paragraphe dans un <p> -->
   <div class="texte-page-corps" id="corpsTexte">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -60,10 +63,10 @@
   <div class="partage">
     <p class="partage-label">Partager</p>
     <div class="partage-boutons">
-      <a class="partage-btn" id="btnX"         href="#" target="_blank">✕ X</a>
-      <a class="partage-btn" id="btnFacebook"  href="#" target="_blank">f Facebook</a>
-      <a class="partage-btn" id="btnWhatsapp"  href="#" target="_blank">◎ WhatsApp</a>
-      <a class="partage-btn" id="btnMail"      href="#">✉ Par mail</a>
+      <a class="partage-btn" id="btnX"        href="#" target="_blank">✕ X</a>
+      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">f Facebook</a>
+      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">◎ WhatsApp</a>
+      <a class="partage-btn" id="btnMail"     href="#">✉ Par mail</a>
       <button class="partage-btn" id="btnInstagram">◈ Story Instagram</button>
       <button class="partage-btn" id="btnCopier">⊞ Copier le lien</button>
     </div>
@@ -76,7 +79,7 @@
     <form class="commentaire-form" id="commentaireForm"
           action="https://formspree.io/f/VOTRE-ID"
           method="POST">
-      <!-- REMPLACEZ la valeur de "article" par le vrai titre -->
+      <!-- REMPLACEZ la valeur par le vrai titre de l'article -->
       <input type="hidden" name="article" value="Titre de l'article">
       <input type="text"   name="nom"     placeholder="Votre nom" required>
       <input type="email"  name="email"   placeholder="Votre email (ne sera pas publié)" required>
@@ -93,10 +96,10 @@
 <canvas id="storyCanvas" width="1080" height="1920" style="display:none;"></canvas>
 
 <script>
-  // ── TEMPS DE LECTURE ──
-  var corps = document.getElementById('corpsTexte');
-  var nbMots = corps.innerText.trim().split(/\s+/).length;
-  var mins = Math.ceil(nbMots / 200);
+  // ── TEMPS DE LECTURE (200 mots/min) ──
+  var corps   = document.getElementById('corpsTexte');
+  var nbMots  = corps.innerText.trim().split(/\s+/).length;
+  var mins    = Math.ceil(nbMots / 200);
   document.getElementById('tempsLecture').textContent = mins + ' min de lecture';
 
   // ── PARTAGE ──
@@ -104,9 +107,8 @@
   var titreDoc = document.querySelector('.texte-page-titre').textContent.trim();
   var urlEnc   = encodeURIComponent(pageUrl);
   var titreEnc = encodeURIComponent(titreDoc + ' — Théo Richard');
-
-  var msgWa   = encodeURIComponent('Cet article peut t\'intéresser : "' + titreDoc + '" par Théo Richard\n' + pageUrl);
-  var msgMail = encodeURIComponent('Sujet : ' + titreDoc + ' — Théo Richard\n\nCet article peut t\'intéresser :\n' + pageUrl);
+  var msgWa    = encodeURIComponent('Cet article peut t\'intéresser : "' + titreDoc + '" par Théo Richard\n' + pageUrl);
+  var msgMail  = encodeURIComponent('Sujet : ' + titreDoc + ' — Théo Richard\n\nCet article peut t\'intéresser :\n' + pageUrl);
 
   document.getElementById('btnX').href        = 'https://twitter.com/intent/tweet?text=' + titreEnc + '&url=' + urlEnc;
   document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + urlEnc;
@@ -126,33 +128,29 @@
   document.getElementById('commentaireForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     var form = e.target;
-    var res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    var res  = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       form.style.display = 'none';
       document.getElementById('commentaireMerci').style.display = 'block';
     }
   });
 
-  // ── STORY INSTAGRAM ──
+  // ── STORY INSTAGRAM (fond blanc) ──
   document.getElementById('btnInstagram').addEventListener('click', function() {
     var canvas = document.getElementById('storyCanvas');
-    var ctx = canvas.getContext('2d');
+    var ctx    = canvas.getContext('2d');
     var W = 1080, H = 1920;
 
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
     ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(80, 230); ctx.lineTo(W - 80, 230); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(80, H - 230); ctx.lineTo(W - 80, H - 230); ctx.stroke();
 
-    ctx.fillStyle = 'rgba(0,0,0,0.35)';
-    ctx.font = '400 34px monospace';
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 34px monospace';
     ctx.fillText('RÉFLEXIONS', 80, 190);
 
-    ctx.fillStyle = '#000';
-    ctx.font = '400 90px sans-serif';
-    var mots = titreDoc.split(' ');
-    var lignes = [], ligne = '';
+    ctx.fillStyle = '#000'; ctx.font = '400 90px sans-serif';
+    var mots = titreDoc.split(' '), lignes = [], ligne = '';
     mots.forEach(function(mot) {
       var test = ligne ? ligne + ' ' + mot : mot;
       if (ctx.measureText(test).width > W - 160 && ligne) { lignes.push(ligne); ligne = mot; }
@@ -171,8 +169,7 @@
 
     var a = document.createElement('a');
     a.download = 'story-' + titreDoc.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
-    a.href = canvas.toDataURL('image/png');
-    a.click();
+    a.href = canvas.toDataURL('image/png'); a.click();
   });
 </script>
 
