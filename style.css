@@ -889,8 +889,8 @@ img {
 }
 
 .lightbox img {
-    max-width: 90vw;
-    max-height: 88vh;
+    max-width: 88vw;
+    max-height: 75vh;
     object-fit: contain;
     opacity: 1;
     transform: none;
@@ -1076,18 +1076,6 @@ img {
 ========================= */
 
 @media (max-width: 900px) {
-
-    /* Texte lightbox : passe sous la photo sur mobile */
-    .lb-info {
-        position: fixed;
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        top: auto;
-        bottom: 7rem;
-        max-width: 80vw;
-        text-align: center;
-    }
 
     .intro-section {
         grid-template-columns: 1fr;
