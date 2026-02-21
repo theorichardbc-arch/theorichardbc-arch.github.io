@@ -291,6 +291,9 @@ img {
 }
 
 .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     margin-bottom: 2.5rem;
 }
 
@@ -301,19 +304,25 @@ img {
     margin: 0;
 }
 
+.preview-header a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #000;
+    padding-bottom: 1px;
+}
+
+.preview-header a:hover {
+    opacity: 0.45;
+}
+
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) auto;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    align-items: stretch;
 }
 
-.preview-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.preview-item img {
+.preview-grid img {
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
@@ -322,37 +331,8 @@ img {
     display: block;
 }
 
-.preview-item img.loaded {
+.preview-grid img.loaded {
     opacity: 1;
-}
-
-/* Rectangle noir CTA "Voir tout" */
-.preview-voir-tout {
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 3/4;
-    min-width: clamp(80px, 10vw, 140px);
-    text-decoration: none;
-    overflow: hidden;
-}
-
-.preview-voir-tout span {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-    line-height: 1.6;
-    padding: 0 1rem;
-    transition: transform 0.3s ease;
-    display: block;
-}
-
-.preview-voir-tout:hover span {
-    transform: translateX(6px);
 }
 
 /* =========================
@@ -1047,7 +1027,7 @@ img {
     }
 
     .preview-grid {
-        grid-template-columns: repeat(2, 1fr) auto;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .hero-index {
