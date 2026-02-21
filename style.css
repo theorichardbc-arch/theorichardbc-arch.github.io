@@ -1081,3 +1081,21 @@ img {
 @media (max-width: 600px) {
     .masonry-grid { columns: 1; }
 }
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 2rem 4vw;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.35);
+    letter-spacing: 0.05em;
+}
