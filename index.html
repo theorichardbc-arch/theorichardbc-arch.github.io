@@ -29,20 +29,19 @@
 
   <div class="hero-content">
     <h1>THÉO RICHARD</h1>
-    <!-- Sous-titre : même police que h1, plus petit, plus gras -->
     <p class="hero-subtitle">Photographie argentique</p>
     <div class="hero-meta">
       <p class="hero-bio">Studio & Labo.</p>
       <div class="hero-links">
-        <a id="mailLink">✉ contact@theo-richard.fr</a>>
+        <!-- Mail construit en JS pour éviter l'encodage automatique Cloudflare -->
+        <a id="heroMail">✉ contact@theo-richard.fr</a>
         <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
         <a href="photographie.html">→ Voir les photos</a>
       </div>
     </div>
   </div>
 
-  <!-- Photo carrée portrait — remplacez src par votre fichier dans image/ -->
-  <!-- Si le fichier est absent, la photo se masque automatiquement       -->
+  <!-- Photo carrée portrait — placez votre fichier dans image/portrait.jpg -->
   <img
     src="image/portrait.jpg"
     alt="Théo Richard"
@@ -59,7 +58,7 @@
   <div class="intro-text">
     <p>
       Je photographie en argentique.
-      Les images sont prises une à une et ont un charme dans l'accesptation de leur imperfection.<br>
+      Les images sont prises une à une et ont un charme dans l'acceptation de leur imperfection.<br>
       Du sujet à la photo, la route est longue et ici je propose un état des lieux à mi-chemin :<br>
       Après avoir développé les pellicules, les photos sont numérisées, puis traitées, mais ce n'est pas la fin de leur aventure.
       Pour connaître la suite <a href="https://instagram.com/the0_richard" target="_blank">rendez-vous sur les réseaux.</a>
@@ -72,11 +71,11 @@
 </section>
 
 <!-- APERÇU PHOTOS -->
-<!-- Remplacez les src des 3 images par vos vraies photos dans image/ -->
+<!-- Placez vos fichiers dans image/preview-1.jpg à preview-4.jpg       -->
+<!-- Si aucune photo n'est présente, cette section se masque toute seule -->
 <section class="preview-section">
   <div class="preview-header">
     <h2>Photographie</h2>
-    <!-- "Voir tout" aligné au-dessus de la 4e photo via CSS grid -->
     <div class="preview-voir-lien">
       <a href="photographie.html">Voir tout →</a>
     </div>
@@ -89,6 +88,45 @@
   </div>
 </section>
 
-</div>
+</div><!-- /.page-wrapper -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<footer class="site-footer">
+  <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
+  <span>Photos, textes et design protégés par le droit d'auteur.</span>
+</footer>
+
+<script>
+  // ── Année automatique ──
+  document.getElementById('annee').textContent = new Date().getFullYear();
+
+  // ── Lien mail construit en JS (contourne l'encodage Cloudflare) ──
+  var m = document.getElementById('heroMail');
+  if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
+
+  // ── Photos preview : masquer la section si aucune image ne charge ──
+  var previewImgs    = Array.from(document.querySelectorAll('#previewGrid img'));
+  var previewSection = document.querySelector('.preview-section');
+  var errors = 0;
+
+  previewImgs.forEach(function(img) {
+    img.addEventListener('error', function() {
+      img.style.display = 'none';
+      errors++;
+      if (errors === previewImgs.length) {
+        previewSection.style.display = 'none';
+      }
+    });
+    img.addEventListener('load', function() { img.classList.add('loaded'); });
+    if (img.complete && img.naturalWidth > 0) img.classList.add('loaded');
+  });
+
+  // ── Photo portrait hero ──
+  var portrait = document.querySelector('.hero-photo');
+  if (portrait) {
+    if (portrait.complete && portrait.naturalWidth > 0) portrait.classList.add('loaded');
+    else portrait.addEventListener('load', function() { portrait.classList.add('loaded'); });
+  }
+</script>
+
+</body>
+</html>
