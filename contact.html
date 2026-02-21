@@ -29,7 +29,7 @@
   <!-- Infos directes, cliquables, sans hover -->
   <div class="contact-infos">
     <p class="contact-label">Me retrouver</p>
-    <a href="mailto:contact@theo-richard.fr">✉ contact@theo-richard.fr</a>
+    <a id="mailLink">✉ contact@theo-richard.fr</a>
     <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
   </div>
 
@@ -66,7 +66,11 @@
       document.getElementById('contactMerci').style.display = 'block';
     }
   });
+  
+  var m = document.getElementById('mailLink');
+if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
 </script>
+  
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
   <span>Photos, textes et design protégés par le droit d'auteur.</span>
