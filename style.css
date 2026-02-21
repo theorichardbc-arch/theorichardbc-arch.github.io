@@ -969,9 +969,8 @@ img {
 /* Texte info à gauche de la photo dans la lightbox */
 .lb-info {
     position: fixed;
-    right: calc(50% + min(45vh, 44vw) + 2.5rem);
-    top: 50%;
-    transform: translateY(-50%);
+    right: calc(50% + min(44vh, 43vw) + 2.5rem);
+    top: 50%; /* valeur initiale, recalculée en JS après chargement image */
     max-width: 220px;
     text-align: right;
     transition: opacity 0.2s ease;
@@ -983,7 +982,7 @@ img {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     font-size: 0.95rem;
-    color: rgba(255,255,255,0.9);
+    color: #ffffff;
     margin: 0 0 0.6rem;
     line-height: 1.4;
     letter-spacing: 0.02em;
@@ -993,7 +992,7 @@ img {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 400;
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.6);
     margin: 0;
     line-height: 1.7;
     letter-spacing: 0.03em;
