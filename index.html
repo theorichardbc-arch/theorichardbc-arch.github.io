@@ -29,7 +29,7 @@
 
   <div class="hero-content">
     <h1>THÉO RICHARD</h1>
-    <!-- Sous-titre h1-bis : police h1, plus petite, plus grasse -->
+    <!-- Sous-titre : même police que h1, plus petit, plus gras -->
     <p class="hero-subtitle">Photographie argentique</p>
     <div class="hero-meta">
       <p class="hero-bio">Studio & Labo.</p>
@@ -41,7 +41,8 @@
     </div>
   </div>
 
-  <!-- Photo carrée à droite — remplacez src par votre vraie photo -->
+  <!-- Photo carrée portrait — remplacez src par votre fichier dans image/ -->
+  <!-- Si le fichier est absent, la photo se masque automatiquement       -->
   <img
     src="image/portrait.jpg"
     alt="Théo Richard"
@@ -70,22 +71,22 @@
 </section>
 
 <!-- APERÇU PHOTOS -->
+<!-- Remplacez les src des 3 images par vos vraies photos dans image/ -->
 <section class="preview-section">
   <div class="preview-header">
     <h2>Photographie</h2>
   </div>
-  <div class="preview-grid" id="previewGrid">
-    <!-- 3 photos + rectangle CTA — générés ci-dessous -->
+  <div class="preview-grid">
     <div class="preview-item">
-      <img src="https://picsum.photos/400/530?1" alt="">
+      <img src="image/preview-1.jpg" alt="Aperçu 1" onerror="this.src='https://picsum.photos/400/530?1'">
     </div>
     <div class="preview-item">
-      <img src="https://picsum.photos/400/530?2" alt="">
+      <img src="image/preview-2.jpg" alt="Aperçu 2" onerror="this.src='https://picsum.photos/400/530?2'">
     </div>
     <div class="preview-item">
-      <img src="https://picsum.photos/400/530?3" alt="">
+      <img src="image/preview-3.jpg" alt="Aperçu 3" onerror="this.src='https://picsum.photos/400/530?3'">
     </div>
-    <!-- Rectangle CTA "Voir tout" -->
+    <!-- Rectangle noir CTA — le lien "Voir tout" du header a été supprimé -->
     <a href="photographie.html" class="preview-voir-tout">
       <span>Voir tout →</span>
     </a>
@@ -95,12 +96,11 @@
 </div>
 
 <script>
-  // Chargement des images
-  document.querySelectorAll('img').forEach(img => {
+  document.querySelectorAll('img').forEach(function(img) {
     if (img.complete) {
       img.classList.add('loaded');
     } else {
-      img.addEventListener('load', () => img.classList.add('loaded'));
+      img.addEventListener('load', function() { img.classList.add('loaded'); });
     }
   });
 </script>
