@@ -42,8 +42,14 @@
     <section class="photo-section" id="urbain">
       <h2>Urbain</h2>
       <div class="masonry-grid">
-        <div class="photo-item"><img src="https://picsum.photos/800/1040?10" alt="Urbain 1"></div>
-        <div class="photo-item"><img src="https://picsum.photos/800/620?11"  alt="Urbain 2"></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/1040?10" alt="Urbain 1"
+          data-titre="Rue Oberkampf, Paris"
+          data-info="Kodak Tri-X 400 · F8 · 1/125s
+Développé D-76, 20 min à 20°C."></div>
+        <div class="photo-item"><img src="https://picsum.photos/800/620?11" alt="Urbain 2"
+          data-titre="Sous le périph"
+          data-info="Ilford HP5 · F5.6 · 1/60s
+Poussé à 1600 ISO, développé Ilfosol 3."></div>
         <div class="photo-item"><img src="https://picsum.photos/800/960?12"  alt="Urbain 3"></div>
         <div class="photo-item"><img src="https://picsum.photos/800/700?13"  alt="Urbain 4"></div>
         <div class="photo-item"><img src="https://picsum.photos/800/840?14"  alt="Urbain 5"></div>
@@ -93,6 +99,13 @@
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lbClose">✕ FERMER</button>
   <button class="lightbox-nav lightbox-prev" id="lbPrev">←</button>
+
+  <!-- Texte à gauche de la photo : titre + infos de développement -->
+  <div class="lb-info" id="lbInfo">
+    <p class="lb-info-titre" id="lbTitre"></p>
+    <p class="lb-info-corps" id="lbCorps"></p>
+  </div>
+
   <img src="" alt="" id="lbImg">
   <button class="lightbox-nav lightbox-next" id="lbNext">→</button>
   <div class="lightbox-counter" id="lbCounter"></div>
@@ -125,6 +138,16 @@
     var img     = allItems[current];
     var src     = img.src;
     var alt     = img.alt || 'Photo';
+
+    // Texte informatif : titre et infos de développement
+    var titre  = img.getAttribute('data-titre') || '';
+    var info   = img.getAttribute('data-info')  || '';
+    var lbInfo = document.getElementById('lbInfo');
+    document.getElementById('lbTitre').textContent = titre;
+    // Sauts de ligne dans data-info : \n → <br>
+    document.getElementById('lbCorps').innerHTML = info.replace(/\n/g, '<br>');
+    // Masquer le bloc si aucune info renseignée
+    lbInfo.style.opacity = (titre || info) ? '1' : '0';
     var pageUrl = window.location.href.split('#')[0];
     var sujet   = encodeURIComponent('Une photo de Théo Richard');
     var corps   = encodeURIComponent('Regarde cette photo de Théo Richard : "' + alt + '"\n' + pageUrl);
@@ -236,13 +259,6 @@
     photoObserver.observe(img);
   });
 </script>
-<footer class="site-footer">
-  <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
-  <span>Photos, textes et design protégés par le droit d'auteur.</span>
-</footer>
 
-<script>
-  document.getElementById('annee').textContent = new Date().getFullYear();
-</script>
 </body>
 </html>
