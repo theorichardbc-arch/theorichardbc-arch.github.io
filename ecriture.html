@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact — Théo Richard</title>
+<title>Écriture — Théo Richard</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +13,7 @@
 <div class="page-wrapper">
 
 <header class="site-header">
-  <a href="/" class="home-button">
+  <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
   <nav class="top-bar">
@@ -24,53 +24,24 @@
   </nav>
 </header>
 
-<div class="contact-page">
+<div class="ecriture-index">
 
-  <!-- Infos directes, cliquables, sans hover -->
-  <div class="contact-infos">
-    <p class="contact-label">Me retrouver</p>
-    <a id="mailLink">✉ <span class="__cf_email__" data-cfemail="d3b0bcbda7b2b0a793a7bbb6bcfea1bab0bbb2a1b7fdb5a1">[email&#160;protected]</span></a>
-    <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
-  </div>
+  <a href="reflexions.html" class="ecriture-col">
+    <h2>Réflexions</h2>
+    <p>Sur l'art, la création, le monde et moi-même. Entre l'article et l'essai — quelques minutes de lecture pour faire réfléchir.</p>
+  </a>
 
-  <p class="contact-label">Écrire un message</p>
-  <h1 class="contact-titre">Contact</h1>
+  <div class="ecriture-divider"></div>
 
-  <form class="contact-form" id="contactForm"
-        action="https://formspree.io/f/mykddaag"
-        method="POST">
-    <input type="text"  name="nom"     placeholder="Votre nom" required>
-    <input type="email" name="email"   placeholder="Votre email" required>
-    <input type="text"  name="sujet"   placeholder="Sujet">
-    <textarea           name="message" placeholder="Votre message..." required></textarea>
-    <button type="submit" class="contact-submit">Envoyer →</button>
-  </form>
-
-  <p class="contact-merci" id="contactMerci">
-    Merci pour votre message, je vous réponds dès que possible.
-  </p>
+  <a href="carnet.html" class="ecriture-col">
+    <h2>Carnet de labo</h2>
+    <p>L'apprentissage de l'argentique de zéro — développement, tirages, erreurs. Pour ceux qui veulent suivre le même chemin.</p>
+  </a>
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var form = e.target;
-    var res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      form.style.display = 'none';
-      document.getElementById('contactMerci').style.display = 'block';
-    }
-  });
-  
-  var m = document.getElementById('mailLink');
-if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
-</script>
-  
+</div>
+
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
   <span>Photos, textes et design protégés par le droit d'auteur.</span>
@@ -80,5 +51,6 @@ if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
