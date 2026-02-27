@@ -350,8 +350,8 @@ img {
 
 .ecriture-index {
     display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    min-height: calc(1vh - 7rem);
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 7rem);
     align-items: start;
 }
 
@@ -398,13 +398,6 @@ img {
     opacity: 0.5;
     margin: 0;
     max-width: 420px;
-}
-
-.ecriture-divider {
-    width: 1px;
-    height: 40vh;
-    background: #000;
-    align-self: center;
 }
 
 /* =========================
