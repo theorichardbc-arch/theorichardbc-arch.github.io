@@ -361,7 +361,7 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 4rem 6vw;
+    padding: 4rem 8vw;
     text-decoration: none;
     color: #000;
 }
@@ -397,7 +397,7 @@ img {
     line-height: 1.8;
     opacity: 0.5;
     margin: 0;
-    max-width: 280px;
+    max-width: 420px;
 }
 
 .ecriture-divider {
