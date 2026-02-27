@@ -38,7 +38,7 @@
     <h2>1. Éditeur du site</h2>
     <p>
       Ce site est édité à titre personnel par <strong>Théo Richard</strong>, photographe indépendant.<br>
-      Adresse e-mail : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9e9293899c9e89bd89959892d08f949e959c8f99d39b8f">[email&#160;protected]</a><br>
+      Adresse e-mail : <a id="mailMentions0"><span class="__cf_email__" data-cfemail="f0939f9e84919384b08498959fdd82999398918294de9682">[email&#160;protected]</span></a><br>
       Site web : <a href="https://theo-richard.fr">theo-richard.fr</a>
     </p>
 
@@ -57,7 +57,7 @@
       Toute reproduction, représentation, modification ou exploitation, totale ou partielle, par quelque procédé que ce soit, sans autorisation écrite préalable est strictement interdite et constituerait une contrefaçon.
     </p>
     <p>
-      Pour toute demande de reproduction ou d'utilisation : <a id="mailMentions" href="#"><span class="__cf_email__" data-cfemail="fb9894958f9a988fbb8f939e94d6899298939a899fd59d89">[email&#160;protected]</span></a>
+      Pour toute demande de reproduction ou d'utilisation : <a id="mailMentions" href="#"><span class="__cf_email__" data-cfemail="bad9d5d4cedbd9cefaced2dfd597c8d3d9d2dbc8de94dcc8">[email&#160;protected]</span></a>
     </p>
 
     <h2>4. Données personnelles et confidentialité</h2>
@@ -71,7 +71,7 @@
       L'hébergeur GitHub Pages peut collecter des données techniques de connexion (adresse IP, navigateur, pages visitées) à des fins de sécurité et de maintenance. Ces données sont soumises à la <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">politique de confidentialité de GitHub</a>.
     </p>
     <p>
-      Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit : <a id="mailMentions2" href="#"><span class="__cf_email__" data-cfemail="2a4945445e4b495e6a5e424f4507584349424b584e044c58">[email&#160;protected]</span></a>
+      Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ce droit : <a id="mailMentions2" href="#">contact@theo-richard.fr</a>
     </p>
 
     <h2>5. Cookies</h2>
@@ -101,6 +101,13 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
+  var mail = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
+  var m0 = document.getElementById('mailMentions0');
+  if (m0) { m0.href = mail; m0.textContent = 'contact@theo-richard.fr'; }
+  var m1 = document.getElementById('mailMentions');
+  if (m1) m1.href = mail;
+  var m2 = document.getElementById('mailMentions2');
+  if (m2) m2.href = mail;
 </script>
-
-<script data-cfasync="false"
+</body>
+</html>
