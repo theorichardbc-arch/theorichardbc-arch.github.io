@@ -34,7 +34,7 @@
       <p class="hero-bio">Studio & Labo.</p>
       <div class="hero-links">
         <!-- Mail construit en JS pour éviter l'encodage automatique Cloudflare -->
-        <a id="heroMail">✉ contact@theo-richard.fr</a>
+        <a id="heroMail">✉ <span class="__cf_email__" data-cfemail="ea8985849e8b899eaa9e828f85c7988389828b988ec48c98">[email&#160;protected]</span></a>
         <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
         <a href="photographie.html">→ Voir les photos</a>
       </div>
@@ -49,16 +49,6 @@
     onerror="this.style.display='none'"
   >
 
-  <!-- STATUT DU SITE — modifiez le texte entre les guillemets data-status -->
-  <!-- Pour masquer : mettez data-status="" -->
-  <div class="hero-status" id="heroStatus">
-    <span class="hero-status-dot"></span>
-    <span class="hero-status-text"><strong>LANCEMENT DU SITE :</strong> je suis très très très content d'enfin mettre le site en ligne, et au moins autant preneur de vos retours.
-      Que çe soit sur les photos, sur le site en lui-même, ou sur des bugs ou des incohérences, je vous invite à me faire un mail (mon adresse est partout sur le site)
-      ou à utiliser le formulaire de contact de l'onglet du même nom. Merci à celles et ceux qui prendront le temps !</span>
-  </div>
-  
-  <!-- AFFICHAGE SCROLL -->
   <span class="hero-scroll">Scroll</span>
 </section>
 
@@ -67,18 +57,14 @@
   <div class="intro-label">À propos</div>
   <div class="intro-text">
     <p>
-Je photographie en argentique, mais je n’expose pas seulement des images : je documente un chemin.
-Chaque photo est prise une à une. Elle porte le temps, l’attente, l’erreur possible — et l’acceptation de cette imperfection.<br>
-Du déclenchement au négatif, du développement à la numérisation ou au tirage, l’image traverse plusieurs états. Ici, je montre ce moment intermédiaire : un travail en cours, jamais totalement figé.
-Mon regard se pose sur le quotidien et le portrait — des visages, des rues, des natures mortes ; une lumière ordinaire que le grain du film rend presque fragile. Ce quotidien, souvent, c’est le mien.<br>
-Ce site est aussi un espace d’écriture.
-D’un côté, des textes entre l’essai et le carnet : réflexions sur la création, le geste photographique, le rapport au matériel, la lenteur, l’erreur, l’apprentissage.
-De l’autre, des articles plus techniques où je raconte mon parcours en argentique — non pas comme un maître, mais comme un praticien en apprentissage permanent.
-J’y rassemble ce que je comprends, ce que je teste, ce que j’observe chez les grands photographes, et ce que la pratique m’enseigne.
-L’argentique est une matière exigeante : mécanique simple en apparence, chimie précise, choix de films, de produits, méthode de scans puis de traitement numérique,
-      ou de tirages, rebelotte, uen chimie, un papier, une lumière.
-Je partage cette exploration avec ses réussites et ses ratés.<br>
-Ce site est donc un atelier ouvert : un lieu où l’image et le texte avancent ensemble, où la technique nourrit la pensée, et où chaque étape reste visible. Vous êtes évidemment sollicité à contribuer via la page contact ou grace au formulaire de réponse au bas des articles.
+      Je photographie en argentique.
+      Les images sont prises une à une et ont un charme dans l'erreur.<br>
+      Du sujet à la photo, la route est longue et ici je propose un état des lieux à mi-chemin :<br>
+      Après avoir développé, les photos sont numérisées, puis traitées, mais ce n'est pas la fin de leur aventure : pour connaître la suite <a href="https://instagram.com/the0_richard" target="_blank">rendez-vous sur les réseaux.</a>
+    </p>
+    <p>
+      Mon travail tourne autour du quotidien et du portrait : des visages, des rues, des natures mortes ;<br>
+      de la lumière ordinaire rendue extraordinaire par le grain du film. Le quotidien dont je parle, c'est pas celui des sujets, c'est souvent le mien.
     </p>
   </div>
 </section>
@@ -105,8 +91,7 @@ Ce site est donc un atelier ouvert : un lieu où l’image et le texte avancent 
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
-  <span>Photos, textes et design protégés par le droit d'auteur.</span>
-  <span><a href="mentions.html">Mentions légales</a></span>
+  <span><a href="mentions.html" style="color:inherit; border-bottom: 1px solid currentColor; padding-bottom:1px;">Mentions légales</a></span>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -137,10 +122,4 @@ Ce site est donc un atelier ouvert : un lieu où l’image et le texte avancent 
   // ── Photo portrait hero ──
   var portrait = document.querySelector('.hero-photo');
   if (portrait) {
-    if (portrait.complete && portrait.naturalWidth > 0) portrait.classList.add('loaded');
-    else portrait.addEventListener('load', function() { portrait.classList.add('loaded'); });
-  }
-</script>
-
-</body>
-</html>
+    if (po
