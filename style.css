@@ -25,12 +25,19 @@ a:active {
     text-decoration: none;
 }
 
+/* Les boutons de la lightbox ne doivent pas hériter de a:visited */
+.lb-action-btn,
+.lb-action-btn:visited,
+.lb-action-btn:active {
+    color: rgba(255,255,255,0.6);
+}
+
 img {
     display: block;
 }
 
 /* =========================
-   LAYOUT — WRAPPER & HEADER
+   WRAPPER
 ========================= */
 
 .page-wrapper {
@@ -40,6 +47,10 @@ img {
     padding-top: 7rem;
     flex: 1;
 }
+
+/* =========================
+   HEADER FIXE
+========================= */
 
 .site-header {
     display: flex;
@@ -54,7 +65,7 @@ img {
     z-index: 5000;
 }
 
-/* ── Bouton accueil ── */
+/* ── BOUTON ACCUEIL ── */
 
 .home-button {
     font-family: 'IBM Plex Mono', monospace;
@@ -86,7 +97,7 @@ img {
     width: 100%;
 }
 
-/* ── Navbar droite ── */
+/* ── NAVBAR DROITE ── */
 
 .top-bar {
     display: flex;
@@ -118,7 +129,7 @@ img {
 }
 
 /* =========================
-   PAGE ACCUEIL — HERO
+   PAGE D'ACCUEIL — HERO
 ========================= */
 
 .hero-index {
@@ -135,6 +146,19 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.hero-photo {
+    width: clamp(200px, 22vw, 360px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.hero-photo.loaded {
+    opacity: 1;
 }
 
 .hero-index h1 {
@@ -202,52 +226,6 @@ img {
     opacity: 0.5;
 }
 
-.hero-photo {
-    width: clamp(200px, 22vw, 360px);
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-
-.hero-photo.loaded {
-    opacity: 1;
-}
-
-/* ── Statut du site ── */
-
-.hero-status:has(.hero-status-text:empty) {
-    display: none;
-}
-
-.hero-status {
-    position: absolute;
-    bottom: 2rem;
-    left: 4vw;
-    right: 8rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
-    color: #000;
-    letter-spacing: 0.03em;
-    max-width: 66vw;
-}
-
-.hero-status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-    margin-top: 0.35em;
-    animation: statusPulse 2.5s ease-in-out infinite;
-}
-
-/* ── Indicateur scroll ── */
-
 .hero-scroll {
     position: absolute;
     bottom: 2rem;
@@ -263,7 +241,7 @@ img {
 }
 
 /* =========================
-   PAGE ACCUEIL — INTRO
+   PAGE D'ACCUEIL — INTRO
 ========================= */
 
 .intro-section {
@@ -308,7 +286,7 @@ img {
 }
 
 /* =========================
-   PAGE ACCUEIL — APERÇU PHOTOS
+   PAGE D'ACCUEIL — APERÇU
 ========================= */
 
 .preview-section {
@@ -367,7 +345,7 @@ img {
 }
 
 /* =========================
-   PAGE ÉCRITURE — INDEX (2 colonnes)
+   PAGE ÉCRITURE — INDEX
 ========================= */
 
 .ecriture-index {
@@ -378,11 +356,12 @@ img {
 }
 
 .ecriture-col {
-    display: grid;
-    grid-template-rows: 40vh auto;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     text-align: center;
-    padding: 0 8vw;
+    padding: 30vh 8vw 4rem;
     text-decoration: none;
     color: #000;
 }
@@ -391,12 +370,10 @@ img {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 400;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    margin: 0;
+    margin: 0 0 1.5rem;
     line-height: 1;
     position: relative;
     display: inline-block;
-    align-self: end;
-    justify-self: center;
 }
 
 .ecriture-col h2::after {
@@ -419,7 +396,7 @@ img {
     font-size: 0.85rem;
     line-height: 1.8;
     opacity: 0.5;
-    margin: 1.5rem auto 0;
+    margin: 0;
     max-width: 420px;
 }
 
@@ -428,11 +405,10 @@ img {
     height: 40vh;
     background: #000;
     align-self: center;
-    justify-self: center;
 }
 
 /* =========================
-   PAGE ÉCRITURE — LISTE D'ARTICLES
+   PAGE ÉCRITURE — LISTE
 ========================= */
 
 .texte-liste-page {
@@ -499,7 +475,7 @@ img {
 }
 
 /* =========================
-   PAGE ARTICLE INDIVIDUEL
+   PAGE TEXTE INDIVIDUEL
 ========================= */
 
 .texte-page {
@@ -514,6 +490,7 @@ img {
     margin-bottom: 4rem;
 }
 
+/* Catégorie = lien de retour discret, sans hover effect */
 .texte-page-cat {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
@@ -549,28 +526,7 @@ img {
     margin: 0;
 }
 
-/* ── Bouton Substack ── */
-
-.substack-btn {
-    display: inline-block;
-    margin-top: 1.2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    border: 1px solid rgba(0,0,0,0.25);
-    padding: 0.45rem 0.9rem;
-    border-radius: 2px;
-    transition: border-color 0.2s, color 0.2s;
-    color: inherit;
-    text-decoration: none;
-}
-
-.substack-btn:hover {
-    border-color: currentColor;
-}
-
-/* ── Corps de texte en Lora ── */
-
+/* Corps de texte : Lora pour la lecture longue */
 .texte-page-corps {
     font-family: 'Lora', serif;
     font-weight: 400;
@@ -601,7 +557,7 @@ img {
     opacity: 0.45;
 }
 
-/* ── Bandeau partage ── */
+/* ── PARTAGE ── */
 
 .partage {
     margin-top: 5rem;
@@ -647,7 +603,7 @@ img {
 .partage-btn:hover { border-color: #000; }
 .partage-btn.copied { opacity: 0.4; }
 
-/* ── Section commentaires ── */
+/* ── COMMENTAIRES ── */
 
 .commentaires {
     margin-top: 5rem;
@@ -806,7 +762,7 @@ img {
 }
 
 /* =========================
-   PAGE PHOTOGRAPHIE — LAYOUT
+   PAGE PHOTO — LAYOUT
 ========================= */
 
 .photo-container {
@@ -814,8 +770,6 @@ img {
     gap: 4rem;
     align-items: flex-start;
 }
-
-/* ── Menu latéral sticky ── */
 
 .photo-menu {
     flex: 0 0 160px;
@@ -878,8 +832,6 @@ img {
     color: #000;
     border-bottom-color: #000;
 }
-
-/* ── Sections et grille masonry ── */
 
 .photo-section {
     padding-top: 2rem;
@@ -998,8 +950,7 @@ img {
     letter-spacing: 0.15em;
 }
 
-/* ── Boutons d'action ── */
-
+/* Boutons d'action dans la lightbox */
 .lightbox-actions {
     position: fixed;
     bottom: 1.5rem;
@@ -1010,13 +961,6 @@ img {
     z-index: 9002;
 }
 
-/* Héritage couleur pour liens visités dans la lightbox */
-.lb-action-btn,
-.lb-action-btn:visited,
-.lb-action-btn:active {
-    color: rgba(255,255,255,0.6);
-}
-
 .lb-action-btn {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
@@ -1024,6 +968,7 @@ img {
     padding: 0.45rem 0.9rem;
     border: 1px solid rgba(255,255,255,0.3);
     background: none;
+    color: rgba(255,255,255,0.6);
     cursor: pointer;
     text-decoration: none;
     display: block;
@@ -1045,8 +990,7 @@ img {
     color: rgba(255,255,255,0.3);
 }
 
-/* ── Photo + texte sous l'image ── */
-
+/* Wrapper photo + texte dans la lightbox */
 .lb-photo-wrapper {
     display: flex;
     flex-direction: column;
@@ -1060,6 +1004,7 @@ img {
     object-fit: contain;
 }
 
+/* Texte sous la photo — même largeur que l'image affichée */
 .lb-info {
     margin-top: 0.8rem;
     width: 80vw;
@@ -1086,10 +1031,8 @@ img {
     letter-spacing: 0.03em;
 }
 
-/* =========================
-   PAGE MENTIONS LÉGALES
-========================= */
 
+/* ── PAGE MENTIONS LÉGALES ── */
 .mentions-corps h2 {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
@@ -1102,6 +1045,25 @@ img {
 
 .mentions-corps p {
     margin-bottom: 1rem;
+}
+
+/* ── BOUTON SUBSTACK ── */
+.substack-btn {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    border: 1px solid rgba(0,0,0,0.25);
+    padding: 0.45rem 0.9rem;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    color: inherit;
+    text-decoration: none;
+}
+
+.substack-btn:hover {
+    border-color: currentColor;
 }
 
 /* =========================
@@ -1144,6 +1106,23 @@ img {
     transform: translateY(-2px);
 }
 
+/* ── Statut du site ── */
+.hero-status:has(.hero-status-text:empty) {
+    display: none;
+}
+
+.hero-status {
+    position: absolute;
+    bottom: 2rem;
+    left: 4vw;
+    right: 8rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: #000;
+    letter-spacing: 0.03em;
+    max-width: 66vw;
+}
+
 /* =========================
    ANIMATIONS
 ========================= */
@@ -1155,38 +1134,6 @@ img {
 @keyframes lbFade {
     from { opacity: 0; }
     to   { opacity: 1; }
-}
-
-@keyframes statusPulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.3; }
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-.site-footer a {
-    color: inherit;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 1px;
-}
-
-.site-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 4vw;
-    border-top: 1px solid rgba(0,0,0,0.12);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    color: rgba(0,0,0,0.35);
-    letter-spacing: 0.04em;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    box-sizing: border-box;
 }
 
 /* =========================
@@ -1249,9 +1196,37 @@ img {
 }
 
 @media (max-width: 600px) {
-
     .masonry-grid { columns: 1; }
+}
 
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer a {
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+}
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4vw;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(0,0,0,0.35);
+    letter-spacing: 0.04em;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
     .site-footer {
         flex-direction: column;
         gap: 0.4rem;
