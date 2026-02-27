@@ -45,6 +45,7 @@ img {
     margin: 0 auto;
     padding: 0 4vw;
     padding-top: 7rem;
+    flex: 1;
 }
 
 /* =========================
@@ -358,7 +359,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     text-align: center;
     padding: 4rem 8vw;
     text-decoration: none;
@@ -1112,7 +1113,7 @@ img {
 
 .hero-status {
     position: absolute;
-    bottom: 2.5rem;
+    bottom: 2rem;
     left: 4vw;
     display: flex;
     align-items: center;
