@@ -351,17 +351,17 @@ img {
 .ecriture-index {
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
-    min-height: calc(100vh - 7rem);
-    align-items: center;
+    min-height: calc(1vh - 7rem);
+    align-items: start;
 }
 
 .ecriture-col {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding: 30vh 8vw 4rem;
+    padding: 20vh 8vw 4rem;
     text-decoration: none;
     color: #000;
 }
