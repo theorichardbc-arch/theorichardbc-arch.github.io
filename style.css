@@ -1028,6 +1028,21 @@ img {
 }
 
 
+/* ── PAGE MENTIONS LÉGALES ── */
+.mentions-corps h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 2.5rem 0 0.8rem;
+    opacity: 0.5;
+}
+
+.mentions-corps p {
+    margin-bottom: 1rem;
+}
+
 /* ── BOUTON SUBSTACK ── */
 .substack-btn {
     display: inline-block;
