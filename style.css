@@ -990,21 +990,21 @@ img {
 .lb-photo-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     max-height: 90vh;
 }
 
 .lb-photo-wrapper #lbImg {
-    max-width: 88vw;
-    max-height: 75vh;
+    max-width: 80vw;
+    max-height: 72vh;
     object-fit: contain;
 }
 
-/* Texte sous la photo */
+/* Texte sous la photo — même largeur que l'image affichée */
 .lb-info {
     margin-top: 0.8rem;
-    max-width: 88vw;
-    width: 100%;
+    width: 80vw;
+    max-width: 80vw;
 }
 
 .lb-info-titre {
