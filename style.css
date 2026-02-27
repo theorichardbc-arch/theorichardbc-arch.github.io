@@ -1202,6 +1202,11 @@ img {
     font-size: 0.75rem;
     color: rgba(0,0,0,0.35);
     letter-spacing: 0.04em;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
 }
 
 @media (max-width: 600px) {
