@@ -365,6 +365,15 @@ img {
     text-decoration: none;
     color: #000;
 }
+.ecriture-col:first-child {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.ecriture-col:last-child {
+    align-items: flex-start;
+    text-align: left;
+}
 
 .ecriture-col h2 {
     font-family: 'IBM Plex Sans', sans-serif;
