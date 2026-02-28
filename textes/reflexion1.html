@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Titre de l'article — Théo Richard</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&family=Lora:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="page-wrapper">
+
+<header class="site-header">
+  <a href="/" class="home-button">
+    <span class="home-icon">⌂</span> ACCUEIL
+  </a>
+  <nav class="top-bar">
+    <a href="photographie.html">PHOTOGRAPHIE</a>
+    <a href="ecriture.html">ÉCRITURE</a>
+    <a href="archive.html">ARCHIVE</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<div class="texte-page">
+
+  <div class="texte-page-header">
+    <!-- ← Ce lien sert à la fois de nom de section et de retour à la liste -->
+    <!-- GARDEZ "← Réflexions" tel quel pour chaque article Réflexions      -->
+    <a href="reflexions.html" class="texte-page-cat">← Réflexions</a>
+
+    <!-- REMPLACEZ PAR LE VRAI TITRE -->
+    <h1 class="texte-page-titre">Titre de l'article</h1>
+
+    <div class="texte-page-meta">
+      <!-- REMPLACEZ PAR LA VRAIE DATE -->
+      <span class="texte-page-date">Mois Année</span>
+      <span class="texte-lecture" id="tempsLecture"></span>
+    </div>
+
+    <!-- REMPLACEZ L'URL PAR LE LIEN SUBSTACK DE CET ARTICLE -->
+    <a href="VOTRE-URL-SUBSTACK" class="substack-btn" target="_blank" rel="noopener">
+      ⊕ Lire sur Substack
+    </a>
+
+  </div>
+
+  <!-- REMPLACEZ PAR LE VRAI CONTENU — chaque paragraphe dans un <p> -->
+  <div class="texte-page-corps" id="corpsTexte">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    </p>
+    <p>
+      Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+    </p>
+  </div>
+
+  <a href="reflexions.html" class="texte-retour">← Retour aux réflexions</a>
+
+  <!-- BANDEAU PARTAGE -->
+  <div class="partage">
+    <p class="partage-label">Partager</p>
+    <div class="partage-boutons">
+      <a class="partage-btn" id="btnX"        href="#" target="_blank">✕ X</a>
+      <a class="partage-btn" id="btnFacebook" href="#" target="_blank">f Facebook</a>
+      <a class="partage-btn" id="btnWhatsapp" href="#" target="_blank">◎ WhatsApp</a>
+      <a class="partage-btn" id="btnMail"     href="#">✉ Par mail</a>
+      <button class="partage-btn" id="btnInstagram">◈ Story Instagram</button>
+      <button class="partage-btn" id="btnCopier">⊞ Copier le lien</button>
+    </div>
+  </div>
+
+  <!-- COMMENTAIRES -->
+  <div class="commentaires">
+    <p class="commentaires-label">Laisser un commentaire</p>
+    <!-- REMPLACEZ VOTRE-ID par votre identifiant Formspree -->
+    <form class="commentaire-form" id="commentaireForm"
+          action="https://formspree.io/f/VOTRE-ID"
+          method="POST">
+      <!-- REMPLACEZ la valeur par le vrai titre de l'article -->
+      <input type="hidden" name="article" value="Titre de l'article">
+      <input type="text"   name="nom"     placeholder="Votre nom" required>
+      <input type="email"  name="email"   placeholder="Votre email (ne sera pas publié)" required>
+      <textarea            name="message" placeholder="Votre commentaire..." required></textarea>
+      <button type="submit" class="commentaire-submit">Envoyer →</button>
+    </form>
+    <p class="commentaire-merci" id="commentaireMerci">
+      Merci pour votre message, je vous lirai avec attention.
+    </p>
+  </div>
+
+</div>
+
+<canvas id="storyCanvas" width="1080" height="1920" style="display:none;"></canvas>
+
+<script>
+  // ── TEMPS DE LECTURE (200 mots/min) ──
+  var corps   = document.getElementById('corpsTexte');
+  var nbMots  = corps.innerText.trim().split(/\s+/).length;
+  var mins    = Math.ceil(nbMots / 200);
+  document.getElementById('tempsLecture').textContent = mins + ' min de lecture';
+
+  // ── PARTAGE ──
+  var pageUrl  = window.location.href;
+  var titreDoc = document.querySelector('.texte-page-titre').textContent.trim();
+  var urlEnc   = encodeURIComponent(pageUrl);
+  var titreEnc = encodeURIComponent(titreDoc + ' — Théo Richard');
+  var msgWa    = encodeURIComponent('Cet article peut t\'intéresser : "' + titreDoc + '" par Théo Richard\n' + pageUrl);
+  var msgMail  = encodeURIComponent('Sujet : ' + titreDoc + ' — Théo Richard\n\nCet article peut t\'intéresser :\n' + pageUrl);
+
+  document.getElementById('btnX').href        = 'https://twitter.com/intent/tweet?text=' + titreEnc + '&url=' + urlEnc;
+  document.getElementById('btnFacebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + urlEnc;
+  document.getElementById('btnWhatsapp').href = 'https://wa.me/?text=' + msgWa;
+  document.getElementById('btnMail').href     = 'mailto:?subject=' + titreEnc + '&body=' + msgMail;
+
+  document.getElementById('btnCopier').addEventListener('click', function() {
+    navigator.clipboard.writeText(pageUrl).then(function() {
+      var btn = document.getElementById('btnCopier');
+      btn.textContent = '⊞ Lien copié !';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = '⊞ Copier le lien'; btn.classList.remove('copied'); }, 2000);
+    });
+  });
+
+  // ── FORMSPREE ──
+  document.getElementById('commentaireForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var res  = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('commentaireMerci').style.display = 'block';
+    }
+  });
+
+  // ── STORY INSTAGRAM (fond blanc) ──
+  document.getElementById('btnInstagram').addEventListener('click', function() {
+    var canvas = document.getElementById('storyCanvas');
+    var ctx    = canvas.getContext('2d');
+    var W = 1080, H = 1920;
+
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(80, 230); ctx.lineTo(W - 80, 230); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(80, H - 230); ctx.lineTo(W - 80, H - 230); ctx.stroke();
+
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 34px monospace';
+    ctx.fillText('RÉFLEXIONS', 80, 190);
+
+    ctx.fillStyle = '#000'; ctx.font = '400 90px sans-serif';
+    var mots = titreDoc.split(' '), lignes = [], ligne = '';
+    mots.forEach(function(mot) {
+      var test = ligne ? ligne + ' ' + mot : mot;
+      if (ctx.measureText(test).width > W - 160 && ligne) { lignes.push(ligne); ligne = mot; }
+      else { ligne = test; }
+    });
+    lignes.push(ligne);
+    var lh = 110, startY = Math.round((H - lignes.length * lh) / 2) - 40;
+    lignes.forEach(function(l, i) { ctx.fillText(l, 80, startY + i * lh); });
+
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 34px monospace';
+    ctx.fillText(document.querySelector('.texte-page-date').textContent.trim(), 80, startY + lignes.length * lh + 56);
+    ctx.fillStyle = '#000'; ctx.font = '400 52px sans-serif';
+    ctx.fillText('THÉO RICHARD', 80, H - 270);
+    ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '400 30px monospace';
+    ctx.fillText(window.location.hostname + window.location.pathname, 80, H - 210);
+
+    var a = document.createElement('a');
+    a.download = 'story-' + titreDoc.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '.png';
+    a.href = canvas.toDataURL('image/png'); a.click();
+  });
+</script>
+<footer class="site-footer">
+  <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
+  <span>Photos, textes et design protégés par le droit d'auteur.</span>
+  <span><a href="mentions.html">Mentions légales</a></span>
+</footer>
+
+<script>
+  document.getElementById('annee').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
