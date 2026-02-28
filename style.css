@@ -351,7 +351,7 @@ img {
 .ecriture-index {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: calc(100vh - 7rem);
+    min-height: calc(10vh - 7rem);
     align-items: start;
 }
 
