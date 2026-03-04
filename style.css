@@ -1258,7 +1258,7 @@ html, body {
 }
 
 .texte-date {
-    order: -1; /* passe avant le titre */
+    order: -1;
 }
 
 .texte-titre {
@@ -1279,7 +1279,6 @@ html, body {
         padding: 1rem 4vw;
     }
 
-    /* La nav occupe toute la largeur et peut s'enrouler */
     .top-bar {
         gap: 1.2rem;
         flex-wrap: wrap;
@@ -1291,19 +1290,28 @@ html, body {
         letter-spacing: 0.05em;
     }
 
-    /* Le page-wrapper doit compenser le header plus haut */
+    /* ── Page wrapper : padding symétrique ── */
     .page-wrapper {
         padding-top: 8.5rem;
-        padding-left: 5vw;
-        padding-right: 5vw;
+        padding-left: 5vw !important;
+        padding-right: 5vw !important;
+        box-sizing: border-box;
     }
 
-    /* ── Contenu textuel : ne jamais dépasser l'écran ── */
+    /* ── Forcer la marge droite sur tous les contenus texte ── */
     .texte-page,
     .texte-liste-page,
-    .contact-page {
-        max-width: 100%;
+    .contact-page,
+    .texte-page-corps,
+    .texte-page-header,
+    .intro-section,
+    .intro-text,
+    .hero-index,
+    .hero-status,
+    .preview-section {
+        max-width: 100% !important;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     /* ── Corps des articles ── */
@@ -1314,16 +1322,23 @@ html, body {
         overflow-wrap: break-word;
     }
 
-    /* ── Hero ── */
+    /* ── Masquer le SCROLL vertical sur mobile ── */
+    .hero-scroll {
+        display: none;
+    }
+
+    /* ── Hero status : ne plus être en absolute ── */
+    .hero-status {
+        position: static;
+        margin-top: 1.5rem;
+        right: auto;
+        bottom: auto;
+        max-width: 100%;
+    }
+
     .hero-index {
         padding: 0;
         min-height: 60vh;
-    }
-
-    .hero-status {
-        position: static;
-        max-width: 100%;
-        margin-top: 2rem;
     }
 
     /* ── Page contact ── */
@@ -1331,7 +1346,7 @@ html, body {
         padding-top: 2rem;
     }
 
-    /* ── Lightbox : image pleine largeur ── */
+    /* ── Lightbox ── */
     .lb-photo-wrapper #lbImg {
         max-width: 95vw;
         max-height: 55vh;
@@ -1367,7 +1382,7 @@ html, body {
         padding: 6vh 5vw 3rem;
     }
 
-    /* ── Mentions légales & autres pages simples ── */
+    /* ── Divers ── */
     .construction-container {
         margin: 4rem 0;
     }
