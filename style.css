@@ -1235,3 +1235,151 @@ img {
         text-align: center;
     }
 }
+/* =========================
+   MOBILE PATCH — theo-richard.fr
+   À ajouter à la FIN de style.css
+========================= */
+
+/* ── Empêche le scroll horizontal global ── */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* =========================
+   HEADER MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    /* Header : empilé sur 2 lignes */
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem 4vw;
+    }
+
+    /* La nav occupe toute la largeur et peut s'enrouler */
+    .top-bar {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .top-bar a {
+        font-size: 0.78rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* Le page-wrapper doit compenser le header plus haut */
+    .page-wrapper {
+        padding-top: 8.5rem;
+    }
+
+    /* ── Contenu textuel : ne jamais dépasser l'écran ── */
+    .texte-page,
+    .texte-liste-page,
+    .contact-page {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+    }
+
+    /* ── Corps des articles : taille réduite pour éviter l'overflow ── */
+    .texte-page-corps {
+        font-size: 1rem;
+        line-height: 1.9;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* ── Hero ── */
+    .hero-index {
+        padding: 0 0;
+        min-height: 60vh;
+    }
+
+    .hero-status {
+        position: static;
+        max-width: 100%;
+        margin-top: 2rem;
+    }
+
+    /* ── Page d'accueil — aperçu photos ── */
+    .preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* ── Page contact ── */
+    .contact-page {
+        padding-top: 2rem;
+    }
+
+    /* ── Lightbox : image pleine largeur ── */
+    .lb-photo-wrapper #lbImg {
+        max-width: 95vw;
+        max-height: 55vh;
+    }
+
+    .lb-info {
+        width: 95vw;
+        max-width: 95vw;
+    }
+
+    .lightbox-actions {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem;
+        width: 95vw;
+    }
+
+    .lb-action-btn {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.7rem;
+    }
+
+    .lightbox-counter {
+        bottom: 5rem;
+    }
+
+    /* ── Page écriture ── */
+    .ecriture-col {
+        padding: 6vh 5vw 3rem;
+    }
+
+    /* ── Mentions légales & autres pages simples ── */
+    .construction-container {
+        margin: 4rem 0;
+    }
+
+    .construction-container h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* =========================
+   TRÈS PETIT ÉCRAN (< 400px)
+========================= */
+
+@media (max-width: 400px) {
+
+    .top-bar a {
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+    }
+
+    .top-bar {
+        gap: 0.9rem;
+    }
+
+    .texte-page-titre,
+    .texte-liste-header h1 {
+        font-size: 1.8rem;
+    }
+}
