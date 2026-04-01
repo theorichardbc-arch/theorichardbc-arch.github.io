@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un jour — Théo Richard</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: #fff;
+    color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+  }
+
+  .contenu {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .etiquette {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.05;
+    margin-bottom: 2.5rem;
+  }
+
+  .citation {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    opacity: 0.6;
+    margin-bottom: 3rem;
+  }
+
+  .explication {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    opacity: 0.45;
+    margin-bottom: 3.5rem;
+  }
+
+  .separateur {
+    width: 40px;
+    height: 1px;
+    background: #000;
+    margin: 0 auto 3.5rem;
+    opacity: 0.2;
+  }
+
+  .retour {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 2px;
+    letter-spacing: 0.04em;
+    transition: opacity 0.2s;
+  }
+
+  .retour:hover { opacity: 0.45; }
+
+  .compteur {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    opacity: 0.2;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="contenu">
+
+  <p class="etiquette">Article en préparation</p>
+
+  <h1>Ça<br>viendra.</h1>
+
+  <p class="citation">
+    « Le meilleur moment pour écrire cet article,<br>
+    c'était il y a six mois.<br>
+    Le deuxième meilleur moment, c'est maintenant. »<br>
+    <br>
+    — moi, en train de procrastiner
+  </p>
+
+  <div class="separateur"></div>
+
+  <p class="explication">
+    Ce sujet mérite mieux qu'une parenthèse.<br>
+    Il aura sa page. Son heure. Ses 800 mots minimum.<br>
+    Patience — et revenez de temps en temps.
+  </p>
+
+  <a href="javascript:history.back()" class="retour">← Revenir en arrière</a>
+
+</div>
+
+<p class="compteur" id="compteur"></p>
+
+<script>
+  // Petit compteur absurde
+  var phrases = [
+    "jour 785 de l'attente",
+    "le négatif sèche encore",
+    "révélateur en cours d'action",
+    "fixateur non appliqué",
+    "en chambre noire",
+    "pellicule non développée",
+    "obturateur non déclenché",
+  ];
+  var i = Math.floor(Math.random() * phrases.length);
+  document.getElementById('compteur').textContent = phrases[i];
+</script>
+
+</body>
+</html>
