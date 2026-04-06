@@ -240,6 +240,23 @@ img {
     animation: fadeUp 1s 1s ease forwards;
 }
 
+/* ── Statut du site ── */
+.hero-status:has(.hero-status-text:empty) {
+    display: none;
+}
+
+.hero-status {
+    position: absolute;
+    bottom: 2rem;
+    left: 4vw;
+    right: 8rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: #000;
+    letter-spacing: 0.03em;
+    max-width: 66vw;
+}
+
 /* =========================
    PAGE D'ACCUEIL — INTRO
 ========================= */
@@ -767,6 +784,12 @@ img {
    PAGE PHOTO — LAYOUT
 ========================= */
 
+/* ── Portfolio sans menu ── */
+.photo-grid-page {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+}
+
 .photo-container {
     display: flex;
     gap: 4rem;
@@ -849,7 +872,7 @@ img {
 }
 
 .masonry-grid {
-    columns: 2;
+    columns: 3;
     column-gap: 3.5rem;
 }
 
@@ -1108,23 +1131,6 @@ img {
     transform: translateY(-2px);
 }
 
-/* ── Statut du site ── */
-.hero-status:has(.hero-status-text:empty) {
-    display: none;
-}
-
-.hero-status {
-    position: absolute;
-    bottom: 2rem;
-    left: 4vw;
-    right: 8rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.9rem;
-    color: #000;
-    letter-spacing: 0.03em;
-    max-width: 66vw;
-}
-
 /* =========================
    ANIMATIONS
 ========================= */
@@ -1235,6 +1241,7 @@ img {
         text-align: center;
     }
 }
+
 /* =========================
    MOBILE PATCH — theo-richard.fr
    À ajouter à la FIN de style.css
