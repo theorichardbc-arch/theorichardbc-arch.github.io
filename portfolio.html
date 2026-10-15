@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="has-banner">
 
 <div class="site-banner">
@@ -63,7 +61,6 @@
 </div>
 
 <div class="page-wrapper">
-
 <div class="photo-grid-page">
 
   <p class="photo-qualite-mention">
@@ -108,6 +105,8 @@
     <div class="photo-item"><img src="image/yo2.webp" alt="yo2" data-titre="yo2" data-info="xxx" loading="lazy"></div>
     <div class="photo-item"><img src="image/yo3.webp" alt="yo3" data-titre="yo3" data-info="xxx" loading="lazy"></div>
   </div>
+
+</div>
 </div>
 
 <!-- LIGHTBOX -->
@@ -129,8 +128,6 @@
     <a class="lb-action-btn" id="lbDl" href="#">Télécharger</a>
     <a class="lb-action-btn" href="contact.html">Répondre à cette photo</a>
   </div>
-</div>
-
 </div>
 
 <button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
@@ -186,7 +183,7 @@
       });
   }
 
-  // Script Lightbox existant
+  // Script Lightbox d'origine
   var allItems  = Array.from(document.querySelectorAll('.photo-item img'));
   var lightbox  = document.getElementById('lightbox');
   var lbImg     = document.getElementById('lbImg');
