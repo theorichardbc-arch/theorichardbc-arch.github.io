@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Théo Richard</title>
+<title>Théo Richard - Photographie & Création</title>
+<meta name="description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
+<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, initiation photo, Théo Richard">
+<meta name="author" content="Théo Richard">
+<meta property="og:title" content="Théo Richard - Photographie & Création">
+<meta property="og:description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theo-richard.fr">
+<meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
+<body class="has-banner">
 
-<body>
-<div class="page-wrapper">
+<div class="site-banner">
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
+</div>
 
 <header class="site-header">
   <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
   <nav class="top-bar">
+    <a href="index.html">ACCUEIL</a>
     <a href="portfolio.html">PORTFOLIO</a>
     <a href="ecriture.html">ÉCRITURE</a>
-    <a href="archive.html">ARCHIVE</a>
+    <a href="a-propos.html">À PROPOS</a>
+    <a href="prestations.html">PRESTATIONS</a>
+    <a href="archives.html">ARCHIVES</a>
     <a href="contact.html">CONTACT</a>
   </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme" />
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<div class="mobile-menu-overlay" id="mobileOverlay">
+  <a href="index.html">ACCUEIL</a>
+  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="ecriture.html">ÉCRITURE</a>
+  <a href="a-propos.html">À PROPOS</a>
+  <a href="prestations.html">PRESTATIONS</a>
+  <a href="archives.html">ARCHIVES</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+
+<div class="page-wrapper">
 
 <!-- HERO -->
 <section class="hero-index">
-
   <div class="hero-content">
     <h1>THÉO RICHARD</h1>
-    <p class="hero-subtitle">Photographie argentique</p>
+    <p class="hero-subtitle">Photographie & Création</p>
     <div class="hero-meta">
-      <p class="hero-bio">Studio & Labo.</p>
+      <p class="hero-bio">Labo photo, écriture et autres matières.</p>
       <div class="hero-links">
-        <!-- Mail construit en JS pour éviter l'encodage automatique Cloudflare -->
         <a id="heroMail">✉ contact@theo-richard.fr</a>
-        <a href="https://instagram.com/the0_richard" target="_blank">◎ @the0_richard</a>
-        <a href="portfolio.html">→ Voir les photos</a>
+        <a href="https://instagram.com/the0_richard" target="_blank" rel="noopener noreferrer">◎ @the0_richard</a>
+        <a href="portfolio.html">→ Voir les travaux</a>
       </div>
     </div>
   </div>
-
-  <!-- Photo carrée portrait — placez votre fichier dans image/portrait.jpg -->
-  <img
-    src="image/_MG_0170.jpg"
-    alt="Théo Richard"
-    class="hero-photo"
-    onerror="this.style.display='none'"
-  >
-
-  <!-- STATUT DU SITE — modifiez le texte entre les guillemets data-status -->
-  <!-- Pour masquer : mettez data-status="" -->
-<div class="hero-status" id="heroStatus">
-  <span class="hero-status-text"></span>
-</div>
-
-  <!-- AFFICHAGE SCROLL -->
-  <span class="hero-scroll">Scroll</span>
+  <img src="image/_MG_0170.jpg" alt="Théo Richard" class="hero-photo" loading="lazy" onerror="this.style.display='none'">
 </section>
 
-<!-- INTRO / BIO -->
+<!-- SECTION MES TRAVAUX -->
+<section class="works-section">
+  <h2>Mes Travaux</h2>
+  <div class="works-grid">
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Portfolio Photo" loading="lazy">
+      <h3>Portfolio Photo</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+      <a href="portfolio.html" class="card-link">Découvrir le portfolio →</a>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Écriture" loading="lazy">
+      <h3>Écriture</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+      <a href="ecriture.html" class="card-link">Lire les textes →</a>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/400x300" alt="Prestations" loading="lazy">
+      <h3>Prestations</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+      <a href="prestations.html" class="card-link">Voir les prestations →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION À PROPOS (EXTRAIT) -->
 <section class="intro-section">
   <div class="intro-label">À propos</div>
   <div class="intro-text">
-    <p>
-Je photographie en argentique, mais je n’expose pas seulement des images : je documente un chemin.
-Chaque photo est prise une à une. Elle porte le temps, l’attente, l’erreur possible — et l’acceptation de cette imperfection.<br>
-Du déclenchement au négatif, du développement à la numérisation ou au tirage, l’image traverse plusieurs états. Ici, je montre ce moment intermédiaire : un travail en cours, jamais totalement figé.
-Mon regard se pose sur le quotidien et le portrait — des visages, des rues, des natures mortes ; une lumière ordinaire que le grain du film rend presque fragile. Ce quotidien, souvent, c’est le mien.<br>
-Ce site est aussi un espace d’écriture.
-Des textes entre l’essai et le carnet : réflexions sur la création, le geste photographique, le rapport au matériel, la lenteur, l’erreur, l’apprentissage. Parfois des articles plus techniques
-où je raconte mon parcours en argentique — non pas comme un maître, mais comme un praticien en apprentissage permanent.
-J’y rassemble ce que je comprends, ce que je teste, ce que j’observe chez les grands photographes, et ce que la pratique m’enseigne.
-L’argentique est une matière exigeante : mécanique simple en apparence, chimie précise, choix de films, de produits, méthode de scans puis de traitement numérique,
-ou de tirages, rebelotte, une chimie, un papier, une lumière.
-Je partage cette exploration avec ses réussites et ses ratés.<br>
-Ce site est donc un atelier ouvert : un lieu où l’image et le texte avancent ensemble, où la technique nourrit la pensée, et où chaque étape reste visible.
-Vous êtes évidemment sollicité à contribuer via la page contact ou grace au formulaire de réponse au bas des articles.
-    </p>
-  </div>
-</section>
-
-<!-- APERÇU PHOTOS -->
-<!-- Placez vos fichiers dans image/preview-1.jpg à preview-4.jpg       -->
-<!-- Si aucune photo n'est présente, cette section se masque toute seule -->
-<section class="preview-section">
-  <div class="preview-header">
-    <h2>Photographie</h2>
-    <div class="preview-voir-lien">
-      <a href="portfolio.html">Accès au portfolio →</a>
-    </div>
-  </div>
-  <div class="preview-grid" id="previewGrid">
-    <img src="image/preview-1.webp" alt="Aperçu 1">
-    <img src="image/preview-2.webp" alt="Aperçu 2">
-    <img src="image/preview-3.webp" alt="Aperçu 3">
-    <img src="image/preview-4.webp" alt="Aperçu 4">
+    <p>Je suis Théo, passionné par la photo argentique et l’écriture. Mon approche allie rigueur technique et créativité.</p>
+    <p><a href="a-propos.html" class="card-link">En savoir plus →</a></p>
   </div>
 </section>
 
 </div><!-- /.page-wrapper -->
+
+<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
@@ -107,36 +123,51 @@ Vous êtes évidemment sollicité à contribuer via la page contact ou grace au 
   <span><a href="mentions.html">Mentions légales</a></span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── Année automatique ──
+<script>
   document.getElementById('annee').textContent = new Date().getFullYear();
-
-  // ── Lien mail construit en JS (contourne l'encodage Cloudflare) ──
   var m = document.getElementById('heroMail');
   if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
 
-  // ── Photos preview : masquer la section si aucune image ne charge ──
-  var previewImgs    = Array.from(document.querySelectorAll('#previewGrid img'));
-  var previewSection = document.querySelector('.preview-section');
-  var errors = 0;
+  // Mode sombre
+  const toggleSwitch = document.querySelector('#checkbox-theme');
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
+  }
+  if (toggleSwitch) {
+      toggleSwitch.addEventListener('change', function(e) {
+          if (e.target.checked) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+          } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+              localStorage.setItem('theme', 'light');
+          }
+      });
+  }
 
-  previewImgs.forEach(function(img) {
-    img.addEventListener('error', function() {
-      img.style.display = 'none';
-      errors++;
-      if (errors === previewImgs.length) {
-        previewSection.style.display = 'none';
-      }
-    });
-    img.addEventListener('load', function() { img.classList.add('loaded'); });
-    if (img.complete && img.naturalWidth > 0) img.classList.add('loaded');
-  });
+  // Hamburger
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  if (hamburgerBtn && mobileOverlay) {
+      hamburgerBtn.addEventListener('click', function() {
+          hamburgerBtn.classList.toggle('open');
+          mobileOverlay.classList.toggle('open');
+          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+      });
+  }
 
-  // ── Photo portrait hero ──
-  var portrait = document.querySelector('.hero-photo');
-  if (portrait) {
-    if (portrait.complete && portrait.naturalWidth > 0) portrait.classList.add('loaded');
-    else portrait.addEventListener('load', function() { portrait.classList.add('loaded'); });
+  // Scroll to top
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+      window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
+          else scrollTopBtn.classList.remove('visible');
+      });
+      scrollTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
   }
 </script>
 
