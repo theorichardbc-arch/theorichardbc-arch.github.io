@@ -5,148 +5,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Liens — Théo Richard</title>
+<meta name="description" content="Retrouvez l'ensemble des liens utiles et réseaux sociaux de Théo Richard.">
+<meta name="keywords" content="liens, réseaux sociaux, substack, instagram, contact, théo richard">
+<meta name="author" content="Théo Richard">
+<meta property="og:title" content="Liens — Théo Richard">
+<meta property="og:description" content="Retrouvez l'ensemble des liens utiles et réseaux sociaux de Théo Richard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theo-richard.fr/liens.html">
+<meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-  .links-page {
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 6rem 2rem;
-    min-height: calc(100vh - 80px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .links-nom {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.4rem;
-    letter-spacing: 0.02em;
-    margin: 0 0 0.4rem;
-    text-align: center;
-  }
-
-  .links-bio {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    opacity: 0.45;
-    margin: 0 0 3rem;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  .links-grille {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    width: 100%;
-  }
-
-.link-case {
-    border: 1px solid #000;
-    padding: 1.2rem 1.5rem;
-    min-height: 80px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    font-family: 'IBM Plex Mono', monospace;
-    transition: background 0.15s ease, color 0.15s ease;
-}
-
-.link-case:hover {
-    background: #000;
-    color: #fff;
-}
-
-.link-case-label {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-}
-
-.link-case-desc {
-    font-size: 0.7rem;
-    opacity: 0.5;
-    line-height: 1.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-}
-
-.link-case-desc:empty {
-    display: none;
-}
-
-.link-case:has(.link-case-desc:empty) .link-case-label {
-    grid-row: 1 / 3;
-}
-
-.link-case:hover .link-case-desc {
-    opacity: 0.65;
-}
-  
-</style>
 </head>
 
-<body>
-<div class="links-page">
+<body class="has-banner">
 
-  <p class="links-nom">Théo Richard</p>
-  <p class="links-bio">(presque) tout est là. Clique sur ce qui t'intéresse.</p>
+<div class="site-banner">
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
+</div>
 
-  <div class="links-grille">
+<header class="site-header">
+  <a href="index.html" class="home-button">
+    <span class="home-icon">⌂</span> ACCUEIL
+  </a>
+  <nav class="top-bar">
+    <a href="index.html">ACCUEIL</a>
+    <a href="portfolio.html">PORTFOLIO</a>
+    <a href="ecriture.html">ÉCRITURE</a>
+    <a href="a-propos.html">À PROPOS</a>
+    <a href="prestations.html">PRESTATIONS</a>
+    <a href="archives.html">ARCHIVES</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme" />
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
-    <!-- AJOUTEZ UNE CASE — copiez ce bloc :
-    <a href="URL" class="link-case" target="_blank" rel="noopener">
-      <span class="link-case-label">Titre</span>
-      <span class="link-case-desc">Description courte</span>
+<div class="mobile-menu-overlay" id="mobileOverlay">
+  <a href="index.html">ACCUEIL</a>
+  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="ecriture.html">ÉCRITURE</a>
+  <a href="a-propos.html">À PROPOS</a>
+  <a href="prestations.html">PRESTATIONS</a>
+  <a href="archives.html">ARCHIVES</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+
+<div class="page-wrapper">
+  <div class="texte-liste-header" style="margin-bottom: 3rem;">
+    <h1>Liens utiles</h1>
+  </div>
+
+  <div class="texte-liste-page" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; padding-bottom: 6rem;">
+    <a href="portfolio.html" class="texte-item" style="display: block; padding: 1.2rem; border: 1px solid var(--border-color); background: var(--card-bg);">
+      <span class="texte-titre" style="font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">→ Découvrir le Portfolio photo</span>
+      <span class="texte-intro" style="font-size: 0.85rem; color: var(--subtle-text);">Plongée dans mes séries argentiques et instantanés.</span>
     </a>
-    -->
 
-    <a href="https://theo-richard.fr/portfolio.html" class="link-case">
-      <span class="link-case-label">Portfolio</span>
-      <span class="link-case-desc">accès direct aux photos</span>
+    <a href="ecriture.html" class="texte-item" style="display: block; padding: 1.2rem; border: 1px solid var(--border-color); background: var(--card-bg);">
+      <span class="texte-titre" style="font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">→ Lire mes articles sur Substack</span>
+      <span class="texte-intro" style="font-size: 0.85rem; color: var(--subtle-text);">Réflexions sur la technique, la lumière et la démarche de création.</span>
     </a>
 
-    <a href="https://rtheo.substack.com/p/un-air-de-tabarly?r=6jr8tq&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true">
-  <span class="link-case-label">Mon dernier article</span>
-  <span class="link-case-desc">Un retour sur l'écriture, et un peu de vent dans mes voiles</span>
-    </a>
-    
-
-    <a href="https://www.theo-richard.fr/index.html" class="link-case" target="_blank" rel="noopener">
-      <span class="link-case-label">Site web</span>
-      <span class="link-case-desc"></span>
+    <a href="https://instagram.com/the0_richard" class="texte-item" target="_blank" rel="noopener noreferrer" style="display: block; padding: 1.2rem; border: 1px solid var(--border-color); background: var(--card-bg);">
+      <span class="texte-titre" style="font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">◎ Suivre sur Instagram (@the0_richard)</span>
+      <span class="texte-intro" style="font-size: 0.85rem; color: var(--subtle-text);">Actualités et partages visuels au jour le jour.</span>
     </a>
 
-
-    <a href="https://pixelfed.social/the0_richard" class="link-case" target="_blank" rel="noopener">
-      <span class="link-case-label">Pixelfed</span>
-      <span class="link-case-desc">Ce qu'instagram aurait dû rester</span>
+    <a href="contact.html" class="texte-item" style="display: block; padding: 1.2rem; border: 1px solid var(--border-color); background: var(--card-bg);">
+      <span class="texte-titre" style="font-size: 1.1rem; display: block; margin-bottom: 0.3rem;">✉ Me contacter</span>
+      <span class="texte-intro" style="font-size: 0.85rem; color: var(--subtle-text);">Pour toute question, commande de tirage ou projet.</span>
     </a>
-
-
-    <!-- AJOUTEZ UNE CASE — copiez ce bloc :
-    <a href="URL" class="link-case" target="_blank" rel="noopener">
-      <span class="link-case-label">Titre</span>
-      <span class="link-case-desc">Description courte</span>
-    </a>
-    -->
-
   </div>
 </div>
+
+<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
@@ -156,6 +100,42 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
+  const toggleSwitch = document.querySelector('#checkbox-theme');
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
+  }
+  if (toggleSwitch) {
+      toggleSwitch.addEventListener('change', function(e) {
+          if (e.target.checked) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+          } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+              localStorage.setItem('theme', 'light');
+          }
+      });
+  }
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  if (hamburgerBtn && mobileOverlay) {
+      hamburgerBtn.addEventListener('click', function() {
+          hamburgerBtn.classList.toggle('open');
+          mobileOverlay.classList.toggle('open');
+          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+      });
+  }
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+      window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
+          else scrollTopBtn.classList.remove('visible');
+      });
+      scrollTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  }
 </script>
 
 </body>
