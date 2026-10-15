@@ -5,24 +5,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio — Théo Richard</title>
+<meta name="description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
+<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, initiation photo, Théo Richard">
+<meta name="author" content="Théo Richard">
+<meta property="og:title" content="Portfolio — Théo Richard">
+<meta property="og:description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theo-richard.fr/portfolio.html">
+<meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-<div class="page-wrapper">
+<body class="has-banner">
+
+<div class="site-banner">
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
+</div>
 
 <header class="site-header">
   <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
   <nav class="top-bar">
+    <a href="index.html">ACCUEIL</a>
     <a href="portfolio.html">PORTFOLIO</a>
     <a href="ecriture.html">ÉCRITURE</a>
-    <a href="archive.html">ARCHIVE</a>
+    <a href="a-propos.html">À PROPOS</a>
+    <a href="prestations.html">PRESTATIONS</a>
+    <a href="archives.html">ARCHIVES</a>
     <a href="contact.html">CONTACT</a>
   </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme" />
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<div class="mobile-menu-overlay" id="mobileOverlay">
+  <a href="index.html">ACCUEIL</a>
+  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="ecriture.html">ÉCRITURE</a>
+  <a href="a-propos.html">À PROPOS</a>
+  <a href="prestations.html">PRESTATIONS</a>
+  <a href="archives.html">ARCHIVES</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+
+<div class="page-wrapper">
 
 <div class="photo-grid-page">
 
@@ -31,219 +71,42 @@
     <a href="contact.html">me contacter</a> pour les tirages (réalisés à la commande).
   </p>
 
-  <!-- Pour ajouter une photo : copiez un bloc <div class="photo-item"> et changez src et alt -->
   <div class="masonry-grid">
-<div class="photo-item">
-  <img src="image/banc.webp" alt="banc"
-       data-titre="banc"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/bancs.webp" alt="bancs"
-       data-titre="bancs"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/couple-thermes.webp" alt="couple-thermes"
-       data-titre="Couple dans les thermes de Vichy"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/cafe.webp" alt="cafe"
-       data-titre="cafe"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/cafetiere.webp" alt="cafetiere"
-       data-titre="cafetiere"
-       data-info="2026-07-23-VA">
-</div>
-
-<div class="photo-item">
-  <img src="image/femme-voiture.webp" alt="femme-voiture"
-       data-titre="Femme assoupie dans une voiture"
-       data-info="2026-07-23-EV">
-</div>
-
-<div class="photo-item">
-  <img src="image/gouttes.webp" alt="gouttes"
-       data-titre="Des gouttes d'eau sur le grain de la peau"
-       data-info="2026-07-23-EV">
-</div>
-
-<div class="photo-item">
-  <img src="image/chat1.webp" alt="chat1"
-       data-titre="chat1"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/cheval.webp" alt="cheval"
-       data-titre="cheval"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/citerne.webp" alt="citerne"
-       data-titre="citerne"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/clim.webp" alt="clim"
-       data-titre="clim"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/drap.webp" alt="drap"
-       data-titre="drap"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/eglise.webp" alt="eglise"
-       data-titre="eglise"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/elise.webp" alt="elise"
-       data-titre="elise"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/femme.webp" alt="femme"
-       data-titre="femme"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/fleur2.webp" alt="fleur2"
-       data-titre="fleur2"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/fleur3.webp" alt="fleur3"
-       data-titre="fleur3"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/fleurette.webp" alt="fleurette"
-       data-titre="fleurette"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/gab.webp" alt="gab"
-       data-titre="gab"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/journal.webp" alt="journal"
-       data-titre="Homme lisant son journal au coeur du festival d'Avignon"
-       data-info="2026-07-23-VA">
-</div>
-
-<div class="photo-item">
-  <img src="image/maison-champ.webp" alt="maison-champ"
-       data-titre="Une maison agricole sur une pente douce, un après midi de juillet"
-       data-info="2026-07-23-VA">
-</div>
-
-<div class="photo-item">
-  <img src="image/plage.webp" alt="plage"
-       data-titre="Une plage bondée sur sud de la France, en face de la promenade des anglais"
-       data-info="2026-07-23-EV">
-</div>
-
-<div class="photo-item">
-  <img src="image/maison.webp" alt="maison"
-       data-titre="maison"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/maxence.webp" alt="maxence"
-       data-titre="maxence"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/rai-tunnel.webp" alt="rai-tunnel"
-       data-titre="Une polution lumineuse qui ne masque pas un homme dans un tunnel"
-       data-info="2026-07-23-VA">
-</div>
-
-<div class="photo-item">
-  <img src="image/moi.webp" alt="moi"
-       data-titre="moi"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/nathan.webp" alt="nathan"
-       data-titre="nathan"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/nathanterrasse.webp" alt="nathanterrasse"
-       data-titre="nathanterrasse"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/pilote.webp" alt="pilote"
-       data-titre="pilote"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/poteau.webp" alt="poteau"
-       data-titre="poteau"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/tarn.webp" alt="tarn"
-       data-titre="tarn"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/tractor.webp" alt="tractor"
-       data-titre="tractor"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/usine.webp" alt="usine"
-       data-titre="usine"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/yo2.webp" alt="yo2"
-       data-titre="yo2"
-       data-info="xxx">
-</div>
-
-<div class="photo-item">
-  <img src="image/yo3.webp" alt="yo3"
-       data-titre="yo3"
-       data-info="xxx">
-</div>
-
-
+    <div class="photo-item"><img src="image/banc.webp" alt="banc" data-titre="banc" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/bancs.webp" alt="bancs" data-titre="bancs" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/couple-thermes.webp" alt="couple-thermes" data-titre="Couple dans les thermes de Vichy" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/cafe.webp" alt="cafe" data-titre="cafe" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/cafetiere.webp" alt="cafetiere" data-titre="cafetiere" data-info="2026-07-23-VA" loading="lazy"></div>
+    <div class="photo-item"><img src="image/femme-voiture.webp" alt="femme-voiture" data-titre="Femme assoupie dans une voiture" data-info="2026-07-23-EV" loading="lazy"></div>
+    <div class="photo-item"><img src="image/gouttes.webp" alt="gouttes" data-titre="Des gouttes d'eau sur le grain de la peau" data-info="2026-07-23-EV" loading="lazy"></div>
+    <div class="photo-item"><img src="image/chat1.webp" alt="chat1" data-titre="chat1" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/cheval.webp" alt="cheval" data-titre="cheval" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/citerne.webp" alt="citerne" data-titre="citerne" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/clim.webp" alt="clim" data-titre="clim" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/drap.webp" alt="drap" data-titre="drap" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/eglise.webp" alt="eglise" data-titre="eglise" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/elise.webp" alt="elise" data-titre="elise" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/femme.webp" alt="femme" data-titre="femme" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/fleur2.webp" alt="fleur2" data-titre="fleur2" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/fleur3.webp" alt="fleur3" data-titre="fleur3" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/fleurette.webp" alt="fleurette" data-titre="fleurette" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/gab.webp" alt="gab" data-titre="gab" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/journal.webp" alt="journal" data-titre="Homme lisant son journal au coeur du festival d'Avignon" data-info="2026-07-23-VA" loading="lazy"></div>
+    <div class="photo-item"><img src="image/maison-champ.webp" alt="maison-champ" data-titre="Une maison agricole sur une pente douce, un après midi de juillet" data-info="2026-07-23-VA" loading="lazy"></div>
+    <div class="photo-item"><img src="image/plage.webp" alt="plage" data-titre="Une plage bondée sur sud de la France, en face de la promenade des anglais" data-info="2026-07-23-EV" loading="lazy"></div>
+    <div class="photo-item"><img src="image/maison.webp" alt="maison" data-titre="maison" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/maxence.webp" alt="maxence" data-titre="maxence" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/rai-tunnel.webp" alt="rai-tunnel" data-titre="Une polution lumineuse qui ne masque pas un homme dans un tunnel" data-info="2026-07-23-VA" loading="lazy"></div>
+    <div class="photo-item"><img src="image/moi.webp" alt="moi" data-titre="moi" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/nathan.webp" alt="nathan" data-titre="nathan" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/nathanterrasse.webp" alt="nathanterrasse" data-titre="nathanterrasse" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/pilote.webp" alt="pilote" data-titre="pilote" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/poteau.webp" alt="poteau" data-titre="poteau" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/tarn.webp" alt="tarn" data-titre="tarn" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/tractor.webp" alt="tractor" data-titre="tractor" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/usine.webp" alt="usine" data-titre="usine" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/yo2.webp" alt="yo2" data-titre="yo2" data-info="xxx" loading="lazy"></div>
+    <div class="photo-item"><img src="image/yo3.webp" alt="yo3" data-titre="yo3" data-info="xxx" loading="lazy"></div>
   </div>
 </div>
 
@@ -262,13 +125,15 @@
   <div class="lightbox-counter" id="lbCounter"></div>
   <div class="lightbox-actions">
     <button class="lb-action-btn" id="lbCopier">Copier le lien</button>
-    <a      class="lb-action-btn" id="lbMail" href="#">Envoyer par mail</a>
-    <a      class="lb-action-btn" id="lbDl"   href="#">Télécharger</a>
-    <a      class="lb-action-btn" href="contact.html">Répondre à cette photo</a>
+    <a class="lb-action-btn" id="lbMail" href="#">Envoyer par mail</a>
+    <a class="lb-action-btn" id="lbDl" href="#">Télécharger</a>
+    <a class="lb-action-btn" href="contact.html">Répondre à cette photo</a>
   </div>
 </div>
 
 </div>
+
+<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
@@ -279,6 +144,49 @@
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
 
+  // Mode sombre
+  const toggleSwitch = document.querySelector('#checkbox-theme');
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
+  }
+  if (toggleSwitch) {
+      toggleSwitch.addEventListener('change', function(e) {
+          if (e.target.checked) {
+              document.documentElement.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+          } else {
+              document.documentElement.setAttribute('data-theme', 'light');
+              localStorage.setItem('theme', 'light');
+          }
+      });
+  }
+
+  // Hamburger
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  if (hamburgerBtn && mobileOverlay) {
+      hamburgerBtn.addEventListener('click', function() {
+          hamburgerBtn.classList.toggle('open');
+          mobileOverlay.classList.toggle('open');
+          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+      });
+  }
+
+  // Scroll to top
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  if (scrollTopBtn) {
+      window.addEventListener('scroll', function() {
+          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
+          else scrollTopBtn.classList.remove('visible');
+      });
+      scrollTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  }
+
+  // Script Lightbox existant
   var allItems  = Array.from(document.querySelectorAll('.photo-item img'));
   var lightbox  = document.getElementById('lightbox');
   var lbImg     = document.getElementById('lbImg');
@@ -378,7 +286,6 @@
     });
   });
 
-  // Chargement progressif
   var photoObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
