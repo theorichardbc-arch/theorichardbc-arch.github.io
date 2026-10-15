@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="has-banner">
 
 <div class="site-banner">
@@ -135,62 +133,4 @@
 
   <a href="https://substack.com/home/post/p-180054811" class="texte-item" target="_blank" rel="noopener noreferrer">
     <div class="texte-meta">
-      <span class="texte-titre">J'ai commencé à apprendre la photo, ça fait 20 ans</span>
-      <span class="texte-date">Novembre 2025</span>
-    </div>
-    <p class="texte-intro">Et on va faire le point sur ce que j'ai appris.</p>
-  </a>
-
-</div>
-</div>
-
-<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
-
-<footer class="site-footer">
-  <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
-  <span>Photos, textes et design protégés par le droit d'auteur.</span>
-  <span><a href="mentions.html">Mentions légales</a></span>
-</footer>
-
-<script>
-  document.getElementById('annee').textContent = new Date().getFullYear();
-  const toggleSwitch = document.querySelector('#checkbox-theme');
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
-  }
-  if (toggleSwitch) {
-      toggleSwitch.addEventListener('change', function(e) {
-          if (e.target.checked) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-              localStorage.setItem('theme', 'dark');
-          } else {
-              document.documentElement.setAttribute('data-theme', 'light');
-              localStorage.setItem('theme', 'light');
-          }
-      });
-  }
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-  if (hamburgerBtn && mobileOverlay) {
-      hamburgerBtn.addEventListener('click', function() {
-          hamburgerBtn.classList.toggle('open');
-          mobileOverlay.classList.toggle('open');
-          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
-      });
-  }
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  if (scrollTopBtn) {
-      window.addEventListener('scroll', function() {
-          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
-          else scrollTopBtn.classList.remove('visible');
-      });
-      scrollTopBtn.addEventListener('click', function() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-  }
-</script>
-
-</body>
-</html>
+      <span class="texte-titre">J'ai commencé à apprendre la photo, ça fait 20
