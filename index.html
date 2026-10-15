@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Théo Richard - Photographie & Création</title>
+<title>Théo Richard — Photographie & Création</title>
 <meta name="description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
-<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, initiation photo, Théo Richard">
+<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, Théo Richard">
 <meta name="author" content="Théo Richard">
-<meta property="og:title" content="Théo Richard - Photographie & Création">
-<meta property="og:description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
+<meta property="og:title" content="Théo Richard — Photographie & Création">
+<meta property="og:description" content="Labo photo, écriture et autres matières.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://theo-richard.fr">
+<meta property="og:url" content="https://theo-richard.fr/index.html">
 <meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,95 +23,34 @@
   Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
 </div>
 
-<header class="site-header">
-  <a href="index.html" class="home-button">
-    <span class="home-icon">⌂</span> ACCUEIL
-  </a>
-  <nav class="top-bar">
-    <a href="index.html">ACCUEIL</a>
-    <a href="portfolio.html">PORTFOLIO</a>
-    <a href="ecriture.html">ÉCRITURE</a>
-    <a href="a-propos.html">À PROPOS</a>
-    <a href="prestations.html">PRESTATIONS</a>
-    <a href="archives.html">ARCHIVES</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
-  <div class="theme-switch-wrapper">
-    <span>MODE NUIT</span>
-    <label class="theme-switch" for="checkbox-theme">
-      <input type="checkbox" id="checkbox-theme" />
-      <div class="slider"></div>
-    </label>
-  </div>
-  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</header>
-
-<div class="mobile-menu-overlay" id="mobileOverlay">
-  <a href="index.html">ACCUEIL</a>
-  <a href="portfolio.html">PORTFOLIO</a>
-  <a href="ecriture.html">ÉCRITURE</a>
-  <a href="a-propos.html">À PROPOS</a>
-  <a href="prestations.html">PRESTATIONS</a>
-  <a href="archives.html">ARCHIVES</a>
-  <a href="contact.html">CONTACT</a>
+<!-- Optionnel : Interrupteur mode nuit discret en haut à droite sur l'accueil -->
+<div style="position: fixed; top: 35px; right: 4vw; z-index: 5000; display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 500;">
+  <span>MODE NUIT</span>
+  <label class="theme-switch" for="checkbox-theme">
+    <input type="checkbox" id="checkbox-theme" />
+    <div class="slider"></div>
+  </label>
 </div>
 
-<div class="page-wrapper">
+<div class="page-wrapper" style="display: flex; flex-direction: column; justify-content: center; min-height: 85vh;">
 
-<!-- HERO -->
-<section class="hero-index">
-  <div class="hero-content">
-    <h1>THÉO RICHARD</h1>
-    <p class="hero-subtitle">Photographie & Création</p>
-    <div class="hero-meta">
-      <p class="hero-bio">Labo photo, écriture et autres matières.</p>
-      <div class="hero-links">
-        <a id="heroMail">✉ contact@theo-richard.fr</a>
-        <a href="https://instagram.com/the0_richard" target="_blank" rel="noopener noreferrer">◎ @the0_richard</a>
-        <a href="portfolio.html">→ Voir les travaux</a>
+  <!-- ACCUEIL PORTAIL -->
+  <section class="hero-index" style="grid-template-columns: 1fr; gap: 2rem;">
+    <div class="hero-content">
+      <h1>THÉO RICHARD</h1>
+      <p class="hero-subtitle">Photographie & Création</p>
+      
+      <!-- Menu d'arrivée directement sous le titre -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; max-width: 400px;">
+        <a href="portfolio.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ PORTFOLIO</a>
+        <a href="ecriture.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ ÉCRITURE</a>
+        <a href="a-propos.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ À PROPOS</a>
+        <a href="prestations.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ PRESTATIONS</a>
+        <a href="archives.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ ARCHIVES</a>
+        <a href="contact.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ CONTACT</a>
       </div>
     </div>
-  </div>
-  <img src="image/_MG_0170.jpg" alt="Théo Richard" class="hero-photo" loading="lazy" onerror="this.style.display='none'">
-</section>
-
-<!-- SECTION MES TRAVAUX -->
-<section class="works-section">
-  <h2>Mes Travaux</h2>
-  <div class="works-grid">
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Portfolio Photo" loading="lazy">
-      <h3>Portfolio Photo</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
-      <a href="portfolio.html" class="card-link">Découvrir le portfolio →</a>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Écriture" loading="lazy">
-      <h3>Écriture</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
-      <a href="ecriture.html" class="card-link">Lire les textes →</a>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x300" alt="Prestations" loading="lazy">
-      <h3>Prestations</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
-      <a href="prestations.html" class="card-link">Voir les prestations →</a>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION À PROPOS (EXTRAIT) -->
-<section class="intro-section">
-  <div class="intro-label">À propos</div>
-  <div class="intro-text">
-    <p>Je suis Théo, passionné par la photo argentique et l’écriture. Mon approche allie rigueur technique et créativité.</p>
-    <p><a href="a-propos.html" class="card-link">En savoir plus →</a></p>
-  </div>
-</section>
+  </section>
 
 </div><!-- /.page-wrapper -->
 
@@ -125,8 +64,6 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
-  var m = document.getElementById('heroMail');
-  if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
 
   // Mode sombre
   const toggleSwitch = document.querySelector('#checkbox-theme');
@@ -144,17 +81,6 @@
               document.documentElement.setAttribute('data-theme', 'light');
               localStorage.setItem('theme', 'light');
           }
-      });
-  }
-
-  // Hamburger
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-  if (hamburgerBtn && mobileOverlay) {
-      hamburgerBtn.addEventListener('click', function() {
-          hamburgerBtn.classList.toggle('open');
-          mobileOverlay.classList.toggle('open');
-          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
       });
   }
 
