@@ -1,75 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Archives — Théo Richard</title>
-<meta name="description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
-<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, initiation photo, Théo Richard">
-<meta name="author" content="Théo Richard">
-<meta property="og:title" content="Archives — Théo Richard">
-<meta property="og:description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://theo-richard.fr/archives.html">
-<meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Archive — Théo Richard</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="has-banner">
 
-<div class="site-banner">
-  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
-</div>
+<body>
+<div class="page-wrapper">
 
 <header class="site-header">
   <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
   <nav class="top-bar">
-    <a href="index.html">ACCUEIL</a>
     <a href="portfolio.html">PORTFOLIO</a>
     <a href="ecriture.html">ÉCRITURE</a>
-    <a href="a-propos.html">À PROPOS</a>
-    <a href="prestations.html">PRESTATIONS</a>
-    <a href="archives.html">ARCHIVES</a>
+    <a href="archive.html">ARCHIVE</a>
     <a href="contact.html">CONTACT</a>
   </nav>
-  <div class="theme-switch-wrapper">
-    <span>MODE NUIT</span>
-    <label class="theme-switch" for="checkbox-theme">
-      <input type="checkbox" id="checkbox-theme" />
-      <div class="slider"></div>
-    </label>
-  </div>
-  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
 </header>
 
-<div class="mobile-menu-overlay" id="mobileOverlay">
-  <a href="index.html">ACCUEIL</a>
-  <a href="portfolio.html">PORTFOLIO</a>
-  <a href="ecriture.html">ÉCRITURE</a>
-  <a href="a-propos.html">À PROPOS</a>
-  <a href="prestations.html">PRESTATIONS</a>
-  <a href="archives.html">ARCHIVES</a>
-  <a href="contact.html">CONTACT</a>
-</div>
+<div class="texte-liste-page">
 
-<div class="page-wrapper">
-  <div class="construction-container" style="margin: 6rem 0;">
-    <p class="intro-label" style="margin-bottom: 1rem;">ARCHIVES</p>
-    <h1>EN CONSTRUCTION</h1>
-    <p style="font-size: 1.1rem; margin-bottom: 2rem;">Cette page accueillera bientôt mes séries photo archivées.</p>
-    <p><a href="contact.html" class="card-link">Plus d’info : Contact →</a></p>
+  <div class="texte-liste-header">
+    <h1>Archive</h1>
   </div>
-</div>
 
-<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
+  <!-- TEMPLATE — copiez ce bloc pour chaque nouvelle capsule :
+  <a href="VOTRE-URL-SUBSTACK" class="texte-item" target="_blank" rel="noopener">
+    <div class="texte-meta">
+      <span class="texte-titre">Titre de la série</span>
+      <span class="texte-date">Mois Année</span>
+    </div>
+    <p class="texte-intro">Description courte — pellicule, lieu, contexte.</p>
+  </a>
+  -->
+
+</div>
+</div>
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
@@ -79,42 +51,6 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
-  const toggleSwitch = document.querySelector('#checkbox-theme');
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
-  }
-  if (toggleSwitch) {
-      toggleSwitch.addEventListener('change', function(e) {
-          if (e.target.checked) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-              localStorage.setItem('theme', 'dark');
-          } else {
-              document.documentElement.setAttribute('data-theme', 'light');
-              localStorage.setItem('theme', 'light');
-          }
-      });
-  }
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileOverlay = document.getElementById('mobileOverlay');
-  if (hamburgerBtn && mobileOverlay) {
-      hamburgerBtn.addEventListener('click', function() {
-          hamburgerBtn.classList.toggle('open');
-          mobileOverlay.classList.toggle('open');
-          document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
-      });
-  }
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  if (scrollTopBtn) {
-      window.addEventListener('scroll', function() {
-          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
-          else scrollTopBtn.classList.remove('visible');
-      });
-      scrollTopBtn.addEventListener('click', function() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-  }
 </script>
 
 </body>
