@@ -6,23 +6,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mentions légales — Théo Richard</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&family=Lora:wght@400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-<div class="page-wrapper">
+<body class="has-banner">
+<div class="site-banner">
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d'info : Contact</a>
+</div>
 
 <header class="site-header">
   <a href="index.html" class="home-button">
     <span class="home-icon">⌂</span> ACCUEIL
   </a>
   <nav class="top-bar">
-    <a href="photographie.html">PHOTOGRAPHIE</a>
+    <a href="index.html">ACCUEIL</a>
+    <a href="portfolio.html">PORTFOLIO</a>
     <a href="ecriture.html">ÉCRITURE</a>
-    <a href="archive.html">ARCHIVE</a>
+    <a href="a-propos.html">À PROPOS</a>
+    <a href="prestations.html">PRESTATIONS</a>
+    <a href="archives.html">ARCHIVES</a>
     <a href="contact.html">CONTACT</a>
   </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme" />
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<div class="mobile-menu-overlay" id="mobileOverlay">
+  <a href="index.html">ACCUEIL</a>
+  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="ecriture.html">ÉCRITURE</a>
+  <a href="a-propos.html">À PROPOS</a>
+  <a href="prestations.html">PRESTATIONS</a>
+  <a href="archives.html">ARCHIVES</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+
+
+<div class="page-wrapper">
+
+
 
 <div class="texte-page">
 
@@ -93,6 +125,8 @@
 
 </div>
 
+<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
+
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
   <span>Photos, textes et design protégés par le droit d'auteur.</span>
@@ -108,6 +142,32 @@
   if (m1) m1.href = mail;
   var m2 = document.getElementById('mailMentions2');
   if (m2) m2.href = mail;
+</script>
+<script>
+  var toggleSwitch = document.querySelector('#checkbox-theme');
+  var saved = localStorage.getItem('theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); if (saved === 'dark' && toggleSwitch) toggleSwitch.checked = true; }
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', function(e) {
+      var t = e.target.checked ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+    });
+  }
+  var hBtn = document.getElementById('hamburgerBtn');
+  var mOv  = document.getElementById('mobileOverlay');
+  if (hBtn && mOv) {
+    hBtn.addEventListener('click', function() {
+      hBtn.classList.toggle('open');
+      mOv.classList.toggle('open');
+      document.body.style.overflow = mOv.classList.contains('open') ? 'hidden' : '';
+    });
+  }
+  var stBtn = document.getElementById('scrollTopBtn');
+  if (stBtn) {
+    window.addEventListener('scroll', function() { stBtn.classList.toggle('visible', window.scrollY > 300); });
+    stBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
 </script>
 </body>
 </html>
