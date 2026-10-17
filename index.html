@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Théo Richard — Photographie & Création</title>
-<meta name="description" content="Théo Richard - Photographie & Création. Labo argentique, écriture et médiation culturelle.">
-<meta name="keywords" content="photographie argentique, labo photo, écriture, création, médiation culturelle, tirages artisanaux, Théo Richard">
+<title>Théo Richard — Photographie &amp; Création</title>
+<meta name="description" content="Théo Richard — Photographie &amp; Création. Labo argentique, écriture et médiation culturelle.">
 <meta name="author" content="Théo Richard">
-<meta property="og:title" content="Théo Richard — Photographie & Création">
-<meta property="og:description" content="Labo photo, écriture et autres matières.">
+<meta property="og:title" content="Théo Richard — Photographie &amp; Création">
+<meta property="og:description" content="Labo argentique, écriture et médiation culturelle.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://theo-richard.fr/index.html">
+<meta property="og:url" content="https://theo-richard.fr/">
 <meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,39 +19,113 @@
 <body class="has-banner">
 
 <div class="site-banner">
-  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d'info : Contact</a>
 </div>
 
-<!-- Optionnel : Interrupteur mode nuit discret en haut à droite sur l'accueil -->
-<div style="position: fixed; top: 35px; right: 4vw; z-index: 5000; display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 500;">
-  <span>MODE NUIT</span>
-  <label class="theme-switch" for="checkbox-theme">
-    <input type="checkbox" id="checkbox-theme" />
-    <div class="slider"></div>
-  </label>
+<header class="site-header">
+  <a href="index.html" class="home-button">
+    <span class="home-icon">⌂</span> ACCUEIL
+  </a>
+  <nav class="top-bar">
+    <a href="index.html">ACCUEIL</a>
+    <a href="portfolio.html">PORTFOLIO</a>
+    <a href="ecriture.html">ÉCRITURE</a>
+    <a href="a-propos.html">À PROPOS</a>
+    <a href="prestations.html">PRESTATIONS</a>
+    <a href="archives.html">ARCHIVES</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme" />
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu-overlay" id="mobileOverlay">
+  <a href="index.html">ACCUEIL</a>
+  <a href="portfolio.html">PORTFOLIO</a>
+  <a href="ecriture.html">ÉCRITURE</a>
+  <a href="a-propos.html">À PROPOS</a>
+  <a href="prestations.html">PRESTATIONS</a>
+  <a href="archives.html">ARCHIVES</a>
+  <a href="contact.html">CONTACT</a>
 </div>
 
-<div class="page-wrapper" style="display: flex; flex-direction: column; justify-content: center; min-height: 85vh;">
+<div class="page-wrapper">
+  <div class="index-wrapper">
 
-  <!-- ACCUEIL PORTAIL -->
-  <section class="hero-index" style="grid-template-columns: 1fr; gap: 2rem;">
-    <div class="hero-content">
-      <h1>THÉO RICHARD</h1>
-      <p class="hero-subtitle">Photographie & Création</p>
-      
-      <!-- Menu d'arrivée directement sous le titre -->
-      <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; max-width: 400px;">
-        <a href="portfolio.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ PORTFOLIO</a>
-        <a href="ecriture.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ ÉCRITURE</a>
-        <a href="a-propos.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ À PROPOS</a>
-        <a href="prestations.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ PRESTATIONS</a>
-        <a href="archives.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ ARCHIVES</a>
-        <a href="contact.html" class="card-link" style="font-size: 1.1rem; font-weight: 500;">→ CONTACT</a>
+    <!-- GAUCHE : fiche dossier -->
+    <div class="index-dossier">
+      <div class="dossier-entete">
+        <span>DOSSIER N° TR-001</span>
+        <span>OUVERT EN 2024</span>
       </div>
+      <div class="dossier-corps">
+        <div class="dossier-champ">
+          <span class="dossier-label">Nom &amp; prénom</span>
+          <span class="dossier-valeur">Richard, Théo</span>
+        </div>
+        <div class="dossier-champ">
+          <span class="dossier-label">Activité</span>
+          <span class="dossier-valeur">Photographie &amp; Création</span>
+        </div>
+        <div class="dossier-champ">
+          <span class="dossier-label">Spécialité</span>
+          <span class="dossier-valeur">Labo argentique — Écriture — Médiation culturelle</span>
+        </div>
+        <div class="dossier-champ">
+          <span class="dossier-label">Localisation</span>
+          <span class="dossier-valeur">Tours, France</span>
+        </div>
+        <div class="dossier-champ">
+          <span class="dossier-label">Contact</span>
+          <span class="dossier-valeur"><a id="mailIndex" href="#">contact@theo-richard.fr</a></span>
+        </div>
+        <div class="dossier-champ">
+          <span class="dossier-label">Statut dossier</span>
+          <span class="dossier-valeur">En cours — actif</span>
+        </div>
+      </div>
+      <div class="dossier-tampon">Actif</div>
     </div>
-  </section>
 
-</div><!-- /.page-wrapper -->
+    <!-- DROITE : navigation -->
+    <div class="index-nav">
+      <div class="index-nav-titre">Table des sections</div>
+      <a href="portfolio.html" class="index-nav-item">
+        <span class="nav-num">01.</span>
+        <span class="nav-label">Portfolio</span>
+      </a>
+      <a href="ecriture.html" class="index-nav-item">
+        <span class="nav-num">02.</span>
+        <span class="nav-label">Écriture</span>
+      </a>
+      <a href="a-propos.html" class="index-nav-item">
+        <span class="nav-num">03.</span>
+        <span class="nav-label">À propos</span>
+      </a>
+      <a href="prestations.html" class="index-nav-item">
+        <span class="nav-num">04.</span>
+        <span class="nav-label">Prestations</span>
+      </a>
+      <a href="archives.html" class="index-nav-item">
+        <span class="nav-num">05.</span>
+        <span class="nav-label">Archives</span>
+      </a>
+      <a href="contact.html" class="index-nav-item">
+        <span class="nav-num">06.</span>
+        <span class="nav-label">Contact</span>
+      </a>
+    </div>
+
+  </div>
+</div>
 
 <button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
@@ -64,38 +137,32 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
-
-  // Mode sombre
-  const toggleSwitch = document.querySelector('#checkbox-theme');
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark' && toggleSwitch) toggleSwitch.checked = true;
-  }
+  var m = document.getElementById('mailIndex');
+  if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
+  var toggleSwitch = document.querySelector('#checkbox-theme');
+  var saved = localStorage.getItem('theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); if (saved === 'dark' && toggleSwitch) toggleSwitch.checked = true; }
   if (toggleSwitch) {
-      toggleSwitch.addEventListener('change', function(e) {
-          if (e.target.checked) {
-              document.documentElement.setAttribute('data-theme', 'dark');
-              localStorage.setItem('theme', 'dark');
-          } else {
-              document.documentElement.setAttribute('data-theme', 'light');
-              localStorage.setItem('theme', 'light');
-          }
-      });
+    toggleSwitch.addEventListener('change', function(e) {
+      var t = e.target.checked ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+    });
   }
-
-  // Scroll to top
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  if (scrollTopBtn) {
-      window.addEventListener('scroll', function() {
-          if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
-          else scrollTopBtn.classList.remove('visible');
-      });
-      scrollTopBtn.addEventListener('click', function() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  var hBtn = document.getElementById('hamburgerBtn');
+  var mOv  = document.getElementById('mobileOverlay');
+  if (hBtn && mOv) {
+    hBtn.addEventListener('click', function() {
+      hBtn.classList.toggle('open');
+      mOv.classList.toggle('open');
+      document.body.style.overflow = mOv.classList.contains('open') ? 'hidden' : '';
+    });
+  }
+  var stBtn = document.getElementById('scrollTopBtn');
+  if (stBtn) {
+    window.addEventListener('scroll', function() { stBtn.classList.toggle('visible', window.scrollY > 300); });
+    stBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 </script>
-
 </body>
 </html>
