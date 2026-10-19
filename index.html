@@ -7,14 +7,90 @@
 <meta name="description" content="Théo Richard — Photographie &amp; Création. Labo argentique, écriture et médiation culturelle.">
 <meta name="author" content="Théo Richard">
 <meta property="og:title" content="Théo Richard — Photographie &amp; Création">
-<meta property="og:description" content="Labo argentique, écriture et médiation culturelle.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://theo-richard.fr/">
 <meta property="og:image" content="https://theo-richard.fr/image/_MG_0170.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── Index — pleine page ── */
+  .index-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 4vw 4rem;
+  }
+
+  .index-nav-box {
+    width: 100%;
+    max-width: 600px;
+    border: 2px solid #000;
+    padding: 2.5rem 3rem;
+  }
+
+  [data-theme="dark"] .index-nav-box { border-color: var(--border-color); }
+
+  .index-nav-titre {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.35;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+
+  [data-theme="dark"] .index-nav-titre { border-bottom-color: rgba(255,255,255,0.12); }
+
+  .index-nav-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1.4rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #000;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: opacity 0.12s;
+  }
+
+  [data-theme="dark"] .index-nav-item { color: var(--text); border-bottom-color: rgba(255,255,255,0.08); }
+
+  .index-nav-item:last-child { border-bottom: none; }
+  .index-nav-item:hover { opacity: 0.4; }
+
+  .nav-num {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    opacity: 0.3;
+    min-width: 22px;
+  }
+
+  .nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Toggle mode nuit discret en haut à droite */
+  .index-toggle {
+    position: fixed;
+    top: 0;
+    right: 4vw;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 6000;
+  }
+
+  body.has-banner .index-toggle { top: 1.55rem; }
+</style>
 </head>
 <body class="has-banner">
 
@@ -22,19 +98,7 @@
   Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d'info : Contact</a>
 </div>
 
-<header class="site-header">
-  <a href="index.html" class="home-button">
-    <span class="home-icon">⌂</span> ACCUEIL
-  </a>
-  <nav class="top-bar">
-    <a href="index.html">ACCUEIL</a>
-    <a href="portfolio.html">PORTFOLIO</a>
-    <a href="ecriture.html">ÉCRITURE</a>
-    <a href="a-propos.html">À PROPOS</a>
-    <a href="prestations.html">PRESTATIONS</a>
-    <a href="archives.html">ARCHIVES</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
+<div class="index-toggle">
   <div class="theme-switch-wrapper">
     <span>MODE NUIT</span>
     <label class="theme-switch" for="checkbox-theme">
@@ -42,92 +106,37 @@
       <div class="slider"></div>
     </label>
   </div>
-  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-<div class="mobile-menu-overlay" id="mobileOverlay">
-  <a href="index.html">ACCUEIL</a>
-  <a href="portfolio.html">PORTFOLIO</a>
-  <a href="ecriture.html">ÉCRITURE</a>
-  <a href="a-propos.html">À PROPOS</a>
-  <a href="prestations.html">PRESTATIONS</a>
-  <a href="archives.html">ARCHIVES</a>
-  <a href="contact.html">CONTACT</a>
 </div>
 
-<div class="page-wrapper">
-  <div class="index-wrapper">
-
-    <!-- GAUCHE : fiche dossier -->
-    <div class="index-dossier">
-      <div class="dossier-entete">
-        <span>DOSSIER N° TR-001</span>
-        <span>OUVERT EN 2024</span>
-      </div>
-      <div class="dossier-corps">
-        <div class="dossier-champ">
-          <span class="dossier-label">Nom &amp; prénom</span>
-          <span class="dossier-valeur">Richard, Théo</span>
-        </div>
-        <div class="dossier-champ">
-          <span class="dossier-label">Activité</span>
-          <span class="dossier-valeur">Photographie &amp; Création</span>
-        </div>
-        <div class="dossier-champ">
-          <span class="dossier-label">Spécialité</span>
-          <span class="dossier-valeur">Labo argentique — Écriture — Médiation culturelle</span>
-        </div>
-        <div class="dossier-champ">
-          <span class="dossier-label">Localisation</span>
-          <span class="dossier-valeur">Tours, France</span>
-        </div>
-        <div class="dossier-champ">
-          <span class="dossier-label">Contact</span>
-          <span class="dossier-valeur"><a id="mailIndex" href="#">contact@theo-richard.fr</a></span>
-        </div>
-        <div class="dossier-champ">
-          <span class="dossier-label">Statut dossier</span>
-          <span class="dossier-valeur">En cours — actif</span>
-        </div>
-      </div>
-      <div class="dossier-tampon">Actif</div>
-    </div>
-
-    <!-- DROITE : navigation -->
-    <div class="index-nav">
-      <div class="index-nav-titre">Table des sections</div>
-      <a href="portfolio.html" class="index-nav-item">
-        <span class="nav-num">01.</span>
-        <span class="nav-label">Portfolio</span>
-      </a>
-      <a href="ecriture.html" class="index-nav-item">
-        <span class="nav-num">02.</span>
-        <span class="nav-label">Écriture</span>
-      </a>
-      <a href="a-propos.html" class="index-nav-item">
-        <span class="nav-num">03.</span>
-        <span class="nav-label">À propos</span>
-      </a>
-      <a href="prestations.html" class="index-nav-item">
-        <span class="nav-num">04.</span>
-        <span class="nav-label">Prestations</span>
-      </a>
-      <a href="archives.html" class="index-nav-item">
-        <span class="nav-num">05.</span>
-        <span class="nav-label">Archives</span>
-      </a>
-      <a href="contact.html" class="index-nav-item">
-        <span class="nav-num">06.</span>
-        <span class="nav-label">Contact</span>
-      </a>
-    </div>
-
+<div class="index-page">
+  <div class="index-nav-box">
+    <div class="index-nav-titre">Table des sections</div>
+    <a href="portfolio.html" class="index-nav-item">
+      <span class="nav-num">01.</span>
+      <span class="nav-label">Portfolio</span>
+    </a>
+    <a href="ecriture.html" class="index-nav-item">
+      <span class="nav-num">02.</span>
+      <span class="nav-label">Écriture</span>
+    </a>
+    <a href="a-propos.html" class="index-nav-item">
+      <span class="nav-num">03.</span>
+      <span class="nav-label">À propos</span>
+    </a>
+    <a href="prestations.html" class="index-nav-item">
+      <span class="nav-num">04.</span>
+      <span class="nav-label">Prestations</span>
+    </a>
+    <a href="archives.html" class="index-nav-item">
+      <span class="nav-num">05.</span>
+      <span class="nav-label">Archives</span>
+    </a>
+    <a href="contact.html" class="index-nav-item">
+      <span class="nav-num">06.</span>
+      <span class="nav-label">Contact</span>
+    </a>
   </div>
 </div>
-
-<button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
@@ -137,8 +146,6 @@
 
 <script>
   document.getElementById('annee').textContent = new Date().getFullYear();
-  var m = document.getElementById('mailIndex');
-  if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
   var toggleSwitch = document.querySelector('#checkbox-theme');
   var saved = localStorage.getItem('theme');
   if (saved) { document.documentElement.setAttribute('data-theme', saved); if (saved === 'dark' && toggleSwitch) toggleSwitch.checked = true; }
@@ -148,20 +155,6 @@
       document.documentElement.setAttribute('data-theme', t);
       localStorage.setItem('theme', t);
     });
-  }
-  var hBtn = document.getElementById('hamburgerBtn');
-  var mOv  = document.getElementById('mobileOverlay');
-  if (hBtn && mOv) {
-    hBtn.addEventListener('click', function() {
-      hBtn.classList.toggle('open');
-      mOv.classList.toggle('open');
-      document.body.style.overflow = mOv.classList.contains('open') ? 'hidden' : '';
-    });
-  }
-  var stBtn = document.getElementById('scrollTopBtn');
-  if (stBtn) {
-    window.addEventListener('scroll', function() { stBtn.classList.toggle('visible', window.scrollY > 300); });
-    stBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 </script>
 </body>
