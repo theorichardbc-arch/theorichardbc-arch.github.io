@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mentions légales — Théo Richard</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&family=Lora:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
@@ -13,43 +13,45 @@
 
 <body class="has-banner">
 <div class="site-banner">
-  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d'info : Contact</a>
+  Site en construction — Les informations et le contenu sont susceptibles de changer. <a href="contact.html">Plus d’info : Contact</a>
 </div>
 
 <header class="site-header">
-  <a href="index.html" class="home-button">
-    <span class="home-icon">⌂</span> ACCUEIL
-  </a>
-  <nav class="top-bar">
-    <a href="index.html">ACCUEIL</a>
-    <a href="portfolio.html">PORTFOLIO</a>
-    <a href="ecriture.html">ÉCRITURE</a>
-    <a href="a-propos.html">À PROPOS</a>
-    <a href="prestations.html">PRESTATIONS</a>
-    <a href="archives.html">ARCHIVES</a>
-    <a href="contact.html">CONTACT</a>
+  <a href="index.html" class="home-button" aria-label="Théo Richard — accueil">TR</a>
+  <nav class="top-bar" aria-label="Navigation principale">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="ecriture.html">Textes</a>
+    <a href="projets.html">Projets</a>
+    <a href="prestations.html">Prestations</a>
   </nav>
   <div class="theme-switch-wrapper">
     <span>MODE NUIT</span>
     <label class="theme-switch" for="checkbox-theme">
-      <input type="checkbox" id="checkbox-theme" />
+      <input type="checkbox" id="checkbox-theme">
       <div class="slider"></div>
     </label>
   </div>
-  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Menu Mobile">
-    <span></span><span></span><span></span>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay" id="mobileOverlay">
-  <a href="index.html">ACCUEIL</a>
-  <a href="portfolio.html">PORTFOLIO</a>
-  <a href="ecriture.html">ÉCRITURE</a>
-  <a href="a-propos.html">À PROPOS</a>
-  <a href="prestations.html">PRESTATIONS</a>
-  <a href="archives.html">ARCHIVES</a>
-  <a href="contact.html">CONTACT</a>
-</div>
+<nav class="mobile-menu-overlay" id="mobileOverlay" aria-label="Navigation mobile">
+  <button class="mobile-menu-close" type="button" aria-label="Fermer le menu">×</button>
+  <script>
+    (function () {
+      var overlay = document.getElementById('mobileOverlay');
+      var toggle = document.getElementById('hamburgerBtn');
+      function closeMenu() { if (overlay.classList.contains('open')) toggle.click(); }
+      document.querySelector('.mobile-menu-close').addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+  <a href="portfolio.html">Portfolio</a><a href="ecriture.html">Textes</a><a href="projets.html">Projets</a><a href="prestations.html">Prestations</a>
+  <div class="mobile-menu-secondary"><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></div>
+</nav>
 
 
 <div class="page-wrapper">
@@ -128,9 +130,13 @@
 <button class="scroll-top-btn" id="scrollTopBtn">↑ Retour en haut</button>
 
 <footer class="site-footer">
-  <span>© <span id="annee"></span> Théo Richard — Tous droits réservés.</span>
-  <span>Photos, textes et design protégés par le droit d'auteur.</span>
-  <span><a href="mentions.html">Mentions légales</a></span>
+  <span>© <span id="annee"></span> Théo Richard</span>
+  <span class="footer-rights">Photos, textes et design protégés par le droit d’auteur.</span>
+  <nav class="footer-nav" aria-label="Informations et pages secondaires">
+    <a href="a-propos.html">À propos</a><a href="archives.html">Archives</a>
+    <a href="prestations.html">Prestations</a><a href="liens.html">Liens</a>
+    <a href="contact.html">Contact</a><a href="mentions.html">Mentions légales</a>
+  </nav>
 </footer>
 
 <script>
@@ -158,15 +164,20 @@
   var mOv  = document.getElementById('mobileOverlay');
   if (hBtn && mOv) {
     hBtn.addEventListener('click', function() {
-      hBtn.classList.toggle('open');
-      mOv.classList.toggle('open');
-      document.body.style.overflow = mOv.classList.contains('open') ? 'hidden' : '';
+      var isOpen = mOv.classList.toggle('open');
+      hBtn.classList.toggle('open', isOpen);
+      hBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
   }
   var stBtn = document.getElementById('scrollTopBtn');
   if (stBtn) {
     window.addEventListener('scroll', function() { stBtn.classList.toggle('visible', window.scrollY > 300); });
     stBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    var footer = document.querySelector('.site-footer');
+    if (footer) new IntersectionObserver(function(entries) {
+      stBtn.classList.toggle('footer-visible', entries[0].isIntersecting);
+    }).observe(footer);
   }
 </script>
 </body>
