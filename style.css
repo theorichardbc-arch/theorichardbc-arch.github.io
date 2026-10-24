@@ -2760,6 +2760,211 @@ body.has-banner .mobile-menu-overlay {
   top: var(--site-banner-height);
 }
 
+.about-copy {
+  max-width: 48rem;
+  margin: 0 auto 6rem;
+}
+
+.about-copy p + p {
+  margin-top: 1.6rem;
+}
+
+.project-entry-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-entry-link:hover .project-entry h2,
+.project-entry-link:focus-visible .project-entry h2 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.alpine-page {
+  max-width: 900px;
+  min-height: 60vh;
+  padding-bottom: 6rem;
+}
+
+.alpine-page .texte-liste-header {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alpine-resources {
+  display: flex;
+  max-width: 600px;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.alpine-resource {
+  position: relative;
+  display: flex;
+  min-height: 5.5rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg);
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.alpine-resource:hover,
+a.alpine-resource:focus-visible {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.alpine-resource .texte-intro {
+  color: var(--text-muted);
+}
+
+a.alpine-resource:hover .texte-intro,
+a.alpine-resource:focus-visible .texte-intro {
+  color: inherit;
+}
+
+.alpine-resource-status {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.25rem;
+  color: var(--text-muted);
+  font: 0.68rem var(--font-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+a.alpine-resource:hover .alpine-resource-status {
+  color: inherit;
+}
+
+.alpine-back {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  font: 0.8rem var(--font-label);
+}
+
+.service-catalog {
+  max-width: 1100px;
+  padding-bottom: 6rem;
+}
+
+.service-catalog .section-page-heading {
+  margin-bottom: 4rem;
+}
+
+.offer-section {
+  margin: 0 0 5rem;
+}
+
+.offer-section > h2 {
+  margin: 0 0 1.1rem;
+  font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.2 var(--font-interface);
+  letter-spacing: -0.04em;
+}
+
+.offer-intro,
+.professional-offer > p {
+  max-width: 52rem;
+  color: var(--text-muted);
+  font: 1rem/1.8 var(--font-reading);
+}
+
+.offer-intro a,
+.professional-offer a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.offer-starting-price {
+  margin: 1.25rem 0 1.5rem;
+  font: 0.8rem/1.6 var(--font-label);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.offer-card {
+  display: flex;
+  min-height: 13rem;
+  flex-direction: column;
+  padding: 1.3rem;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg);
+}
+
+.offer-card h3 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+  font: 500 0.95rem/1.4 var(--font-interface);
+}
+
+.offer-card h3 span {
+  color: var(--text-muted);
+  font: 0.68rem/1.5 var(--font-label);
+}
+
+.offer-card > p:not(.offer-price) {
+  margin: 0;
+  color: var(--text-muted);
+  font: 0.9rem/1.7 var(--font-reading);
+}
+
+.offer-card .offer-price {
+  margin: auto 0 0;
+  padding-top: 1.25rem;
+  font: 500 0.8rem/1.5 var(--font-label);
+}
+
+.print-list {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.print-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+  font: 0.8rem/1.5 var(--font-label);
+}
+
+.print-heading {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.professional-offer {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.offer-contact {
+  margin: 2.5rem 0 0;
+  font: 1rem var(--font-label);
+}
+
+.offer-contact a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 @media (max-width: 768px) {
   .site-banner {
     font-size: 0.58rem;
@@ -2786,5 +2991,210 @@ body.has-banner .mobile-menu-overlay {
 
   body.has-banner .site-home {
     padding-top: calc(var(--site-banner-height) + 5rem);
+  }
+
+  .offer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 600px) {
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .print-row {
+    grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(0, 0.9fr));
+    gap: 0.5rem;
+    font-size: 0.68rem;
+  }
+
+  .print-heading {
+    font-size: 0.58rem;
+  }
+
+  .alpine-resource-status {
+    position: static;
+    margin-top: 0.2rem;
+  }
+}
+
+/* Shared editorial page layout and type scale */
+.page-wrapper {
+  max-width: 1360px;
+  width: 100%;
+}
+
+.projects-page,
+.service-catalog,
+.writing-page,
+.alpine-page,
+.archives-page,
+.links-page,
+.about-page,
+.contact-layout {
+  max-width: 1360px;
+}
+
+.section-page-heading,
+.texte-liste-header,
+.texte-page-header {
+  width: min(100%, 740px);
+  margin: 0 auto 3rem;
+  padding: 1.5rem 0 0;
+  border: 0;
+}
+
+.section-page-heading h1,
+.texte-liste-header h1,
+.texte-page-titre,
+.contact-titre {
+  margin: 0;
+  font-family: var(--font-interface);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.section-page-heading .eyebrow,
+.texte-liste-header .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.section-page-heading > p:last-child {
+  max-width: 58ch;
+  margin: 1.2rem 0 0;
+  color: var(--text-muted);
+  font: 1rem/1.75 var(--font-reading);
+}
+
+.texte-page-header {
+  margin-bottom: 3rem;
+}
+
+.texte-page {
+  max-width: 740px;
+}
+
+.texte-page-meta {
+  margin-top: 1rem;
+}
+
+.photo-grid-page .section-page-heading {
+  margin-top: 0;
+}
+
+.projects-page .section-page-heading {
+  margin-left: auto;
+}
+
+.project-entry {
+  margin: 0 auto;
+}
+
+.project-entry h2,
+.offer-section > h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+.service-catalog .section-page-heading {
+  margin-bottom: 3rem;
+}
+
+.writing-page .writing-list,
+.archives-content,
+.links-list,
+.alpine-resources,
+.alpine-back,
+.about-copy,
+.contact-page {
+  width: min(100%, 740px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.writing-page .writing-list {
+  margin-bottom: 5rem;
+}
+
+.writing-intro {
+  margin: 1.2rem 0 0;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 6rem;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg);
+}
+
+.link-card .texte-titre {
+  font-size: 1rem;
+}
+
+.link-card .texte-intro {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.archives-empty {
+  padding: 3rem 0;
+  color: var(--text-muted);
+  font: 0.9rem/1.8 var(--font-label);
+}
+
+.about-copy {
+  margin-bottom: 6rem;
+}
+
+.contact-page {
+  max-width: 560px;
+}
+
+.contact-page {
+  padding: 0 0 6rem;
+}
+
+.contact-page .contact-titre {
+  display: none;
+}
+
+.alpine-page .texte-liste-header {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.alpine-resources {
+  max-width: 600px;
+}
+
+.alpine-back {
+  max-width: 600px;
+}
+
+@media (max-width: 600px) {
+  .section-page-heading,
+  .texte-liste-header,
+  .texte-page-header {
+    margin-bottom: 2.25rem;
+    padding-top: 1rem;
+  }
+
+  .section-page-heading h1,
+  .texte-liste-header h1,
+  .texte-page-titre,
+  .contact-titre {
+    font-size: clamp(2.1rem, 9vw, 3rem);
   }
 }
