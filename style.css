@@ -1469,39 +1469,6 @@ html, body {
 [data-theme="dark"] .dossier-tampon { border-color: var(--border-color); }
 
 /* =========================
-   BANDEAU SITE EN CONSTRUCTION
-========================= */
-
-.site-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 6000;
-  background: #000;
-  color: rgba(255,255,255,0.75);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  padding: 0.35rem 4vw;
-  text-align: center;
-}
-
-.site-banner a {
-  color: rgba(255,255,255,0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding-bottom: 1px;
-}
-
-[data-theme="dark"] .site-banner {
-  background: #1a1a1a;
-}
-
-/* Décaler header et wrapper quand bandeau présent */
-body.has-banner .site-header    { top: 1.55rem; }
-body.has-banner .page-wrapper   { padding-top: 9.5rem; }
-
-/* =========================
    TOGGLE MODE NUIT
 ========================= */
 
@@ -1615,7 +1582,6 @@ input:checked + .slider::before        { transform: translateX(18px); background
   .hamburger-icon     { display: flex; }
   .top-bar            { display: none; }
   .theme-switch-wrapper { display: none; }
-  body.has-banner .page-wrapper { padding-top: 8rem; }
 }
 
 /* =========================
@@ -1929,19 +1895,6 @@ a:active {
   color: inherit;
 }
 
-.site-banner {
-  background: #eeeeee;
-  border-bottom: 0;
-  color: var(--text-muted);
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
-}
-
-.site-banner a {
-  color: var(--text);
-  border-bottom-color: var(--border-color);
-}
-
 .site-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -1989,10 +1942,6 @@ a:active {
 
 .top-bar a::after {
   background: var(--text);
-}
-
-body.has-banner .page-wrapper {
-  padding-top: 8.4rem;
 }
 
 .site-home {
@@ -2267,12 +2216,6 @@ body.has-banner .page-wrapper {
   text-transform: none;
 }
 
-[data-theme="dark"] .site-banner {
-  background: #202020;
-  color: var(--text-muted);
-}
-
-[data-theme="dark"] .site-banner a,
 [data-theme="dark"] .home-intro h1 {
   color: var(--text);
 }
@@ -2301,10 +2244,6 @@ body.has-banner .page-wrapper {
 
   .theme-switch-wrapper {
     display: none;
-  }
-
-  body.has-banner .page-wrapper {
-    padding-top: 7.5rem;
   }
 
   .site-home {
@@ -2520,10 +2459,6 @@ body.has-banner .page-wrapper {
    HARMONISATION VISUELLE
 ========================= */
 
-.site-banner {
-  border-bottom: 0;
-}
-
 .site-header {
   box-shadow: none;
 }
@@ -2647,7 +2582,6 @@ a:not(.home-button):is(:hover, :focus-visible) {
 .contact-form input,
 .contact-form textarea,
 .contact-submit,
-.site-banner,
 .home-section-index,
 .eyebrow,
 .top-bar a {
@@ -2727,37 +2661,6 @@ a:not(.home-button):is(:hover, :focus-visible) {
 
 .photo-item:focus-visible {
   outline-offset: 5px;
-}
-
-:root {
-  --site-banner-height: 2.5rem;
-}
-
-.site-banner {
-  display: flex;
-  height: var(--site-banner-height);
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  line-height: 1.2;
-  padding: 0 4vw;
-}
-
-body.has-banner .site-header {
-  top: var(--site-banner-height);
-}
-
-body.has-banner .page-wrapper {
-  padding-top: calc(var(--site-banner-height) + 5.9rem);
-}
-
-body.has-banner .site-home {
-  padding-top: calc(var(--site-banner-height) + 5.3rem);
-}
-
-body.has-banner .mobile-menu-overlay {
-  top: var(--site-banner-height);
 }
 
 .about-copy {
@@ -2960,16 +2863,64 @@ a.alpine-resource:hover .alpine-resource-status {
   font: 1rem var(--font-label);
 }
 
-.offer-contact a {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+.how-it-works {
+  margin: 0 0 4.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-light);
+  background: var(--card-bg);
+}
+
+.how-it-works h2 {
+  margin: 0 0 1rem;
+  font: 500 0.9rem/1.4 var(--font-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: process-step;
+}
+
+.process-steps li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  font: 0.9rem/1.6 var(--font-reading);
+  counter-increment: process-step;
+}
+
+.process-steps li::before {
+  content: "0" counter(process-step);
+  color: var(--text-muted);
+  font: 0.7rem var(--font-label);
+}
+
+.offer-contact .offer-contact-link,
+.offer-contact .offer-contact-link:visited {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.7rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.offer-contact .offer-contact-link:is(:hover, :focus-visible) {
+  background: var(--bg);
+  color: var(--text);
+  text-shadow: none;
 }
 
 @media (max-width: 768px) {
-  .site-banner {
-    font-size: 0.58rem;
-  }
-
   body:has(.mobile-menu-overlay.open) .site-header {
     z-index: 5060;
   }
@@ -2985,14 +2936,6 @@ a.alpine-resource:hover .alpine-resource-status {
     z-index: 5061;
   }
 
-  body.has-banner .page-wrapper {
-    padding-top: calc(var(--site-banner-height) + 5rem);
-  }
-
-  body.has-banner .site-home {
-    padding-top: calc(var(--site-banner-height) + 5rem);
-  }
-
   .offer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3000,6 +2943,15 @@ a.alpine-resource:hover .alpine-resource-status {
 }
 
 @media (max-width: 600px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .offer-contact .offer-contact-link {
+    margin: 0.75rem 0 0;
+  }
+
   .offer-grid {
     grid-template-columns: 1fr;
   }
