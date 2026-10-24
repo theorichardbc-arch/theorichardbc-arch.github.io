@@ -54,11 +54,12 @@
 </nav>
 
 
-<div class="page-wrapper">
+<main class="page-wrapper contact-layout">
+  <header class="section-page-heading">
+    <h1>Contact</h1>
+  </header>
 
-
-
-<div class="contact-page">
+  <div class="contact-page">
 
   <!-- Infos directes, cliquables, sans hover -->
   <div class="contact-infos">
@@ -68,7 +69,6 @@
   </div>
 
   <p class="contact-label">Écrire un message</p>
-  <h1 class="contact-titre">Contact</h1>
 
   <form class="contact-form" id="contactForm"
         action="https://formspree.io/f/mykddaag"
@@ -91,7 +91,8 @@
     L’envoi a échoué. Vérifiez votre connexion et réessayez.
   </p>
 
-</div>
+  </div>
+</main>
 
 <script>
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
