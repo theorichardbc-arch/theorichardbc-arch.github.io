@@ -135,6 +135,28 @@
     transform: rotate(-2deg);
     display: inline-block;
   }
+
+  .scroll-top-btn {
+    position: fixed;
+    right: 5vw;
+    bottom: 1.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background: #000;
+    color: #fff;
+    font: 1.1rem Arial, sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+  .scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 </style>
 </head>
 
@@ -336,9 +358,17 @@
   <div class="rc-tampon">Document certifié conforme ✓</div>
 </div>
 
-<script>
-  // Rien à faire ici. Le document parle de lui-même.
-</script>
+  <button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Retour en haut">↑</button>
+
+  <script>
+    var scrollTopButton = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function() {
+      scrollTopButton.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopButton.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
 </body>
 </html>

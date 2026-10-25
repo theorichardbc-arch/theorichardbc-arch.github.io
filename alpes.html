@@ -77,6 +77,24 @@
   <p class="alpine-back"><a href="projets.html">← Retour aux projets</a></p>
 </main>
 
+<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Retour en haut">↑</button>
+
+<script>
+  var scrollTopButton = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    scrollTopButton.classList.toggle('visible', window.scrollY > 300);
+  });
+  scrollTopButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var siteFooter = document.querySelector('.site-footer');
+    if (siteFooter) new IntersectionObserver(function(entries) {
+      scrollTopButton.classList.toggle('footer-visible', entries[0].isIntersecting);
+    }).observe(siteFooter);
+  });
+</script>
+
 <footer class="site-footer">
   <span>© <span id="annee"></span> Théo Richard</span>
   <span class="footer-rights">Photos, textes et design protégés par le droit d’auteur.</span>
