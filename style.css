@@ -2664,7 +2664,6 @@ a:not(.home-button):is(:hover, :focus-visible) {
 .alpine-page {
   max-width: 900px;
   min-height: 60vh;
-  padding-bottom: 20rem;
 }
 
 .alpine-page .texte-liste-header {
@@ -2717,7 +2716,6 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
 
 .service-detail-page {
   max-width: 1100px;
-  padding-bottom: 20rem;
 }
 
 .service-catalog .section-page-heading {
@@ -2908,11 +2906,27 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
   text-underline-offset: 0.2em;
 }
 
-.service-contact-top,
-.service-contact-bottom {
+.service-contact-top {
   width: min(100%, 740px);
   margin-right: auto;
   margin-left: auto;
+}
+
+.service-contact-bottom {
+  width: min(100%, 1000px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-contact-bottom-offset {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.service-contact-bottom-offset .offer-contact-link {
+  grid-column: 2;
+  justify-self: start;
 }
 
 .service-contact-top {
@@ -2997,6 +3011,15 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
 
   .service-story-offset .service-story-image {
     grid-row: 1;
+  }
+
+  .service-contact-bottom-offset {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .service-contact-bottom-offset .offer-contact-link {
+    grid-column: 1;
   }
 
 }
@@ -3158,6 +3181,10 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
 .alpine-page .texte-liste-header {
   margin-right: auto;
   margin-left: auto;
+}
+
+.site-footer {
+  margin-top: 20rem;
 }
 
 .alpine-resources {
