@@ -1862,7 +1862,7 @@ input:checked + .slider::before        { transform: translateX(18px); background
 :root {
   --font-reading: 'Lora', Georgia, serif;
   --font-interface: 'IBM Plex Sans', sans-serif;
-  --font-label: 'IBM Plex Mono', monospace;
+  --font-label: var(--font-interface);
   --bg: #ffffff;
   --text: #111111;
   --text-muted: #666666;
@@ -2003,7 +2003,7 @@ a:active {
 
 .home-section-link {
   display: grid;
-  grid-template-columns: 1rem minmax(0, 1fr) 2rem;
+  grid-template-columns: minmax(0, 1fr);
   align-items: baseline;
   gap: 1rem;
   padding: 1.35rem 0;
@@ -2015,12 +2015,6 @@ a:active {
   outline-offset: 4px;
 }
 
-.home-section-index {
-  color: var(--text-muted);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-}
-
 .home-section-name {
   display: inline-block;
   font-size: clamp(1.5rem, 3vw, 2.3rem);
@@ -2028,32 +2022,7 @@ a:active {
 }
 
 .home-section-copy {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-
-.home-section-note {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  transition: opacity 0.45s ease, transform 0.45s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .home-section-note {
-    opacity: 0;
-    transform: translateX(-0.5rem);
-  }
-
-  .home-section-link:is(:hover, :focus-visible) .home-section-note {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.home-section-arrow {
-  justify-self: end;
-  font-size: 1.1rem;
+  display: block;
 }
 
 .site-footer {
@@ -2066,6 +2035,7 @@ a:active {
   padding: 1.5rem 5vw;
   border-top: 1px solid var(--border-light);
   color: var(--text-muted);
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .footer-nav {
@@ -2127,6 +2097,20 @@ a:active {
 
 .photo-qualite-mention {
   color: var(--text-muted);
+}
+
+.portfolio-meta {
+  width: min(100%, 740px);
+  margin: 0 auto 3rem;
+}
+
+.photo-qualite-mention {
+  margin: 1.5rem 0 0;
+  font: 0.75rem/1.7 'IBM Plex Mono', monospace;
+}
+
+.photo-qualite-mention a {
+  text-underline-offset: 0.2em;
 }
 
 .writing-page {
@@ -2263,11 +2247,6 @@ a:active {
   .home-section-note {
     opacity: 1;
     transform: none;
-  }
-
-  .home-section-arrow {
-    grid-column: 3;
-    grid-row: 1 / span 2;
   }
 
   .site-footer {
@@ -2581,10 +2560,7 @@ a:not(.home-button):is(:hover, :focus-visible) {
 .contact-infos a,
 .contact-form input,
 .contact-form textarea,
-.contact-submit,
-.home-section-index,
-.eyebrow,
-.top-bar a {
+.contact-submit {
   font-family: var(--font-label);
 }
 
@@ -2688,7 +2664,7 @@ a:not(.home-button):is(:hover, :focus-visible) {
 .alpine-page {
   max-width: 900px;
   min-height: 60vh;
-  padding-bottom: 6rem;
+  padding-bottom: 20rem;
 }
 
 .alpine-page .texte-liste-header {
@@ -2700,57 +2676,37 @@ a:not(.home-button):is(:hover, :focus-visible) {
   display: flex;
   max-width: 600px;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2.5rem;
   margin: 0 auto;
 }
 
 .alpine-resource {
-  position: relative;
   display: flex;
-  min-height: 5.5rem;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 1.1rem 1.25rem;
-  border: 1px solid var(--border-light);
-  background: var(--card-bg);
+  gap: 0.45rem;
   color: var(--text);
   text-decoration: none;
-}
-
-a.alpine-resource:hover,
-a.alpine-resource:focus-visible {
-  border-color: var(--text);
-  background: var(--text);
-  color: var(--bg);
 }
 
 .alpine-resource .texte-intro {
   color: var(--text-muted);
 }
 
-a.alpine-resource:hover .texte-intro,
-a.alpine-resource:focus-visible .texte-intro {
-  color: inherit;
+a.alpine-resource .texte-titre {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s ease;
 }
 
-.alpine-resource-status {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.25rem;
-  color: var(--text-muted);
-  font: 0.68rem var(--font-label);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-a.alpine-resource:hover .alpine-resource-status {
-  color: inherit;
+a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
+  text-decoration-color: currentColor;
 }
 
 .alpine-back {
   max-width: 600px;
-  margin: 2rem auto 0;
+  margin: 2rem 0 0 auto;
+  text-align: right;
   font: 0.8rem var(--font-label);
 }
 
@@ -2759,15 +2715,23 @@ a.alpine-resource:hover .alpine-resource-status {
   padding-bottom: 6rem;
 }
 
+.service-detail-page {
+  max-width: 1100px;
+  padding-bottom: 20rem;
+}
+
 .service-catalog .section-page-heading {
   margin-bottom: 4rem;
 }
 
-.offer-section {
-  margin: 0 0 5rem;
+.offer-entry {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.offer-section > h2 {
+.offer-entry > h2 {
   margin: 0 0 1.1rem;
   font: 400 clamp(1.6rem, 3vw, 2.2rem)/1.2 var(--font-interface);
   letter-spacing: -0.04em;
@@ -2776,7 +2740,7 @@ a.alpine-resource:hover .alpine-resource-status {
 .offer-intro,
 .professional-offer > p {
   max-width: 52rem;
-  color: var(--text-muted);
+  color: var(--text);
   font: 1rem/1.8 var(--font-reading);
 }
 
@@ -2788,136 +2752,215 @@ a.alpine-resource:hover .alpine-resource-status {
 }
 
 .offer-starting-price {
-  margin: 1.25rem 0 1.5rem;
-  font: 0.8rem/1.6 var(--font-label);
-}
-
-.offer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.75rem;
-}
-
-.offer-card {
-  display: flex;
-  min-height: 13rem;
-  flex-direction: column;
-  padding: 1.3rem;
-  border: 1px solid var(--border-light);
-  background: var(--card-bg);
-}
-
-.offer-card h3 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin: 0 0 1rem;
-  font: 500 0.95rem/1.4 var(--font-interface);
-}
-
-.offer-card h3 span {
+  margin: 1rem 0 0;
   color: var(--text-muted);
-  font: 0.68rem/1.5 var(--font-label);
-}
-
-.offer-card > p:not(.offer-price) {
-  margin: 0;
-  color: var(--text-muted);
-  font: 0.9rem/1.7 var(--font-reading);
-}
-
-.offer-card .offer-price {
-  margin: auto 0 0;
-  padding-top: 1.25rem;
-  font: 500 0.8rem/1.5 var(--font-label);
-}
-
-.print-list {
-  margin-top: 1.75rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.print-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-light);
-  font: 0.8rem/1.5 var(--font-label);
-}
-
-.print-heading {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-  text-transform: uppercase;
+  font: 0.9rem/1.7 var(--font-interface);
 }
 
 .professional-offer {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-light);
+  border-bottom: 0;
 }
 
-.offer-contact {
-  margin: 2.5rem 0 0;
-  font: 1rem var(--font-label);
-}
-
-.how-it-works {
-  margin: 0 0 4.5rem;
-  padding: 1.5rem;
-  border: 1px solid var(--border-light);
-  background: var(--card-bg);
-}
-
-.how-it-works h2 {
-  margin: 0 0 1rem;
-  font: 500 0.9rem/1.4 var(--font-label);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: process-step;
-}
-
-.process-steps li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  font: 0.9rem/1.6 var(--font-reading);
-  counter-increment: process-step;
-}
-
-.process-steps li::before {
-  content: "0" counter(process-step);
-  color: var(--text-muted);
-  font: 0.7rem var(--font-label);
-}
-
-.offer-contact .offer-contact-link,
-.offer-contact .offer-contact-link:visited {
+.service-detail-page .service-contact-top .offer-contact-link,
+.service-detail-page .service-contact-top .offer-contact-link:visited,
+.service-detail-page .service-contact-bottom .offer-contact-link,
+.service-detail-page .service-contact-bottom .offer-contact-link:visited,
+.service-catalog a.offer-action,
+.service-catalog a.offer-action:visited {
   display: inline-flex;
   align-items: center;
-  margin-left: 0.7rem;
   padding: 0.8rem 1.2rem;
   border: 1px solid var(--text);
   background: var(--text);
   color: var(--bg);
   text-decoration: none;
+  font: 0.9rem/1.3 var(--font-interface);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.offer-contact .offer-contact-link:is(:hover, :focus-visible) {
+.service-detail-page .service-contact-top .offer-contact-link:is(:hover, :focus-visible),
+.service-detail-page .service-contact-bottom .offer-contact-link:is(:hover, :focus-visible),
+.service-catalog a.offer-action:is(:hover, :focus-visible) {
   background: var(--bg);
   color: var(--text);
   text-shadow: none;
+}
+
+.offer-entry-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.service-detail-page .section-page-heading {
+  margin-bottom: 4rem;
+}
+
+.optional-pdf-row {
+  width: min(100%, 740px);
+  margin: -1.5rem auto 3rem;
+}
+
+.optional-pdf-link,
+.optional-pdf-link:visited {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.8rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font: 0.9rem/1.3 var(--font-interface);
+  text-decoration: none;
+}
+
+.optional-pdf-link:is(:hover, :focus-visible) {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.service-story {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+.service-story-block {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+  margin: 0 0 clamp(5rem, 11vw, 9rem);
+}
+
+.service-story-block.service-story-offset {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.service-story-block:not(:has(.service-story-image img[src]:not([src=""]))) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.service-story-block:not(:has(.service-story-image img[src]:not([src=""]))) .service-story-copy {
+  max-width: none;
+}
+
+.service-story-offset .service-story-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.service-story-offset:not(:has(.service-story-image img[src]:not([src=""]))) .service-story-copy {
+  grid-column: 1;
+}
+
+.service-story-offset .service-story-image {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.service-story-copy {
+  max-width: 39rem;
+}
+
+.service-story-copy h2,
+.service-detail-note h2 {
+  margin: 0 0 1.25rem;
+  font: 400 clamp(1.5rem, 3vw, 2.1rem)/1.2 var(--font-interface);
+  letter-spacing: -0.035em;
+}
+
+.service-story-copy p,
+.service-detail-note p {
+  margin: 0 0 1rem;
+  font: 1rem/1.85 var(--font-reading);
+}
+
+.service-story-image {
+  width: 100%;
+  margin: 0;
+}
+
+.service-story-image:not(:has(img[src]:not([src=""]))) {
+  display: none;
+}
+
+.service-story-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.service-detail-note {
+  width: min(100%, 1000px);
+  margin: 0 auto 4rem;
+}
+
+.service-detail-back {
+  width: min(100%, 740px);
+  max-width: 600px;
+  margin: 2rem 0 0 auto;
+  text-align: right;
+  font: 0.8rem var(--font-label);
+}
+
+.service-detail-back a {
+  text-underline-offset: 0.2em;
+}
+
+.service-contact-top,
+.service-contact-bottom {
+  width: min(100%, 740px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-contact-top {
+  margin-top: -2.5rem;
+  margin-bottom: 3rem;
+}
+
+.service-contact-bottom {
+  margin-top: 4rem;
+}
+
+.photo-archive-note {
+  width: min(100%, 740px);
+  margin: 0.5rem 0 0;
+  font: 0.75rem/1.7 'IBM Plex Mono', monospace;
+}
+
+.photo-qualite-mention,
+.photo-archive-note {
+  color: var(--text-muted);
+  font: 0.75rem/1.7 'IBM Plex Mono', monospace;
+  letter-spacing: 0;
+}
+
+.photo-qualite-mention a,
+.photo-archive-note a {
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  text-underline-offset: 0.2em;
+}
+
+.lightbox-close,
+.lightbox-nav,
+.lb-action-btn,
+.lb-info-titre,
+.scroll-top-btn,
+.texte-page-cat,
+.texte-retour,
+.partage-btn,
+.commentaire-submit,
+.contact-merci,
+.contact-erreur,
+.mentions-corps h2 {
+  font-family: var(--font-interface);
+}
+
+.lb-info-corps {
+  font-family: var(--font-reading);
 }
 
 @media (max-width: 768px) {
@@ -2936,40 +2979,26 @@ a.alpine-resource:hover .alpine-resource-status {
     z-index: 5061;
   }
 
-  .offer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
 }
 
 @media (max-width: 600px) {
-  .process-steps {
+  .service-story-block,
+  .service-story-block.service-story-offset {
     grid-template-columns: 1fr;
-    gap: 0.7rem;
+    gap: 1.75rem;
+    margin-bottom: 4rem;
   }
 
-  .offer-contact .offer-contact-link {
-    margin: 0.75rem 0 0;
+  .service-story-offset .service-story-copy,
+  .service-story-offset .service-story-image {
+    grid-column: 1;
+    grid-row: auto;
   }
 
-  .offer-grid {
-    grid-template-columns: 1fr;
+  .service-story-offset .service-story-image {
+    grid-row: 1;
   }
 
-  .print-row {
-    grid-template-columns: minmax(0, 1.1fr) repeat(2, minmax(0, 0.9fr));
-    gap: 0.5rem;
-    font-size: 0.68rem;
-  }
-
-  .print-heading {
-    font-size: 0.58rem;
-  }
-
-  .alpine-resource-status {
-    position: static;
-    margin-top: 0.2rem;
-  }
 }
 
 /* Shared editorial page layout and type scale */
@@ -3047,12 +3076,16 @@ a.alpine-resource:hover .alpine-resource-status {
 }
 
 .project-entry h2,
-.offer-section > h2 {
+.offer-entry > h2 {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
 }
 
 .service-catalog .section-page-heading {
   margin-bottom: 3rem;
+}
+
+.service-detail-page .section-page-heading {
+  width: min(100%, 1000px);
 }
 
 .writing-page .writing-list,
