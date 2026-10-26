@@ -10,4 +10,5 @@
 - `prestations/` : prestations, ateliers-labo, seances-photo
 - `assets/css/style.css` : feuille de style commune
 - `documents/` : PDF (CV)
-- Les `*.html` à la racine (hors `index.html`) sont de simples redirections depuis les anciennes URL ; ne pas les éditer.
+- `404.html` : redirige les anciennes URLs racine (ex. `/contact.html`) vers les nouveaux dossiers ; à mettre à jour si une page change de dossier.
+

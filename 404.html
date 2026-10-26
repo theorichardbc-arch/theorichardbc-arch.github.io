@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page introuvable — Théo Richard</title>
+<meta name="robots" content="noindex">
+<script>
+// Anciennes URLs à la racine (ex. /contact.html) -> nouveaux dossiers.
+(function () {
+  var dossiers = {
+  'a-propos': 'core',
+  'contact': 'core',
+  'mentions': 'core',
+  'liens': 'core',
+  'guide': 'core',
+  'bientot': 'core',
+  'portfolio': 'photos',
+  'archives': 'photos',
+  'projets': 'projets',
+  'alpes': 'projets',
+  'projets-professionnels': 'projets',
+  'prestations': 'prestations',
+  'ateliers-labo': 'prestations',
+  'seances-photo': 'prestations',
+  'ecriture': 'textes'
+  };
+  var m = location.pathname.match(/^\/([a-z0-9-]+)\.html$/);
+  if (m && dossiers[m[1]]) {
+    location.replace('/' + dossiers[m[1]] + '/' + m[1] + '.html' + location.search + location.hash);
+  }
+})();
+</script>
+</head>
+<body>
+<p>Page introuvable. <a href="/">Retour à l'accueil</a></p>
+</body>
+</html>
