@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traversée des Alpes en solitaire — Théo Richard</title>
+<meta name="description" content="Un projet documentaire de Théo Richard autour d'une traversée des Alpes en solitaire, entre vidéo, écriture et photographie.">
+<meta name="author" content="Théo Richard">
+<meta property="og:title" content="Traversée des Alpes en solitaire — Théo Richard">
+<meta property="og:description" content="Un projet documentaire au long cours, à suivre en vidéo, en texte et en images.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://theo-richard.fr/projets/alpes.html">
+<meta property="og:image" content="https://theo-richard.fr/photos/images/mg-0170.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="home-button" aria-label="Théo Richard — accueil">TR</a>
+  <nav class="top-bar" aria-label="Navigation principale">
+    <a href="../photos/portfolio.html">Portfolio</a>
+    <a href="../textes/ecriture.html">Textes</a>
+    <a href="projets.html" aria-current="page">Projets</a>
+    <a href="../prestations/prestations.html">Prestations</a>
+  </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme">
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu-overlay" id="mobileOverlay" aria-label="Navigation mobile">
+  <button class="mobile-menu-close" type="button" aria-label="Fermer le menu">×</button>
+  <a href="../photos/portfolio.html">Portfolio</a>
+  <a href="../textes/ecriture.html">Textes</a>
+  <a href="projets.html" aria-current="page">Projets</a>
+  <a href="../prestations/prestations.html">Prestations</a>
+  <div class="mobile-menu-secondary">
+    <a href="../core/a-propos.html">À propos</a>
+    <a href="../core/contact.html">Contact</a>
+  </div>
+</nav>
+
+<main class="page-wrapper alpine-page">
+  <header class="section-page-heading">
+    <h1>Traversée des Alpes en solitaire</h1>
+  </header>
+
+  <div class="alpine-resources">
+    <a class="alpine-resource" href="../core/bientot.html">
+      <span class="texte-titre">Vidéo de la traversée</span>
+      <span class="texte-intro">À venir sur YouTube</span>
+    </a>
+
+    <a class="alpine-resource" href="https://substack.com/home/post/p-221615649" target="_blank" rel="noopener noreferrer">
+      <span class="texte-titre">Lire l’article du projet</span>
+      <span class="texte-intro">Le récit de la traversée sur Substack.</span>
+    </a>
+
+    <a class="alpine-resource" href="../core/bientot.html">
+      <span class="texte-titre">Série photographique</span>
+      <span class="texte-intro">Les images de la traversée seront réunies ici.</span>
+    </a>
+  </div>
+
+  <p class="alpine-back"><a href="projets.html">← Retour aux projets</a></p>
+</main>
+
+<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Retour en haut">↑</button>
+
+<script>
+  var scrollTopButton = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    scrollTopButton.classList.toggle('visible', window.scrollY > 300);
+  });
+  scrollTopButton.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var siteFooter = document.querySelector('.site-footer');
+    if (siteFooter) new IntersectionObserver(function(entries) {
+      scrollTopButton.classList.toggle('footer-visible', entries[0].isIntersecting);
+    }).observe(siteFooter);
+  });
+</script>
+
+<footer class="site-footer">
+  <span>© <span id="annee"></span> Théo Richard</span>
+  <span class="footer-rights">Photos, textes et design protégés par le droit d’auteur.</span>
+  <nav class="footer-nav" aria-label="Informations et pages secondaires">
+    <a href="../core/a-propos.html">À propos</a>
+    <a href="../photos/archives.html">Archives</a>
+    <a href="../prestations/prestations.html">Prestations</a>
+    <a href="../core/liens.html">Liens</a>
+    <a href="../core/contact.html">Contact</a>
+    <a href="../core/mentions.html">Mentions légales</a>
+  </nav>
+</footer>
+
+<script>
+  document.getElementById('annee').textContent = new Date().getFullYear();
+  var themeSwitch = document.getElementById('checkbox-theme');
+  var savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeSwitch.checked = savedTheme === 'dark';
+  }
+  themeSwitch.addEventListener('change', function() {
+    var theme = themeSwitch.checked ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  });
+
+  var menuToggle = document.getElementById('hamburgerBtn');
+  var mobileMenu = document.getElementById('mobileOverlay');
+  var closeMenuButton = document.querySelector('.mobile-menu-close');
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  closeMenuButton.addEventListener('click', closeMobileMenu);
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeMobileMenu();
+  });
+</script>
+</body>
+</html>

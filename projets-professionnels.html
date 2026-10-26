@@ -1,141 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Projets professionnels & institutionnels — Théo Richard</title>
-<meta name="description" content="Médiation, renouvellement de fonds photographiques, packshots et commandes professionnelles.">
-<meta name="author" content="Théo Richard">
-<meta property="og:title" content="Projets professionnels & institutionnels — Théo Richard">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://theo-richard.fr/projets-professionnels.html">
-<meta property="og:image" content="https://theo-richard.fr/image/usine.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<title>Redirection</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://theo-richard.fr/projets/projets-professionnels.html">
+<meta http-equiv="refresh" content="0; url=projets/projets-professionnels.html">
+<script>location.replace('projets/projets-professionnels.html' + location.search + location.hash);</script>
 </head>
 <body>
-<header class="site-header">
-  <a href="index.html" class="home-button" aria-label="Théo Richard — accueil">TR</a>
-  <nav class="top-bar" aria-label="Navigation principale">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="ecriture.html">Textes</a>
-    <a href="projets.html">Projets</a>
-    <a href="prestations.html" aria-current="page">Prestations</a>
-  </nav>
-  <div class="theme-switch-wrapper">
-    <span>MODE NUIT</span>
-    <label class="theme-switch" for="checkbox-theme">
-      <input type="checkbox" id="checkbox-theme">
-      <div class="slider"></div>
-    </label>
-  </div>
-  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</header>
-<nav class="mobile-menu-overlay" id="mobileOverlay" aria-label="Navigation mobile">
-  <button class="mobile-menu-close" type="button" aria-label="Fermer le menu">×</button>
-  <a href="portfolio.html">Portfolio</a><a href="ecriture.html">Textes</a><a href="projets.html">Projets</a><a href="prestations.html" aria-current="page">Prestations</a>
-  <div class="mobile-menu-secondary"><a href="a-propos.html">À propos</a><a href="contact.html">Contact</a></div>
-</nav>
-
-<main class="page-wrapper service-detail-page">
-  <header class="section-page-heading">
-    <h1>Projets professionnels & institutionnels</h1>
-  </header>
-
-  <p class="optional-pdf-row">
-    <a class="optional-pdf-link" href="tarifs2026.pdf">Voir la grille des tarifs</a>
-  </p>
-
-  <p class="service-contact-top"><a class="offer-contact-link" href="contact.html">Contact</a></p>
-
-  <div class="service-story">
-    <!-- Bloc éditorial : dupliquer ou supprimer ce bloc pour faire évoluer la page. -->
-    <section class="service-story-block">
-      <div class="service-story-copy">
-        <h2>Des projets construits avec vous</h2>
-        <p>Ateliers et médiation en structure, renouvellement de fonds photographique, packshots et commandes professionnelles : chaque demande commence par un échange autour de votre projet et de votre cahier des charges.</p>
-        <a class="service-paragraph-contact" href="contact.html">Contact</a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Le cadre, les images attendues et les conditions de réalisation se définissent ensemble, au plus près de vos besoins.</p>
-        <a class="service-paragraph-contact" href="contact.html">Contact</a>
-      </div>
-      <figure class="service-story-image">
-        <img src="image/usine.webp" alt="Bâtiment industriel photographié en argentique">
-      </figure>
-    </section>
-
-    <!-- Bloc éditorial : conserver un paragraphe par idée pour pouvoir les déplacer facilement. -->
-    <section class="service-story-block service-story-offset">
-      <div class="service-story-copy">
-        <h2>Une réponse adaptée au contexte</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. En structure, en institution ou pour une commande, le format de travail se règle selon le lieu, le public et les objectifs du projet.</p>
-        <a class="service-paragraph-contact" href="contact.html">Contact</a>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nous pouvons prendre le temps de préciser les étapes, les usages des images et la manière de les partager.</p>
-        <a class="service-paragraph-contact" href="contact.html">Contact</a>
-      </div>
-      <figure class="service-story-image">
-        <img src="image/journal.webp" alt="Un lecteur photographié pendant le festival d’Avignon">
-      </figure>
-    </section>
-
-    <!-- Bloc éditorial : exemple de bloc image vide, masqué tant qu’aucune photo n’est renseignée. -->
-    <figure class="service-story-image"></figure>
-  </div>
-
-  <p class="service-contact-bottom service-contact-bottom-offset"><a class="offer-contact-link" href="contact.html">Contact</a></p>
-  <p class="service-detail-back"><a href="prestations.html">← Retour aux prestations</a></p>
-</main>
-<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Retour en haut">↑</button>
-<script>
-  var scrollTopButton = document.getElementById('scrollTopBtn');
-  window.addEventListener('scroll', function() {
-    scrollTopButton.classList.toggle('visible', window.scrollY > 300);
-  });
-  scrollTopButton.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-  document.addEventListener('DOMContentLoaded', function() {
-    var siteFooter = document.querySelector('.site-footer');
-    if (siteFooter) new IntersectionObserver(function(entries) {
-      scrollTopButton.classList.toggle('footer-visible', entries[0].isIntersecting);
-    }).observe(siteFooter);
-  });
-</script>
-<footer class="site-footer">
-  <span>© <span id="annee"></span> Théo Richard</span>
-  <span class="footer-rights">Photos, textes et design protégés par le droit d’auteur.</span>
-  <nav class="footer-nav" aria-label="Informations et pages secondaires">
-    <a href="a-propos.html">À propos</a><a href="archives.html">Archives</a><a href="prestations.html">Prestations</a><a href="liens.html">Liens</a><a href="contact.html">Contact</a><a href="mentions.html">Mentions légales</a>
-  </nav>
-</footer>
-<script>
-  document.getElementById('annee').textContent = new Date().getFullYear();
-  var toggleSwitch = document.querySelector('#checkbox-theme');
-  var saved = localStorage.getItem('theme');
-  if (saved) { document.documentElement.setAttribute('data-theme', saved); if (saved === 'dark' && toggleSwitch) toggleSwitch.checked = true; }
-  if (toggleSwitch) toggleSwitch.addEventListener('change', function(event) {
-    var theme = event.target.checked ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  });
-  var hamburger = document.getElementById('hamburgerBtn');
-  var overlay = document.getElementById('mobileOverlay');
-  function closeMenu() {
-    if (!overlay.classList.contains('open')) return;
-    overlay.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  hamburger.addEventListener('click', function() {
-    var open = overlay.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  document.querySelector('.mobile-menu-close').addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function(event) { if (event.key === 'Escape') closeMenu(); });
-</script>
+<p>Cette page a déménagé : <a href="projets/projets-professionnels.html">projets/projets-professionnels.html</a></p>
 </body>
 </html>
