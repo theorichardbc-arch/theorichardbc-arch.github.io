@@ -3233,3 +3233,214 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
     font-size: clamp(2.1rem, 9vw, 3rem);
   }
 }
+
+/* Grille des tarifs (tarifs.html) — aussi utilisée pour générer tarifs2026.pdf */
+.tarifs-download {
+  width: min(100%, 740px);
+  margin: -1.5rem auto 4rem;
+}
+
+.tarifs-print-meta {
+  display: none;
+}
+
+.tarifs-content,
+.tarifs-page .service-contact-bottom {
+  width: min(100%, 740px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.tarifs-page .service-contact-bottom {
+  margin-top: 0;
+}
+
+.tarifs-intro,
+.tarifs-section {
+  margin: 0 0 clamp(4rem, 8vw, 6rem);
+}
+
+.tarifs-intro > p:first-child,
+.tarifs-text p {
+  max-width: 44rem;
+  margin: 0 0 1.25rem;
+  font: 1rem/1.85 var(--font-reading);
+}
+
+.tarifs-section h2 {
+  margin: 0 0 1rem;
+  font: 400 clamp(1.5rem, 3vw, 2.1rem)/1.2 var(--font-interface);
+  letter-spacing: -0.035em;
+}
+
+.tarifs-note {
+  max-width: 44rem;
+  margin: 0 0 1.75rem;
+  color: var(--text-muted);
+  font: 0.75rem/1.8 'IBM Plex Mono', monospace;
+}
+
+.tarifs-note a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+.tarifs-table {
+  width: 100%;
+  margin: 0 0 1.5rem;
+  border-collapse: collapse;
+}
+
+.tarifs-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.tarifs-table tbody,
+.tarifs-table tr {
+  display: block;
+}
+
+.tarifs-table tr {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) minmax(0, 0.7fr);
+  gap: 0.5rem clamp(1.25rem, 3vw, 2.25rem);
+  padding: 1.1rem 0;
+}
+
+.tarifs-table th,
+.tarifs-table td {
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tarifs-table th[scope="row"] {
+  font: 500 1rem/1.4 var(--font-interface);
+}
+
+.tarifs-table th small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font: 400 0.85rem/1.4 var(--font-interface);
+}
+
+.tarifs-table td {
+  font: 1rem/1.75 var(--font-reading);
+}
+
+.tarifs-table td.tarifs-price {
+  font: 500 1rem/1.4 var(--font-interface);
+  font-variant-numeric: tabular-nums;
+}
+
+.tarifs-price span {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--text-muted);
+  font: 400 0.85rem/1.4 var(--font-interface);
+}
+
+.tarifs-text ul {
+  max-width: 44rem;
+  margin: 0 0 1.75rem;
+  padding-left: 1.2rem;
+  font: 1rem/1.8 var(--font-reading);
+}
+
+@media (max-width: 768px) {
+  .tarifs-table tr {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 1rem 0 1.4rem;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 16mm 18mm;
+  }
+
+  html {
+    font-size: 10.5px;
+  }
+
+  html, body.tarifs-body {
+    background: #fff;
+    color: #111;
+  }
+
+  body.tarifs-body {
+    --bg: #fff;
+    --text: #111;
+    --text-muted: #666;
+  }
+
+  .tarifs-body .site-header,
+  .tarifs-body .mobile-menu-overlay,
+  .tarifs-body .site-footer,
+  .tarifs-body .scroll-top-btn,
+  .tarifs-body .tarifs-download,
+  .tarifs-body .service-contact-bottom,
+  .tarifs-body .service-detail-back {
+    display: none !important;
+  }
+
+  .tarifs-body .page-wrapper {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tarifs-body .section-page-heading,
+  .tarifs-body .tarifs-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tarifs-body .section-page-heading {
+    margin-bottom: 0.6rem;
+  }
+
+  .tarifs-body .section-page-heading h1 {
+    font-size: 3rem;
+  }
+
+  .tarifs-print-meta {
+    display: block;
+    margin: 0 0 2.5rem;
+    color: #666;
+    font: 0.8rem/1.6 'IBM Plex Mono', monospace;
+  }
+
+  .tarifs-intro,
+  .tarifs-section {
+    margin-bottom: 2.4rem;
+  }
+
+  .tarifs-section {
+    break-inside: auto;
+  }
+
+  .tarifs-section:has(#tarifs-seances) {
+    break-before: page;
+  }
+
+  .tarifs-section h2,
+  .tarifs-section .tarifs-note {
+    break-after: avoid;
+  }
+
+  .tarifs-table tr {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr) minmax(0, 0.7fr);
+    gap: 0.5rem 2rem;
+    break-inside: avoid;
+    padding: 0.7rem 0;
+  }
+}
