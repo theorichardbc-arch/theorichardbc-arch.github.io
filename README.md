@@ -157,3 +157,8 @@ Le site complet est alors dans `_site/`.
 ### Réglage GitHub Pages (une seule fois)
 
 Dans **Settings → Pages → Build and deployment → Source**, choisir **GitHub Actions** (au lieu de « Deploy from a branch »).
+
+## Guide privé (core/guide.html)
+
+Cette page n'est **pas** dans le dépôt : elle est fabriquée au build à partir de deux secrets GitHub Actions (Settings > Secrets and variables > Actions) : GUIDE_PASSWORD (mot de passe) et GUIDE_HTML (contenu complet de la page). Elle est chiffrée (AES-256-GCM) par scripts/guide-chiffrer.mjs. Sans secrets, une page « non disponible » est publiée. Pour modifier : mettre à jour le secret GUIDE_HTML, puis relancer le workflow (onglet Actions > Re-run all jobs). Ne jamais commiter le texte en clair.
+
