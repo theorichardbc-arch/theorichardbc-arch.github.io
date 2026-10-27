@@ -1,9 +1,10 @@
 name: Construire et publier le site
 
-# À chaque push : le site est construit et contrôlé.
-# Seule la branche main est publiée sur GitHub Pages.
+# À chaque push et chaque pull request : le site est construit et contrôlé.
+# Seule la branche main est publiée sur GitHub Pages, et seulement si les contrôles bloquants passent.
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -20,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # historique complet : dates de dernière modification du sitemap
 
       - uses: actions/setup-node@v4
         with:
@@ -29,8 +32,29 @@ jobs:
       - name: Installer les outils
         run: npm ci
 
-      - name: Construire le site (pages, miniatures) et vérifier les liens
-        run: npm run build
+      - name: Construire le site (pages, miniatures) et valider les fichiers JSON
+        run: node scripts/build.mjs
+
+      - name: Fabriquer et vérifier le PDF des tarifs
+        run: |
+          sudo apt-get update -qq || true
+          sudo apt-get install -y --no-install-recommends poppler-utils || echo "poppler-utils indisponible : contrôles du texte du PDF réduits"
+          node scripts/pdf-tarifs.mjs
+
+      - name: Contrôler le site (liens, images, titres, alt, doublons)
+        run: node scripts/controler.mjs
+
+      - name: Résumé des contrôles
+        if: always()
+        run: node scripts/resume.mjs
+
+      - name: Aperçu du PDF des tarifs (à relire)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apercu-pdf-tarifs
+          path: .controles/apercu-tarifs
+          if-no-files-found: ignore
 
       - name: Préparer l'archive Pages
         if: github.ref == 'refs/heads/main'
