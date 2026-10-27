@@ -129,6 +129,20 @@ Le PDF des tarifs est aussi relu automatiquement (nombre de pages, accents, poli
 
 Les pages publiques gardent les mêmes adresses (`/photos/portfolio.html`, `/textes/ecriture.html`, `/prestations/tarifs.html`…). `CNAME` est conservé, et `404.html` redirige les anciennes URLs racine vers les nouveaux dossiers. Les CV PDF de `documents/` sont copiés tels quels.
 
+### Styles : où modifier quoi
+
+Tout le style est dans **un seul fichier** : `assets/css/style.css` (jamais dans `_site/`).
+
+| Je veux changer… | Classe(s) à chercher dans `style.css` |
+|---|---|
+| La mise en page d'une page de liens : **Liens utiles**, **Projets**, page d'un projet (ex. Alpes) | `.page-liste` (page), `.liste-liens` (colonne), `.lien-carte` (un lien : titre + phrase), `.liste-retour` (lien « Retour ») |
+| Le titre de la page (grand « H1 ») | `.section-page-heading` |
+| La liste des articles (Textes) et les lignes de tarifs | `.service-item`, `.service-nom`, `.service-desc`, `.writing-item` |
+| Le menu et le pied de page | `.site-header`, `.site-footer` |
+| Les couleurs, polices et le mode nuit | variables en haut du fichier (`:root`) et blocs `[data-theme="dark"]` |
+
+Pour créer une nouvelle page « liste de liens » (comme *Liens utiles*), copiez `src/core/liens.html` : `<main class="page-wrapper page-liste">` puis `<div class="liste-liens">` contenant des `<a class="texte-item lien-carte">` avec un `<span class="texte-titre">` et un `<span class="texte-intro">`. Aucun CSS à ajouter. Les blocs placés en fin de fichier (« refonte éditoriale », « harmonisation ») l'emportent sur ceux du début : modifiez de préférence la règle la plus basse qui concerne l'élément.
+
 ### Lancer le site en local (facultatif)
 
 Nécessite [Node.js](https://nodejs.org) 20 ou plus :
