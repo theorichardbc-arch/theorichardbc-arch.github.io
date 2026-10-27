@@ -1,0 +1,50 @@
+name: Construire et publier le site
+
+# À chaque push : le site est construit et contrôlé.
+# Seule la branche main est publiée sur GitHub Pages.
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer les outils
+        run: npm ci
+
+      - name: Construire le site (pages, miniatures) et vérifier les liens
+        run: npm run build
+
+      - name: Préparer l'archive Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  publier:
+    if: github.ref == 'refs/heads/main'
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
