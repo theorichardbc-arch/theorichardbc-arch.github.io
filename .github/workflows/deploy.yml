@@ -37,7 +37,8 @@ jobs:
 
       - name: Fabriquer et vérifier le PDF des tarifs
         run: |
-          sudo apt-get install -y --no-install-recommends poppler-utils
+          sudo apt-get update -qq || true
+          sudo apt-get install -y --no-install-recommends poppler-utils || echo "poppler-utils indisponible : contrôles du texte du PDF réduits"
           node scripts/pdf-tarifs.mjs
 
       - name: Contrôler le site (liens, images, titres, alt, doublons)
