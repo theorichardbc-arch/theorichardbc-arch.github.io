@@ -223,11 +223,9 @@ function htmlProjets() {
     const externe = /^https?:\/\//.test(p.lien);
     // Les liens internes s'écrivent depuis la racine du site (projets/alpes.html) ; la page est dans projets/.
     const href = externe ? p.lien : path.posix.relative('projets', p.lien.replace(/^\//, ''));
-    return `  <a class="project-entry-link" href="${echapper(href, true)}"${externe ? ' target="_blank" rel="noopener"' : ''}>
-    <article class="project-entry">
-      <h2>${echapper(p.titre)}</h2>
-      <p>${echapper(p.description)}</p>
-    </article>
+    return `  <a class="texte-item lien-carte" href="${echapper(href, true)}"${externe ? ' target="_blank" rel="noopener"' : ''}>
+    <span class="texte-titre">${echapper(p.titre)}</span>
+    <span class="texte-intro">${echapper(p.description)}</span>
   </a>`;
   }).join('\n\n');
 }
