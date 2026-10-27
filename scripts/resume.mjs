@@ -26,6 +26,7 @@ if (v.pages !== undefined) {
   lignes.push(`| Pages vérifiées | ${v.pages} |`, `| Liens internes vérifiés | ${v.liensInternes} |`, `| Images vérifiées | ${v.images} |`);
   lignes.push(`| Liens externes vérifiés | ${v.externesVerifies ? v.liensExternes : 'non vérifiés'} |`);
 }
+if (v.pdfPages !== undefined) lignes.push(`| PDF des tarifs | ${v.pdfPages} page(s), ${Math.round(v.pdfOctets / 1024)} Ko${v.pdfTexteVerifie ? ', texte et accents relus' : ''} |`);
 lignes.push('');
 
 const tableau = (titre, liste, icone) => {
