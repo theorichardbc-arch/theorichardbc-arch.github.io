@@ -17,7 +17,7 @@ const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 
 // Éléments du dépôt qui ne doivent pas être publiés sur le site.
 const EXCLUS = new Set([
   '.git', '.github', '.gitignore', '.gitattributes', '.controles', 'node_modules', '_site', 'src', 'scripts',
-  'package.json', 'package-lock.json', 'README.md', 'portfolio.json', 'articles.json', 'tarifs.json', 'site.json',
+  'package.json', 'package-lock.json', 'README.md', 'portfolio.json', 'articles.json', 'tarifs.json', 'projets.json', 'site.json',
   path.join('photos', 'originaux'),
 ]);
 
@@ -193,6 +193,41 @@ function htmlArticles() {
       </div>
       <p class="service-desc">${echapper(a.sousTitre || '')}</p>
     </a>`;
+  }).join('\n\n');
+}
+
+// ---------- PROJETS ----------
+function htmlProjets() {
+  const projets = lireJson('projets.json');
+  if (!projets) return null;
+  if (!Array.isArray(projets)) {
+    erreur('le fichier doit être une liste [ ... ] de projets.', { fichier: 'projets.json', ligne: 1, action: 'le fichier doit commencer par [ et se terminer par ].' });
+    return null;
+  }
+  const valides = [];
+  const titres = [];
+  projets.forEach((p, i) => {
+    const l = lieu('projets.json', [String(i)], `projet n°${i + 1}${p && p.titre ? ` (« ${p.titre} »)` : ''}`);
+    if (typeof p !== 'object' || p === null) return signaler(l, 'bloc { ... } attendu.', { action: 'chaque projet est un bloc { "titre": "...", "description": "...", "lien": "..." }.' });
+    champsInconnus(p, ['titre', 'description', 'lien'], l);
+    const exemples = { titre: 'Titre du projet', description: 'Une ou deux phrases', lien: 'projets/ma-page.html ou https://...' };
+    const ok = ['titre', 'description', 'lien'].map((c) => texteObligatoire(p[c], l, c, exemples[c])).every(Boolean);
+    if (!ok) return;
+    titres.push({ valeur: p.titre, i, libelle: l.libelle });
+    valides.push(p);
+  });
+  detecterDoublons(titres, 'titre', 'le titre', 'projets.json', 'chaque projet doit avoir un titre différent.');
+  if (erreurs.length) return null;
+  return valides.map((p) => {
+    const externe = /^https?:\/\//.test(p.lien);
+    // Les liens internes s'écrivent depuis la racine du site (projets/alpes.html) ; la page est dans projets/.
+    const href = externe ? p.lien : path.posix.relative('projets', p.lien.replace(/^\//, ''));
+    return `  <a class="project-entry-link" href="${echapper(href, true)}"${externe ? ' target="_blank" rel="noopener"' : ''}>
+    <article class="project-entry">
+      <h2>${echapper(p.titre)}</h2>
+      <p>${echapper(p.description)}</p>
+    </article>
+  </a>`;
   }).join('\n\n');
 }
 
@@ -435,6 +470,7 @@ async function main() {
 
   const photos = await traiterPortfolio();
   const articles = htmlArticles();
+  const projets = htmlProjets();
   const tarifs = chargerTarifs();
   const site = chargerSite();
   if (erreurs.length) return;
@@ -443,6 +479,7 @@ async function main() {
     'menu-accueil': htmlMenuAccueil(site),
     photos: htmlPhotos(photos),
     articles,
+    projets,
     tarifs: htmlTarifs(tarifs),
     'prix-depart-labo': prixDepartLabo(tarifs),
     'formats-labo': htmlFormats(tarifs, 'labo', '        '),
