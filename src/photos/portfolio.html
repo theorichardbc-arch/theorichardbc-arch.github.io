@@ -22,6 +22,42 @@ description: Portfolio de Théo Richard : photographies argentiques noir et blan
   <div class="masonry-grid">
 <!-- @auto:photos -->
   </div>
+  <script>
+    // Ordre aléatoire à chaque chargement (Fisher-Yates). Les liens #photo-N restent stables :
+    // les identifiants sont attribués dans l'ordre d'origine avant le mélange.
+    (function() {
+      var grid = document.querySelector('.masonry-grid');
+      if (!grid) return;
+      var items = Array.from(grid.querySelectorAll(':scope > .photo-item'));
+      items.forEach(function(item, i) { item.id = 'photo-' + (i + 1); });
+      if (items.length < 2) return;
+      var buf = new Uint32Array(1);
+      function rnd(n) {
+        if (window.crypto && crypto.getRandomValues) {
+          var max = Math.floor(4294967296 / n) * n, v;
+          do { crypto.getRandomValues(buf); v = buf[0]; } while (v >= max);
+          return v % n;
+        }
+        return Math.floor(Math.random() * n);
+      }
+      var premier = items[0];
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = rnd(i + 1), t = items[i];
+        items[i] = items[j];
+        items[j] = t;
+      }
+      var frag = document.createDocumentFragment();
+      items.forEach(function(item) { frag.appendChild(item); });
+      grid.appendChild(frag);
+      if (items[0] !== premier) {
+        var ancien = premier.querySelector('img'), nouveau = items[0].querySelector('img');
+        ancien.setAttribute('loading', 'lazy');
+        ancien.removeAttribute('fetchpriority');
+        nouveau.setAttribute('loading', 'eager');
+        nouveau.setAttribute('fetchpriority', 'high');
+      }
+    })();
+  </script>
 </div>
 
 <!-- LIGHTBOX -->
@@ -61,7 +97,7 @@ description: Portfolio de Théo Richard : photographies argentiques noir et blan
 
   allItems.forEach(function(img, i) {
     var photo = img.closest('.photo-item');
-    photo.id = 'photo-' + (i + 1);
+    if (!photo.id) photo.id = 'photo-' + (i + 1);
     photo.setAttribute('role', 'button');
     photo.setAttribute('tabindex', '0');
     photo.setAttribute('aria-label', 'Agrandir la photographie : ' + (img.getAttribute('data-titre') || img.alt || 'sans titre'));
@@ -72,7 +108,7 @@ description: Portfolio de Théo Richard : photographies argentiques noir et blan
   }
 
   function photoUrl(index) {
-    return window.location.href.split('#')[0] + '#photo-' + (index + 1);
+    return window.location.href.split('#')[0] + '#' + allItems[index].closest('.photo-item').id;
   }
 
   function updateActions() {
@@ -174,10 +210,11 @@ description: Portfolio de Théo Richard : photographies argentiques noir et blan
   });
 
   function openPhotoFromHash() {
-    var photoMatch = window.location.hash.match(/^#photo-(\d+)$/);
-    if (!photoMatch) return;
-    var photoIndex = Number(photoMatch[1]) - 1;
-    if (photoIndex >= 0 && photoIndex < allItems.length) {
+    if (!/^#photo-\d+$/.test(window.location.hash)) return;
+    var photoIndex = allItems.findIndex(function(img) {
+      return img.closest('.photo-item').id === window.location.hash.slice(1);
+    });
+    if (photoIndex >= 0) {
       openLightbox(photoIndex);
     }
   }
