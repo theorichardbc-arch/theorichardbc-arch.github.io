@@ -1,0 +1,17 @@
+{
+  "name": "theo-richard-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Génération du site theo-richard.fr (portfolio, articles, tarifs) à partir des fichiers JSON.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/verifier-liens.mjs",
+    "liens": "node scripts/verifier-liens.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

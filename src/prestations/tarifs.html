@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grille des tarifs — Théo Richard</title>
+<meta name="description" content="Grille tarifaire 2026 : initiations au labo, séances photo argentiques, tirages artisanaux et projets professionnels.">
+<meta name="author" content="Théo Richard">
+<meta property="og:title" content="Grille des tarifs — Théo Richard">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theo-richard.fr/prestations/tarifs.html">
+<meta property="og:image" content="https://theo-richard.fr/photos/images/mg-0170.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="tarifs-body">
+
+<header class="site-header">
+  <a href="../index.html" class="home-button" aria-label="Théo Richard — accueil">TR</a>
+  <nav class="top-bar" aria-label="Navigation principale">
+    <a href="../photos/portfolio.html">Portfolio</a>
+    <a href="../textes/ecriture.html">Textes</a>
+    <a href="../projets/projets.html">Projets</a>
+    <a href="prestations.html" aria-current="page">Prestations</a>
+  </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme">
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu-overlay" id="mobileOverlay" aria-label="Navigation mobile">
+  <button class="mobile-menu-close" type="button" aria-label="Fermer le menu">×</button>
+  <script>
+    (function () {
+      var overlay = document.getElementById('mobileOverlay');
+      var toggle = document.getElementById('hamburgerBtn');
+      function closeMenu() { if (overlay.classList.contains('open')) toggle.click(); }
+      document.querySelector('.mobile-menu-close').addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+  <a href="../photos/portfolio.html">Portfolio</a><a href="../textes/ecriture.html">Textes</a><a href="../projets/projets.html">Projets</a><a href="prestations.html" aria-current="page">Prestations</a>
+  <div class="mobile-menu-secondary"><a href="../core/a-propos.html">À propos</a><a href="../core/contact.html">Contact</a></div>
+</nav>
+
+<main class="page-wrapper service-detail-page tarifs-page">
+  <header class="section-page-heading">
+    <h1>Grille des tarifs</h1>
+  </header>
+
+  <p class="tarifs-print-meta">Théo Richard — photographie argentique noir &amp; blanc (35 mm), laboratoire traditionnel. Tarifs 2026, TTC.</p>
+
+  <p class="tarifs-download">
+    <a class="optional-pdf-link" href="../documents/tarifs2026.pdf" download>Télécharger la grille (PDF)</a>
+  </p>
+
+  <div class="tarifs-content">
+    <!-- @auto:tarifs -->
+  </div>
+
+  <p class="service-contact-bottom"><a class="offer-contact-link" href="../core/contact.html">Contact</a></p>
+  <p class="service-detail-back"><a href="prestations.html">← Retour aux prestations</a></p>
+</main>
+
+<button class="scroll-top-btn" id="scrollTopBtn" type="button" aria-label="Retour en haut">↑</button>
+
+<footer class="site-footer">
+  <span>© <span id="annee"></span> Théo Richard</span>
+  <span class="footer-rights">Photos, textes et design protégés par le droit d’auteur.</span>
+  <nav class="footer-nav" aria-label="Informations et pages secondaires">
+    <a href="../core/a-propos.html">À propos</a><a href="../photos/archives.html">Archives</a>
+    <a href="prestations.html">Prestations</a><a href="../core/liens.html">Liens</a>
+    <a href="../core/contact.html">Contact</a><a href="../core/mentions.html">Mentions légales</a>
+  </nav>
+</footer>
+
+<script>
+  document.getElementById('annee').textContent = new Date().getFullYear();
+  var toggleSwitch = document.querySelector('#checkbox-theme');
+  var saved = localStorage.getItem('theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); if (saved === 'dark' && toggleSwitch) toggleSwitch.checked = true; }
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', function(e) {
+      var t = e.target.checked ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+    });
+  }
+  var hBtn = document.getElementById('hamburgerBtn');
+  var mOv  = document.getElementById('mobileOverlay');
+  if (hBtn && mOv) {
+    hBtn.addEventListener('click', function() {
+      var isOpen = mOv.classList.toggle('open');
+      hBtn.classList.toggle('open', isOpen);
+      hBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
+  var stBtn = document.getElementById('scrollTopBtn');
+  if (stBtn) {
+    window.addEventListener('scroll', function() { stBtn.classList.toggle('visible', window.scrollY > 300); });
+    stBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    var footer = document.querySelector('.site-footer');
+    if (footer) new IntersectionObserver(function(entries) {
+      stBtn.classList.toggle('footer-visible', entries[0].isIntersecting);
+    }).observe(footer);
+  }
+</script>
+</body>
+</html>
