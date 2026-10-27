@@ -5,10 +5,11 @@
   "description": "Génération du site theo-richard.fr (portfolio, articles, tarifs) à partir des fichiers JSON.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/verifier-liens.mjs",
-    "liens": "node scripts/verifier-liens.mjs"
+    "build": "node scripts/build.mjs && node scripts/pdf-tarifs.mjs && node scripts/controler.mjs --sans-externes",
+    "controler": "node scripts/build.mjs && node scripts/pdf-tarifs.mjs && node scripts/controler.mjs"
   },
   "dependencies": {
+    "playwright-core": "^1.64.1",
     "sharp": "^0.33.5"
   },
   "engines": {
