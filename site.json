@@ -1,0 +1,27 @@
+{
+  "adresse": "https://theo-richard.fr",
+  "auteur": "Théo Richard",
+  "imagePartage": "photos/images/mg-0170.jpg",
+  "descriptionParDefaut": "Théo Richard, documentariste, image & récit. Photographie argentique, écriture et récits de terrain.",
+
+  "menu": [
+    { "titre": "Portfolio", "page": "photos/portfolio.html" },
+    { "titre": "Textes", "page": "textes/ecriture.html" },
+    { "titre": "Projets", "page": "projets/projets.html" },
+    { "titre": "Prestations", "page": "prestations/prestations.html" }
+  ],
+
+  "menuMobileSecondaire": [
+    { "titre": "À propos", "page": "core/a-propos.html" },
+    { "titre": "Contact", "page": "core/contact.html" }
+  ],
+
+  "pied": [
+    { "titre": "À propos", "page": "core/a-propos.html" },
+    { "titre": "Archives", "page": "photos/archives.html" },
+    { "titre": "Prestations", "page": "prestations/prestations.html" },
+    { "titre": "Liens", "page": "core/liens.html" },
+    { "titre": "Contact", "page": "core/contact.html" },
+    { "titre": "Mentions légales", "page": "core/mentions.html" }
+  ]
+}

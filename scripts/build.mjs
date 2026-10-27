@@ -17,7 +17,7 @@ const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 
 // Éléments du dépôt qui ne doivent pas être publiés sur le site.
 const EXCLUS = new Set([
   '.git', '.github', '.gitignore', '.gitattributes', 'node_modules', '_site', 'src', 'scripts',
-  'package.json', 'package-lock.json', 'README.md', 'portfolio.json', 'articles.json', 'tarifs.json',
+  'package.json', 'package-lock.json', 'README.md', 'portfolio.json', 'articles.json', 'tarifs.json', 'site.json',
   path.join('photos', 'originaux'),
 ]);
 
@@ -283,28 +283,128 @@ function htmlFormats(t, id, indentation) {
 }
 
 // ---------- GABARITS ----------
+const dossierSrc = path.join(RACINE, 'src');
+const dossierPartiels = path.join(dossierSrc, 'partials');
+const posix = (p) => p.split(path.sep).join('/');
+
+function lirePartiel(nom) {
+  return fs.readFileSync(path.join(dossierPartiels, nom), 'utf8').replace(/\r\n/g, '\n').replace(/\n$/, '');
+}
+
 function listerGabarits(dossier, relatif = '') {
   return fs.readdirSync(dossier, { withFileTypes: true }).flatMap((e) => {
     const rel = path.join(relatif, e.name);
+    if (rel === 'partials') return [];
     return e.isDirectory() ? listerGabarits(path.join(dossier, e.name), rel) : [rel];
   });
 }
 
-function rendreGabarits(valeurs) {
-  const dossierSrc = path.join(RACINE, 'src');
+// Lit l'en-tête "---" (réglages de la page) puis le contenu HTML.
+function separerReglages(texte, rel) {
+  const m = texte.match(/^---\n([\s\S]*?)\n---\n?/);
+  if (!m) {
+    erreur(`src/${posix(rel)} : l'en-tête de la page est absent. Le fichier doit commencer par une ligne --- puis "titre: ..." puis une ligne ---.`);
+    return { reglages: {}, contenu: texte };
+  }
+  const reglages = {};
+  m[1].split('\n').forEach((ligne, i) => {
+    if (!ligne.trim()) return;
+    const kv = ligne.match(/^([a-z-]+):[ \t]*(.*)$/);
+    if (!kv) return erreur(`src/${posix(rel)}, ligne ${i + 2} : réglage illisible "${ligne}". Format attendu : nom: valeur.`);
+    reglages[kv[1]] = kv[2].trim();
+  });
+  return { reglages, contenu: texte.slice(m[0].length) };
+}
+
+function chargerSite() {
+  const s = lireJson('site.json');
+  if (!s) return null;
+  for (const c of ['adresse', 'auteur', 'imagePartage']) texteObligatoire(s[c], 'site.json', c);
+  for (const liste of ['menu', 'menuMobileSecondaire', 'pied']) {
+    if (!Array.isArray(s[liste])) { erreur(`site.json : "${liste}" doit être une liste [ ... ].`); continue; }
+    s[liste].forEach((e, i) => {
+      const ou = `site.json, "${liste}", entrée n°${i + 1}`;
+      texteObligatoire(e && e.titre, ou, 'titre');
+      texteObligatoire(e && e.page, ou, 'page');
+    });
+  }
+  return erreurs.length ? null : s;
+}
+
+function lienMenu(entree, racine, actif, indentation) {
+  return `${indentation}<a href="${echapper(racine + entree.page, true)}"${actif ? ' aria-current="page"' : ''}>${echapper(entree.titre)}</a>`;
+}
+
+function htmlMenuAccueil(site) {
+  return site.menu.map((e) => `    <a class="home-section-link" href="${echapper(e.page, true)}">
+      <span class="home-section-copy">
+        <span class="home-section-name">${echapper(e.titre)}</span>
+      </span>
+    </a>`).join('\n');
+}
+
+function htmlMetaPage(site, rel, r) {
+  const url = rel === 'index.html' ? `${site.adresse}/` : `${site.adresse}/${posix(rel)}`;
+  const titre = r.titre;
+  const lignes = [`<title>${echapper(titre)}</title>`];
+  const meta = (attr, nom, valeur) => { if (valeur) lignes.push(`<meta ${attr}="${nom}" content="${echapper(valeur, true)}">`); };
+  meta('name', 'description', r.description);
+  meta('name', 'keywords', r['mots-cles']);
+  meta('name', 'author', site.auteur);
+  meta('property', 'og:title', r['og-titre'] || titre);
+  meta('property', 'og:description', r['og-description'] || r.description);
+  meta('property', 'og:type', r['og-type'] || 'website');
+  meta('property', 'og:url', url);
+  meta('property', 'og:image', `${site.adresse}/${r['og-image'] || site.imagePartage}`);
+  return lignes.join('\n');
+}
+
+function assembler(site, rel, r, contenu) {
+  const profondeur = posix(rel).split('/').length - 1;
+  const racine = '../'.repeat(profondeur);
+  const actuelle = r.menu || posix(rel);
+  const menu = site.menu.map((e) => lienMenu(e, racine, e.page === actuelle, '    ')).join('\n');
+  const menuMobile = site.menu.map((e) => lienMenu(e, racine, e.page === actuelle, '  ')).join('\n');
+  const secondaire = site.menuMobileSecondaire.map((e) => lienMenu(e, racine, false, '    ')).join('\n');
+  const piedLiens = site.pied.map((e) => lienMenu(e, racine, false, '    ')).join('\n');
+  const remplacer = (modele, valeurs) => modele.replace(/\{\{([a-z-]+)\}\}/g, (tout, nom) => (nom in valeurs ? valeurs[nom] : tout));
+
+  const entete = remplacer(lirePartiel('entete.html'), { racine, menu: '{{menu}}', 'menu-secondaire': secondaire })
+    .replace('{{menu}}', menu).replace('{{menu}}', menuMobile);
+  const pied = remplacer(lirePartiel('pied.html'), { 'pied-liens': piedLiens });
+  return remplacer(lirePartiel('page.html'), {
+    meta: htmlMetaPage(site, rel, r),
+    racine,
+    'classe-body': r['classe-body'] ? ` class="${echapper(r['classe-body'], true)}"` : '',
+    entete,
+    contenu: contenu.trim(),
+    pied,
+    scripts: lirePartiel('scripts.html'),
+  });
+}
+
+function rendreGabarits(valeurs, site) {
   for (const rel of listerGabarits(dossierSrc)) {
-    let contenu = fs.readFileSync(path.join(dossierSrc, rel), 'utf8').replace(/\r\n/g, '\n');
+    const brut = fs.readFileSync(path.join(dossierSrc, rel), 'utf8').replace(/\r\n/g, '\n');
+    const { reglages, contenu: corps } = separerReglages(brut, rel);
     const remplacer = (tout, nom) => {
-      if (!(nom in valeurs)) { erreur(`src/${rel} : marqueur inconnu @auto:${nom}.`); return tout; }
+      if (!(nom in valeurs)) { erreur(`src/${posix(rel)} : marqueur inconnu @auto:${nom}.`); return tout; }
       return valeurs[nom];
     };
     // Marqueur seul sur sa ligne : le bloc généré porte sa propre indentation.
-    contenu = contenu.replace(/^[ \t]*<!-- @auto:([a-z-]+) -->[ \t]*$/gm, (tout, nom) => remplacer(tout, nom));
+    let contenu = corps.replace(/^[ \t]*<!-- @auto:([a-z-]+) -->[ \t]*$/gm, (tout, nom) => remplacer(tout, nom));
     contenu = contenu.replace(/<!-- @auto:([a-z-]+) -->/g, remplacer);
+    let html;
+    if (reglages['mise-en-page'] === 'nue') {
+      html = contenu.trim() + '\n';
+    } else {
+      if (!texteObligatoire(reglages.titre, `src/${posix(rel)} (en-tête)`, 'titre')) continue;
+      html = assembler(site, rel, reglages, contenu);
+    }
     const cible = path.join(SORTIE, rel);
     fs.mkdirSync(path.dirname(cible), { recursive: true });
-    fs.writeFileSync(cible, contenu);
-    console.log(`  page générée : ${rel.replace(/\\/g, '/')}`);
+    fs.writeFileSync(cible, html);
+    console.log(`  page générée : ${posix(rel)}`);
   }
 }
 
@@ -316,9 +416,11 @@ async function main() {
   const photos = await traiterPortfolio();
   const articles = htmlArticles();
   const tarifs = chargerTarifs();
+  const site = chargerSite();
   if (erreurs.length) return;
 
   const valeurs = {
+    'menu-accueil': htmlMenuAccueil(site),
     photos: htmlPhotos(photos),
     articles,
     tarifs: htmlTarifs(tarifs),
@@ -327,7 +429,7 @@ async function main() {
     'formats-seances': htmlFormats(tarifs, 'seances', '    '),
   };
   if (erreurs.length) return;
-  rendreGabarits(valeurs);
+  rendreGabarits(valeurs, site);
   console.log(`  ${photos.length} photos : miniatures et versions HD créées.`);
 }
 

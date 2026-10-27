@@ -1,0 +1,35 @@
+<header class="site-header">
+  <a href="{{racine}}index.html" class="home-button" aria-label="Théo Richard — accueil">TR</a>
+  <nav class="top-bar" aria-label="Navigation principale">
+{{menu}}
+  </nav>
+  <div class="theme-switch-wrapper">
+    <span>MODE NUIT</span>
+    <label class="theme-switch" for="checkbox-theme">
+      <input type="checkbox" id="checkbox-theme">
+      <div class="slider"></div>
+    </label>
+  </div>
+  <button class="hamburger-icon" id="hamburgerBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu-overlay" id="mobileOverlay" aria-label="Navigation mobile">
+  <button class="mobile-menu-close" type="button" aria-label="Fermer le menu">×</button>
+  <script>
+    (function () {
+      var overlay = document.getElementById('mobileOverlay');
+      var toggle = document.getElementById('hamburgerBtn');
+      function closeMenu() { if (overlay.classList.contains('open')) toggle.click(); }
+      document.querySelector('.mobile-menu-close').addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+{{menu}}
+  <div class="mobile-menu-secondary">
+{{menu-secondaire}}
+  </div>
+</nav>

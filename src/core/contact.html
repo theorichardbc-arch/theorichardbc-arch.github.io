@@ -1,0 +1,65 @@
+---
+titre: Contact — Théo Richard
+description: Contacter Théo Richard : formulaire, adresse e-mail et Instagram.
+---
+<main class="page-wrapper contact-layout">
+  <header class="section-page-heading">
+    <h1>Contact</h1>
+  </header>
+
+  <div class="contact-page">
+
+  <!-- Infos directes, cliquables, sans hover -->
+  <div class="contact-infos">
+    <a id="mailLink">✉ contact@theo-richard.fr</a>
+    <a href="https://instagram.com/the0_richard" target="_blank" rel="noopener noreferrer">◎ @the0_richard</a>
+  </div>
+
+  <form class="contact-form" id="contactForm"
+        action="https://formspree.io/f/mykddaag"
+        method="POST">
+    <label class="visually-hidden" for="contactNom">Votre nom</label>
+    <input id="contactNom" type="text" name="nom" placeholder="Votre nom" required>
+    <label class="visually-hidden" for="contactEmail">Votre email</label>
+    <input id="contactEmail" type="email" name="email" placeholder="Votre email" required>
+    <label class="visually-hidden" for="contactSujet">Sujet</label>
+    <input id="contactSujet" type="text" name="sujet" placeholder="Sujet">
+    <label class="visually-hidden" for="contactMessage">Votre message</label>
+    <textarea id="contactMessage" name="message" placeholder="Votre message..." required></textarea>
+    <button type="submit" class="contact-submit">Envoyer →</button>
+  </form>
+
+  <p class="contact-merci" id="contactMerci" role="status" aria-live="polite">
+    Merci pour votre message !
+  </p>
+  <p class="contact-erreur" id="contactErreur" role="alert" aria-live="assertive">
+    L’envoi a échoué. Vérifiez votre connexion et réessayez.
+  </p>
+
+  </div>
+</main>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var error = document.getElementById('contactErreur');
+    error.style.display = 'none';
+    try {
+      var res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) throw new Error('Contact form returned HTTP ' + res.status);
+      form.style.display = 'none';
+      document.getElementById('contactMerci').style.display = 'block';
+    } catch (err) {
+      console.error('Unable to send contact form:', err);
+      error.style.display = 'block';
+    }
+  });
+  
+  var m = document.getElementById('mailLink');
+if (m) m.href = 'mailto:' + 'contact' + '@' + 'theo-richard.fr';
+</script>
