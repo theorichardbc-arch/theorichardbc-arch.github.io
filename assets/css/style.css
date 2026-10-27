@@ -2308,7 +2308,7 @@ a:active {
   gap: 2rem 4rem;
   padding: 2rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.12);
-  align-items: start;
+  align-items: baseline;
 }
 
 .service-gauche { display: flex; flex-direction: column; gap: 0.4rem; }
