@@ -4,7 +4,7 @@
   "introduction": [
     "Chaque prestation s’inscrit dans une démarche artisanale et humaine. Les projets sont co-construits en amont via une prise de contact directe afin de définir ensemble le cadre précis de votre démarche. Il ne s’agit pas d’une réservation automatisée à la chaîne, mais d’une expérience personnalisée et modifiable à la carte."
   ],
-  "avertissement": "L’argentique présente des variations naturelles de rendu selon les conditions de prise de vue et de chimie. Prestations argentiques exclusivement réalisées en noir & blanc (films Foma 100/400, 35 mm, papier RC, chimie variable).",
+  "avertissement": "L’argentique présente des variations naturelles de rendu selon les conditions de prise de vue et de chimie. Prestations argentiques exclusivement réalisées en noir & blanc (films Foma 100/400, 35 mm, papier RC, chimie variable). Une pellicule de x vues ne garanti jamais x photos finales, mais bien x déclenchements.",
 
   "sections": [
     {
@@ -14,20 +14,20 @@
       "colonnes": ["Pack", "Inclusions", "Tarif (TTC)"],
       "lignes": [
         {
-          "nom": "Pack Immersion Complète",
-          "description": "Séance portrait argentique (1 h – 2 h, 24 vues) + immersion au labo pour participer au développement et au tirage de votre propre film + 4 tirages 10 × 15 cm inclus.",
+          "nom": "Session découverte de l'argentique",
+          "description": "Séance portrait argentique N&B (environ 1h, 24 vues) + immersion au labo pour participer au développement et au tirage de votre propre film + 4 tirages 10 × 15 cm inclus.",
           "prix": "220 €",
           "prixDetail": "au lieu de 260 €"
         },
         {
           "nom": "Pack Collection & Exposition",
-          "description": "Séance argentique N&B + numérisation + planche contact + 2 tirages 18 × 24 cm + 1 tirage grand format 30 × 40 cm tiré à la main.",
+          "description": "Séance photo argentique N&B (1h à 2h, jusqu'à 2 pellicles de 24 vues) + numérisation + planche contact + 2 tirages 18 × 24 cm + 1 tirage grand format 30 × 40 cm tiré à la main.",
           "prix": "280 €",
           "prixDetail": "au lieu de 335 €"
         },
         {
           "nom": "Pack Double Pellicule & Tirages",
-          "description": "Séance photo étendue (2 h à 3 h, 2 pellicules 24 vues) + numérisation intégrale + 4 tirages 10 × 15 cm + 2 tirages 18 × 24 cm.",
+          "description": "Séance photo (1h à 2h, jusqu'à 2 pellicules 24 vues) + numérisation intégrale + 4 tirages 10 × 15 cm + 2 tirages 18 × 24 cm.",
           "prix": "310 €",
           "prixDetail": "au lieu de 370 €"
         }
@@ -41,16 +41,17 @@
       "lignes": [
         {
           "nom": "Initiation labo « Stock »",
-          "duree": "2 h",
+          "duree": "2h",
           "description": "Initiation au tirage artisanal sur papier RC à partir d’une sélection de négatifs stock. Le participant repart avec 2 tirages finalisés.",
           "prix": "80 € / pers.",
           "prixDetail": "70 € / pers. en duo"
         },
         {
           "nom": "Initiation complète",
-          "duree": "3 h à 4 h",
-          "description": "Prêt d’appareil, prise de vue (12 vues, autonomie ou guidée), développement du film, numérisation basique de consultation et 2 tirages 10 × 15 cm inclus.",
-          "prix": "120 €"
+          "duree": "3h à 4h",
+          "description": "Prêt d’appareil, prise de vue (12 vues, davantage en option, autonomie ou guidée), développement du film, numérisation basique de consultation et 2 tirages 10 × 15 cm inclus.",
+          "prix": "160 €"
+          "prixDetail": "120 € / pers. en duo"
         },
         {
           "nom": "Tirage supplémentaire en semi-autonomie",
