@@ -1,9 +1,10 @@
 name: Construire et publier le site
 
-# À chaque push : le site est construit et contrôlé.
-# Seule la branche main est publiée sur GitHub Pages.
+# À chaque push et chaque pull request : le site est construit et contrôlé.
+# Seule la branche main est publiée sur GitHub Pages, et seulement si les contrôles bloquants passent.
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -29,8 +30,15 @@ jobs:
       - name: Installer les outils
         run: npm ci
 
-      - name: Construire le site (pages, miniatures) et vérifier les liens
-        run: npm run build
+      - name: Construire le site (pages, miniatures) et valider les fichiers JSON
+        run: node scripts/build.mjs
+
+      - name: Contrôler le site (liens, images, titres, alt, doublons)
+        run: node scripts/controler.mjs
+
+      - name: Résumé des contrôles
+        if: always()
+        run: node scripts/resume.mjs
 
       - name: Préparer l'archive Pages
         if: github.ref == 'refs/heads/main'
