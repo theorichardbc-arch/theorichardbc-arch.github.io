@@ -2802,6 +2802,16 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
   margin: -1.5rem auto 3rem;
 }
 
+.optional-pdf-row:has(+ .catalog-intro) {
+  margin-bottom: 1.5rem;
+}
+
+.optional-pdf-row + .catalog-intro {
+  width: min(100%, 740px);
+  margin: 0 auto;
+  padding-bottom: 0;
+}
+
 .optional-pdf-link,
 .optional-pdf-link:visited {
   display: inline-flex;
