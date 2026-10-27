@@ -3366,11 +3366,11 @@ a.alpine-resource:is(:hover, :focus-visible) .texte-titre {
     margin: 16mm 16mm 18mm;
   }
 
-  html {
+  html:has(body.tarifs-body) {
     font-size: 10.5px;
   }
 
-  html, body.tarifs-body {
+  body.tarifs-body {
     background: #fff;
     color: #111;
   }
