@@ -5,6 +5,7 @@
 // Usage : npm ci && npm run build
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
 import { RACINE, erreur, avertir, erreurs, afficher, reinitialiserRapport, sauverRapport } from './lib/rapport.mjs';
 import { lireJson, ligneDe } from './lib/json.mjs';
@@ -459,7 +460,41 @@ function rendreGabarits(valeurs, site) {
     fs.mkdirSync(path.dirname(cible), { recursive: true });
     fs.writeFileSync(cible, html);
     console.log(`  page générée : ${posix(rel)}`);
+    if (reglages.sitemap !== 'non') {
+      const donnees = [...new Set([...corps.matchAll(/@auto:([a-z-]+)/g)].map((m) => DONNEES_DES_MARQUEURS[m[1]]).filter(Boolean))];
+      pagesPubliques.push({ rel: posix(rel), sources: [path.join('src', rel), ...donnees] });
+    }
   }
+}
+
+// ---------- SITEMAP ET ROBOTS ----------
+const pagesPubliques = [];
+const DONNEES_DES_MARQUEURS = {
+  'menu-accueil': 'site.json', photos: 'portfolio.json', articles: 'articles.json', projets: 'projets.json',
+  tarifs: 'tarifs.json', 'prix-depart-labo': 'tarifs.json', 'formats-labo': 'tarifs.json', 'formats-seances': 'tarifs.json',
+};
+
+// Date du dernier changement (git) des fichiers dont dépend la page ; date du jour si git ne sait pas.
+function dateModification(sources) {
+  let derniere = '';
+  for (const s of sources) {
+    try {
+      const d = execFileSync('git', ['log', '-1', '--format=%cI', '--', s], { cwd: RACINE, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10);
+      if (d > derniere) derniere = d;
+    } catch { /* git indisponible */ }
+  }
+  return derniere || new Date().toISOString().slice(0, 10);
+}
+
+function ecrireSitemap(site) {
+  const pages = [...pagesPubliques].sort((a, b) => (a.rel === 'index.html' ? -1 : b.rel === 'index.html' ? 1 : a.rel.localeCompare(b.rel)));
+  const lignes = pages.map((p) => {
+    const url = p.rel === 'index.html' ? `${site.adresse}/` : `${site.adresse}/${p.rel}`;
+    return `  <url>\n    <loc>${echapper(url)}</loc>\n    <lastmod>${dateModification(p.sources)}</lastmod>\n  </url>`;
+  });
+  fs.writeFileSync(path.join(SORTIE, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${lignes.join('\n')}\n</urlset>\n`);
+  fs.writeFileSync(path.join(SORTIE, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.adresse}/sitemap.xml\n`);
+  console.log(`  sitemap.xml (${pages.length} pages) et robots.txt générés.`);
 }
 
 async function main() {
@@ -487,6 +522,7 @@ async function main() {
   };
   if (erreurs.length) return;
   rendreGabarits(valeurs, site);
+  ecrireSitemap(site);
   console.log(`  ${photos.length} photos : miniatures et versions HD créées.`);
 }
 
