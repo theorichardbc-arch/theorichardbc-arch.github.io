@@ -109,7 +109,7 @@ Le PDF des tarifs est aussi relu automatiquement (nombre de pages, accents, poli
 
 ## Sitemap et robots.txt
 
-`sitemap.xml` (liste des pages pour Google) et `robots.txt` sont **générés automatiquement** : rien à faire. Les pages `404`, `bientot` et `guide` en sont exclues (réglage `sitemap: non` dans leur en-tête).
+`sitemap.xml` (liste des pages pour Google) et `robots.txt` sont **générés automatiquement** : rien à faire. Les pages `404` et `bientot` en sont exclues (réglage `sitemap: non` dans leur en-tête).
 
 ## Comment ça marche (pour information)
 
@@ -125,7 +125,7 @@ Le PDF des tarifs est aussi relu automatiquement (nombre de pages, accents, poli
 | `scripts/controler.mjs`, `scripts/resume.mjs` | Contrôles (liens, images, titres…) et résumé affiché dans GitHub Actions |
 | `.github/workflows/deploy.yml` | Lance le tout à chaque enregistrement, puis publie sur GitHub Pages |
 
-**Toutes les pages** (accueil, à propos, contact, projets, 404…) sont des fichiers dans `src/` : **pour modifier un texte, éditez la version dans `src/`** (et non un fichier généré dans `_site/`). `bientot.html`, `guide.html` et `404.html` sont des pages entières à part, sans en-tête ni pied de page communs.
+**Toutes les pages** (accueil, à propos, contact, projets, 404…) sont des fichiers dans `src/` : **pour modifier un texte, éditez la version dans `src/`** (et non un fichier généré dans `_site/`). `bientot.html` et `404.html` sont des pages entières à part, sans en-tête ni pied de page communs.
 
 Les pages publiques gardent les mêmes adresses (`/photos/portfolio.html`, `/textes/ecriture.html`, `/prestations/tarifs.html`…). `CNAME` est conservé, et `404.html` redirige les anciennes URLs racine vers les nouveaux dossiers. Les CV PDF de `documents/` sont copiés tels quels.
 
@@ -157,8 +157,4 @@ Le site complet est alors dans `_site/`.
 ### Réglage GitHub Pages (une seule fois)
 
 Dans **Settings → Pages → Build and deployment → Source**, choisir **GitHub Actions** (au lieu de « Deploy from a branch »).
-
-## Guide privé (core/guide.html)
-
-Cette page n'est **pas** dans le dépôt : elle est fabriquée au build à partir de deux secrets GitHub Actions (Settings > Secrets and variables > Actions) : GUIDE_PASSWORD (mot de passe) et GUIDE_HTML (contenu complet de la page). Elle est chiffrée (AES-256-GCM) par scripts/guide-chiffrer.mjs. Sans secrets, une page « non disponible » est publiée. Pour modifier : mettre à jour le secret GUIDE_HTML, puis relancer le workflow (onglet Actions > Re-run all jobs). Ne jamais commiter le texte en clair.
 

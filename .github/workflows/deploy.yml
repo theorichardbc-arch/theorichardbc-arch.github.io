@@ -35,12 +35,6 @@ jobs:
       - name: Construire le site (pages, miniatures) et valider les fichiers JSON
         run: node scripts/build.mjs
 
-      - name: Générer la page privée chiffrée (core/guide.html)
-        run: node scripts/guide-chiffrer.mjs
-        env:
-          GUIDE_PASSWORD: ${{ secrets.GUIDE_PASSWORD }}
-          GUIDE_HTML: ${{ secrets.GUIDE_HTML }}
-
       - name: Fabriquer et vérifier le PDF des tarifs
         run: |
           sudo apt-get update -qq || true
