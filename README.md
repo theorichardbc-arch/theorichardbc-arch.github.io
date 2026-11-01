@@ -78,6 +78,12 @@ Ouvrez **`site.json`**, repérez la liste `"menu"` et ajoutez **une ligne** :
 
 Le menu du haut, le menu mobile et l'accueil se mettent à jour partout. Pour créer la page elle-même, copiez un fichier de **`src/`** (par exemple `src/core/contact.html`) : seul l'en-tête entre les deux lignes `---` (titre, description) et le contenu changent ; l'en-tête, le menu et le pied de page sont ajoutés automatiquement.
 
+## Galerie « Alpes » (page fixe)
+
+La galerie du projet Alpes se trouve à l'adresse `theo-richard.fr/projets/alpes/photos.html`. Elle ne passe pas par un JSON : le fichier est **`src/projets/alpes/photos.html`** (ses images sont celles de `photos/originaux/`, déjà listées dans `portfolio.json`).
+
+**Remplacer le texte d'introduction et le lien de l'article** : ouvrez ce fichier, tout en haut. Changez le paragraphe `<p>Texte d’introduction à venir.</p>`, puis, juste dessous, l'adresse `href="https://rtheo.substack.com/"` du lien « Lire l’article technique » (repérée par le commentaire `TODO`). Enregistrez (**Commit changes**) : le site se met à jour tout seul.
+
 ## Si quelque chose ne s'affiche pas
 
 ## Lire les contrôles automatiques

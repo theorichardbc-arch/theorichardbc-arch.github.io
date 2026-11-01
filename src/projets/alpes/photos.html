@@ -1,0 +1,245 @@
+---
+titre: Alpes, photographies — Théo Richard
+description: Paysages de montagne de la traversée des Alpes en solitaire : portraits de sommets et textures de pentes, par Théo Richard.
+og-titre: Alpes, photographies — Théo Richard
+og-description: Portraits de sommets et textures de pentes, les photographies du projet Alpes.
+menu: projets/projets.html
+---
+<div class="page-wrapper">
+
+<div class="photo-grid-page">
+
+  <div class="section-page-heading">
+    <h1>Alpes, photographies</h1>
+    <!-- INTRODUCTION : remplacez le texte du paragraphe ci-dessous. -->
+    <p>Texte d’introduction à venir.</p>
+  </div>
+
+  <div class="portfolio-meta">
+    <p class="photo-archive-note">
+      <!-- TODO : remplacer par l'URL Substack de l'article technique (adresse provisoire : page d'accueil du Substack) -->
+      <a href="https://rtheo.substack.com/" target="_blank" rel="noopener noreferrer">Lire l’article technique</a>
+      — <a href="../alpes.html">retour au projet</a>
+    </p>
+  </div>
+
+  <div class="masonry-grid">
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/brume-et-foret.jpg" data-fullsrc="../../photos/images/brume-et-foret.webp" alt="Brume et forêt" width="3132" height="2088" loading="eager" fetchpriority="high" decoding="async"
+           data-titre="Brume et forêt"
+           data-info="Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/arbres-isoles-dans-les-nuages.jpg" data-fullsrc="../../photos/images/arbres-isoles-dans-les-nuages.webp" alt="Des arbres isolés pris dans les nuages passants" width="4089" height="2726" loading="lazy" decoding="async"
+           data-titre="Des arbres isolés pris dans les nuages passants"
+           data-info="Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/trace-de-l-eau.jpg" data-fullsrc="../../photos/images/trace-de-l-eau.webp" alt="Trace de l'eau" width="2038" height="3057" loading="lazy" decoding="async"
+           data-titre="Trace de l'eau"
+           data-info="Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/schema-texturel.jpg" data-fullsrc="../../photos/images/schema-texturel.webp" alt="Schéma texturel" width="4599" height="3066" loading="lazy" decoding="async"
+           data-titre="Schéma texturel"
+           data-info="Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/une-crete.jpg" data-fullsrc="../../photos/images/une-crete.webp" alt="Une crête" width="3855" height="2570" loading="lazy" decoding="async"
+           data-titre="Une crête"
+           data-info="Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/le-massif-depuis-le-galibier.jpg" data-fullsrc="../../photos/images/le-massif-depuis-le-galibier.webp" alt="Le massif depuis le Galibier" width="3753" height="2502" loading="lazy" decoding="async"
+           data-titre="Le massif depuis le Galibier"
+           data-info="Col du Galibier, Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/le-roi-mont-blanc.jpg" data-fullsrc="../../photos/images/le-roi-mont-blanc.webp" alt="Le Roi Mont Blanc" width="2472" height="3708" loading="lazy" decoding="async"
+           data-titre="Le Roi Mont Blanc"
+           data-info="Massif du Mont Blanc, Alpes, 2026">
+    </div>
+
+    <div class="photo-item">
+      <img src="../../photos/images/thumbs/la-montagne-au-loin.jpg" data-fullsrc="../../photos/images/la-montagne-au-loin.webp" alt="La montagne au loin" width="4047" height="2698" loading="lazy" decoding="async"
+           data-titre="La montagne au loin"
+           data-info="Alpes, 2026">
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photographie en plein écran" tabindex="-1">
+  <button class="lightbox-close" id="lbClose" type="button" aria-label="Fermer la photographie">✕ FERMER</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev" type="button" aria-label="Photographie précédente">←</button>
+  <div class="lb-photo-wrapper">
+    <img src="" alt="Photographie de Théo Richard" id="lbImg">
+    <div class="lb-info" id="lbInfo">
+      <p class="lb-info-titre" id="lbTitre"></p>
+      <p class="lb-info-corps" id="lbCorps"></p>
+    </div>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lbNext" type="button" aria-label="Photographie suivante">→</button>
+  <div class="lightbox-counter" id="lbCounter" aria-live="polite"></div>
+  <div class="lightbox-actions">
+    <button class="lb-action-btn" id="lbCopier" type="button" aria-live="polite">Copier le lien</button>
+    <a class="lb-action-btn" id="lbMail" href="mailto:contact@theo-richard.fr">M’écrire au sujet de cette photo</a>
+  </div>
+</div>
+
+</div>
+
+<script>
+  var allItems  = Array.from(document.querySelectorAll('.photo-item img'));
+  var lightbox  = document.getElementById('lightbox');
+  var lbImg     = document.getElementById('lbImg');
+  var lbClose   = document.getElementById('lbClose');
+  var lbPrev    = document.getElementById('lbPrev');
+  var lbNext    = document.getElementById('lbNext');
+  var lbCounter = document.getElementById('lbCounter');
+  var lbCopier  = document.getElementById('lbCopier');
+  var lbMail    = document.getElementById('lbMail');
+  var current   = 0;
+  var openerPhoto = null;
+  var previousBodyOverflow = '';
+
+  allItems.forEach(function(img, i) {
+    var photo = img.closest('.photo-item');
+    if (!photo.id) photo.id = 'photo-' + (i + 1);
+    photo.setAttribute('role', 'button');
+    photo.setAttribute('tabindex', '0');
+    photo.setAttribute('aria-label', 'Agrandir la photographie : ' + (img.getAttribute('data-titre') || img.alt || 'sans titre'));
+  });
+
+  function fullImageSource(img) {
+    return img.getAttribute('data-fullsrc') || img.src;
+  }
+
+  function photoUrl(index) {
+    return window.location.href.split('#')[0] + '#' + allItems[index].closest('.photo-item').id;
+  }
+
+  function updateActions() {
+    var img   = allItems[current];
+    var titre = img.getAttribute('data-titre') || '';
+    var info  = img.getAttribute('data-info')  || '';
+    lbImg.alt = img.alt || titre || 'Photographie de Théo Richard';
+    document.getElementById('lbTitre').textContent = titre;
+    document.getElementById('lbCorps').innerHTML   = info.replace(/\n/g, '<br>');
+    document.getElementById('lbInfo').style.opacity = (titre || info) ? '1' : '0';
+    lbMail.href = 'mailto:contact@theo-richard.fr?subject=' +
+      encodeURIComponent('À propos de la photo « ' + (titre || 'sans titre') + ' »') +
+      '&body=' + encodeURIComponent('Bonjour Théo,\n\nJe vous écris au sujet de cette photo : ' + photoUrl(current));
+  }
+
+  function openLightbox(index, opener) {
+    current = index;
+    openerPhoto = opener || null;
+    previousBodyOverflow = document.body.style.overflow;
+    lbImg.src = fullImageSource(allItems[current]);
+    lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
+    updateActions();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = previousBodyOverflow;
+    if (openerPhoto) openerPhoto.focus();
+  }
+
+  function navigate(dir) {
+    current = (current + dir + allItems.length) % allItems.length;
+    lbImg.style.opacity = 0;
+    setTimeout(function() {
+      lbImg.src = fullImageSource(allItems[current]);
+      lbCounter.textContent = (current + 1) + ' / ' + allItems.length;
+      updateActions();
+      lbImg.style.opacity = 1;
+    }, 140);
+  }
+
+  lbImg.style.transition = 'opacity 0.14s ease';
+
+  allItems.forEach(function(img, i) {
+    var photo = img.closest('.photo-item');
+    photo.addEventListener('click', function() { openLightbox(i, photo); });
+    photo.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(i, photo);
+      }
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click',  function() { navigate(-1); });
+  lbNext.addEventListener('click',  function() { navigate(1); });
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+    if (e.key === 'Tab') {
+      var focusable = Array.from(lightbox.querySelectorAll('button:not([disabled]), a[href]'));
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  lbCopier.addEventListener('click', function() {
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      lbCopier.textContent = 'Copie indisponible';
+      return;
+    }
+    Promise.resolve().then(function() {
+      return navigator.clipboard.writeText(photoUrl(current));
+    }).then(function() {
+      lbCopier.textContent = 'Lien copié !';
+      lbCopier.classList.add('copied');
+      setTimeout(function() {
+        lbCopier.textContent = 'Copier le lien';
+        lbCopier.classList.remove('copied');
+      }, 2000);
+    }).catch(function() {
+      lbCopier.textContent = 'Copie impossible';
+    });
+  });
+
+  function openPhotoFromHash() {
+    if (!/^#photo-\d+$/.test(window.location.hash)) return;
+    var photoIndex = allItems.findIndex(function(img) {
+      return img.closest('.photo-item').id === window.location.hash.slice(1);
+    });
+    if (photoIndex >= 0) {
+      openLightbox(photoIndex);
+    }
+  }
+
+  window.addEventListener('hashchange', openPhotoFromHash);
+  openPhotoFromHash();
+
+  allItems.forEach(function(img) {
+    img.addEventListener('load', function() {
+      img.classList.add('loaded');
+    });
+    if (img.complete && img.naturalWidth) img.classList.add('loaded');
+  });
+</script>

@@ -173,5 +173,45 @@
     "nom_fichier": "yo3.webp",
     "titre": "Yo 3",
     "info": ""
+  },
+  {
+    "nom_fichier": "brume-et-foret.webp",
+    "titre": "Brume et forêt",
+    "info": "Alpes, 2026"
+  },
+  {
+    "nom_fichier": "arbres-isoles-dans-les-nuages.webp",
+    "titre": "Des arbres isolés pris dans les nuages passants",
+    "info": "Alpes, 2026"
+  },
+  {
+    "nom_fichier": "trace-de-l-eau.webp",
+    "titre": "Trace de l'eau",
+    "info": "Alpes, 2026"
+  },
+  {
+    "nom_fichier": "schema-texturel.webp",
+    "titre": "Schéma texturel",
+    "info": "Alpes, 2026"
+  },
+  {
+    "nom_fichier": "une-crete.webp",
+    "titre": "Une crête",
+    "info": "Alpes, 2026"
+  },
+  {
+    "nom_fichier": "le-massif-depuis-le-galibier.webp",
+    "titre": "Le massif depuis le Galibier",
+    "info": "Col du Galibier, Alpes, 2026"
+  },
+  {
+    "nom_fichier": "le-roi-mont-blanc.webp",
+    "titre": "Le Roi Mont Blanc",
+    "info": "Massif du Mont Blanc, Alpes, 2026"
+  },
+  {
+    "nom_fichier": "la-montagne-au-loin.webp",
+    "titre": "La montagne au loin",
+    "info": "Alpes, 2026"
   }
 ]
