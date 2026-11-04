@@ -82,7 +82,7 @@ Le menu du haut, le menu mobile et l'accueil se mettent à jour partout. Pour cr
 
 La galerie du projet Alpes se trouve à l'adresse `theo-richard.fr/projets/alpes/photos.html`. Elle ne passe pas par un JSON : le fichier est **`src/projets/alpes/photos.html`** (ses images sont celles de `photos/originaux/`, déjà listées dans `portfolio.json`).
 
-**Remplacer le texte d'introduction et le lien de l'article** : ouvrez ce fichier, tout en haut. Changez le paragraphe `<p>Texte d’introduction à venir.</p>`, puis, juste dessous, l'adresse `href="https://rtheo.substack.com/"` du lien « Lire l’article technique » (repérée par le commentaire `TODO`). Enregistrez (**Commit changes**) : le site se met à jour tout seul.
+**Remplacer le texte d'introduction** : ouvrez ce fichier, tout en haut. Changez le paragraphe `<p>Texte d’introduction à venir.</p>`. Le lien « Lire l’article technique » pointe déjà vers l'article Substack. Enregistrez (**Commit changes**) : le site se met à jour tout seul.
 
 ## Si quelque chose ne s'affiche pas
 
